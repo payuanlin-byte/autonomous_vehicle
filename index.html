@@ -180,27 +180,60 @@
         font-size: 0.95em;
         line-height: 1.6;
     }
-
-    /* 下半部分：底部词汇墙 (方案 B) */
-    .bottom-section {
-        margin-top: 40px;
-        border-top: 2px solid #E0E0E0;
-        padding-top: 30px;
-        font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
-    }
+    
     .click-hint {
         font-size: 0.85em;
         color: #999;
         margin-bottom: 20px;
         font-style: italic;
     }
+
+    /* 万能句型点击交互样式 (绿色) */
+    .pattern-item {
+        cursor: pointer;
+        padding: 10px 12px;
+        background-color: #fff;
+        border: 1px solid #e0e0e0;
+        border-radius: 6px;
+        margin-bottom: 12px;
+        transition: all 0.2s ease;
+        color: #2E7D32;
+        user-select: none;
+    }
+    .pattern-item:hover {
+        background-color: #E8F5E9;
+        border-color: #81C784;
+    }
+    .pattern-item strong {
+        font-size: 1.05em;
+    }
+    .pattern-details {
+        display: none; 
+        color: #666;
+        font-size: 0.9em;
+        margin-top: 6px;
+        border-top: 1px dashed #ccc;
+        padding-top: 6px;
+    }
+    .pattern-item.active .pattern-details {
+        display: block; 
+    }
+
+    /* 下半部分：底部词汇墙 */
+    .bottom-section {
+        margin-top: 40px;
+        border-top: 2px solid #E0E0E0;
+        padding-top: 30px;
+        font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    }
+    
     .vocab-grid {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
         gap: 12px;
     }
     
-    /* 4. 词汇点击交互样式 */
+    /* 词汇点击交互样式 (蓝色) */
     .vocab-item {
         cursor: pointer;
         padding: 8px 12px;
@@ -289,18 +322,31 @@
         </div>
 
         <div class="right-column">
-            <!-- 删除了模块字眼 -->
             <div class="module module-green">
                 <h3>Sentence Patterns</h3>
-                <p><strong>向……开放：</strong> 向 [特定群体] 开放</p>
-                <p><strong>就像……一样：</strong> 就像 [名词] 一样 + [形容词/动作]</p>
-                <p><strong>有助于：</strong> 有助于 + [解决问题/现象]</p>
-                <p><strong>给……带来很多方便：</strong> 给 [人物/生活] 带来很多方便</p>
+                <div class="click-hint">👆 Click to reveal Pinyin & Translation</div>
+                <!-- 句型点击交互 -->
+                <div class="pattern-item" onclick="this.classList.toggle('active')">
+                    <strong>向……开放</strong>
+                    <div class="pattern-details">(xiàng... kāi fàng) - open to...</div>
+                </div>
+                <div class="pattern-item" onclick="this.classList.toggle('active')">
+                    <strong>就像……一样</strong>
+                    <div class="pattern-details">(jiù xiàng... yí yàng) - just like...</div>
+                </div>
+                <div class="pattern-item" onclick="this.classList.toggle('active')">
+                    <strong>有助于</strong>
+                    <div class="pattern-details">(yǒu zhù yú) - helps to</div>
+                </div>
+                <div class="pattern-item" onclick="this.classList.toggle('active')">
+                    <strong>给……带来很多方便</strong>
+                    <div class="pattern-details">(gěi... dài lái hěn duō fāng biàn) - brings a lot of convenience to...</div>
+                </div>
             </div>
 
             <div class="module module-red">
                 <h3>Key Connectors</h3>
-                <!-- 根据要求，全部删除了后面的英文和公式解释 -->
+                <!-- 根据要求，全部删除了后面的解释 -->
                 <p><strong>首次：</strong> 首次</p>
                 <p><strong>除了……还有……：</strong> 除了……还有……</p>
                 <p><strong>不但……也……：</strong> 不但……也……</p>
