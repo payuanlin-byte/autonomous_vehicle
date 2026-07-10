@@ -7,7 +7,8 @@
 <style>
     body {
         background-color: #FAFAFA; /* 极浅的暖灰色/米白色 */
-        font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+        /* 1. 字体改为楷体 */
+        font-family: 'KaiTi', 'STKaiti', '楷体', serif; 
         color: #333;
         margin: 0;
         padding: 40px;
@@ -43,6 +44,7 @@
         font-size: 1.1em;
         font-weight: bold;
         border: 1px solid #dcdcdc;
+        font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif; /* 标签保留无衬线体更现代 */
     }
     /* 双栏排版区 */
     .content-wrapper {
@@ -54,18 +56,43 @@
         width: 66.66%;
         padding-right: 40px;
         border-right: 2px solid #E0E0E0; /* 浅灰竖线分割 */
-        line-height: 1.9; /* 1.8-2.0 行距 */
-        font-size: 1.15em;
+        line-height: 1.9; 
+        font-size: 1.25em; /* 楷体视觉稍小，适当放大字号 */
         text-align: justify;
     }
     .left-column p {
-        margin-bottom: 25px; /* 段落间留白 */
-        position: relative;
+        margin-bottom: 25px; 
+        text-indent: 2em; /* 2. 每个段落空两格 */
     }
+    
+    /* 3. Format Tips 放在底部样式 */
+    .format-tips-bottom {
+        margin-top: 40px;
+        background-color: #FFF3E0;
+        border-left: 4px solid #FFB74D;
+        padding: 15px 20px;
+        border-radius: 4px;
+        font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif; /* 英文提示用无衬线体更易读 */
+        font-size: 0.9em;
+        color: #555;
+        box-shadow: 1px 1px 5px rgba(0,0,0,0.05);
+    }
+    .format-tips-bottom h4 {
+        margin: 0 0 10px 0;
+        color: #E65100;
+        font-size: 1.1em;
+    }
+    .format-tips-bottom ul {
+        margin: 0;
+        padding-left: 20px;
+        line-height: 1.6;
+    }
+
     /* 右侧支架工具区 */
     .right-column {
         width: 33.33%;
         padding-left: 40px;
+        font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif; /* 工具区保持无衬线体 */
     }
     /* 颜色及加粗设定 */
     .text-blue { color: #1976D2; font-weight: bold; }
@@ -74,32 +101,16 @@
     .text-green { 
         color: #2E7D32; 
         font-weight: bold; 
-        background-color: #E8F5E9; /* 浅绿色高亮，比浅灰色更适配绿色字体，视觉更统一 */
+        background-color: #E8F5E9; 
         padding: 2px 4px;
         border-radius: 4px;
     }
     .text-red { 
         color: #C62828; 
         font-weight: bold; 
-        background-color: #FFEBEE; /* 浅粉/浅红色高亮，适配红色字体，起到强调作用 */
+        background-color: #FFEBEE; 
         padding: 2px 4px;
         border-radius: 4px;
-    }
-    
-    /* 旁注气泡样式 */
-    .callout {
-        float: right;
-        background-color: #FFF3E0;
-        border-left: 4px solid #FFB74D;
-        padding: 5px 12px;
-        font-size: 0.75em;
-        color: #666;
-        border-radius: 4px;
-        margin-left: 15px;
-        margin-top: 5px;
-        line-height: 1.4;
-        max-width: 200px;
-        box-shadow: 1px 1px 5px rgba(0,0,0,0.05);
     }
 
     /* 右侧模块样式 */
@@ -117,7 +128,7 @@
         border-bottom: 2px solid #eee;
         padding-bottom: 8px;
     }
-    .module-blue h3, .module-blue p { color: #1976D2; }
+    .module-blue h3 { color: #1976D2; }
     .module-green h3, .module-green p { color: #2E7D32; }
     .module-red h3, .module-red p { color: #C62828; }
     
@@ -125,6 +136,39 @@
         margin: 8px 0;
         font-size: 0.95em;
         line-height: 1.5;
+    }
+
+    /* 4. 词汇点击交互样式 */
+    .vocab-item {
+        cursor: pointer;
+        padding: 6px 8px;
+        margin-bottom: 4px;
+        border-radius: 4px;
+        transition: background-color 0.2s ease;
+        color: #1976D2;
+        user-select: none; /* 防止点击时选中文本 */
+    }
+    .vocab-item:hover {
+        background-color: #E3F2FD; /* 鼠标悬停时的浅蓝色背景 */
+    }
+    .vocab-item strong {
+        font-size: 1.05em;
+    }
+    .vocab-details {
+        display: none; /* 默认隐藏拼音和英文 */
+        color: #666;
+        font-size: 0.9em;
+        margin-left: 5px;
+    }
+    .vocab-item.active .vocab-details {
+        display: inline; /* 点击后显示 */
+    }
+    .click-hint {
+        font-size: 0.8em;
+        color: #999;
+        margin-top: -10px;
+        margin-bottom: 15px;
+        font-style: italic;
     }
 </style>
 </head>
@@ -140,7 +184,6 @@
         
         <div class="left-column">
             <p>
-                <span class="callout">💡 Format Tip: Start with a greeting to introduce the topic.</span>
                 大家好！欢迎各位 <span class="text-blue">收看</span> 我的 <span class="text-blue">播客</span>。
             </p>
             <p>
@@ -159,45 +202,55 @@
                 <span class="text-red">总的来说</span>，无人驾驶汽车会 <span class="text-green">给</span> 我们的生活 <span class="text-green">带来很多方便</span>，而且还会 <span class="text-blue">节省</span> 时间，也更安全。你会去新加坡体验无人驾驶出租车吗？
             </p>
             <p>
-                <span class="callout">💡 Format Tip: End with an interactive question, encouraging comments.</span>
                 欢迎大家留言和我分享你对无人驾驶汽车的看法。
             </p>
+
+            <!-- Format Tips 移至底部 -->
+            <div class="format-tips-bottom">
+                <h4>💡 Format Tips:</h4>
+                <ul>
+                    <li>Start with a greeting to introduce the topic ("大家好……").</li>
+                    <li>End with an interactive question, encouraging comments.</li>
+                </ul>
+            </div>
         </div>
 
         <div class="right-column">
             
             <div class="module module-blue">
                 <h3>模块 1：词汇库 (Vocabulary)</h3>
-                <p><strong>驾驶 (jià shǐ)</strong> - to drive</p>
-                <p><strong>收看 (shōu kàn)</strong> - to watch / to tune in</p>
-                <p><strong>体验 (tǐ yàn)</strong> - experience / to experience</p>
-                <p><strong>乘坐 (chéng zuò)</strong> - to take (a vehicle)</p>
-                <p><strong>播客 (bō kè)</strong> - podcast</p>
-                <p><strong>全球 (quán qiú)</strong> - global / worldwide</p>
-                <p><strong>一倍 (yí bèi)</strong> - double / twofold</p>
-                <p><strong>达到 (dá dào)</strong> - to reach / to achieve</p>
-                <p><strong>测试 (cè shì)</strong> - test / to test</p>
-                <p><strong>方向盘 (fāng xiàng pán)</strong> - steering wheel</p>
-                <p><strong>转动 (zhuǎn dòng)</strong> - to turn / to rotate</p>
-                <p><strong>神奇 (shén qí)</strong> - magical / miraculous</p>
-                <p><strong>适应 (shì yìng)</strong> - to adapt</p>
-                <p><strong>稳 (wěn)</strong> - stable / steady</p>
-                <p><strong>障碍物 (zhàng ài wù)</strong> - obstacle</p>
-                <p><strong>信任 (xìn rèn)</strong> - to trust</p>
-                <p><strong>代替 (dài tì)</strong> - to replace / to substitute</p>
-                <p><strong>接送 (jiē sòng)</strong> - to pick up and drop off</p>
-                <p><strong>缓解 (huǎn jiě)</strong> - to relieve / to alleviate</p>
-                <p><strong>拥堵 (yōng dǔ)</strong> - traffic jam / congestion</p>
-                <p><strong>现象 (xiàn xiàng)</strong> - phenomenon</p>
-                <p><strong>大幅度 (dà fú dù)</strong> - by a large margin / drastically</p>
-                <p><strong>降低 (jiàng dī)</strong> - to reduce / to lower</p>
-                <p><strong>软件 (ruǎn jiàn)</strong> - software</p>
-                <p><strong>需求 (xū qiú)</strong> - requirement / demand</p>
-                <p><strong>优化 (yōu huà)</strong> - to optimize</p>
-                <p><strong>线路 (xiàn lù)</strong> - route / line</p>
-                <p><strong>节约 (jié yuē)</strong> - to save / to economize</p>
-                <p><strong>省钱 (shěng qián)</strong> - to save money</p>
-                <p><strong>节省 (jié shěng)</strong> - to save (time/resources)</p>
+                <div class="click-hint">👆 Click on a word to reveal Pinyin & Translation</div>
+                <!-- 使用 onclick 切换 active 类，实现点击显隐 -->
+                <div class="vocab-item" onclick="this.classList.toggle('active')"><strong>驾驶</strong><span class="vocab-details">(jià shǐ) - to drive</span></div>
+                <div class="vocab-item" onclick="this.classList.toggle('active')"><strong>收看</strong><span class="vocab-details">(shōu kàn) - to watch / to tune in</span></div>
+                <div class="vocab-item" onclick="this.classList.toggle('active')"><strong>体验</strong><span class="vocab-details">(tǐ yàn) - experience / to experience</span></div>
+                <div class="vocab-item" onclick="this.classList.toggle('active')"><strong>乘坐</strong><span class="vocab-details">(chéng zuò) - to take (a vehicle)</span></div>
+                <div class="vocab-item" onclick="this.classList.toggle('active')"><strong>播客</strong><span class="vocab-details">(bō kè) - podcast</span></div>
+                <div class="vocab-item" onclick="this.classList.toggle('active')"><strong>全球</strong><span class="vocab-details">(quán qiú) - global / worldwide</span></div>
+                <div class="vocab-item" onclick="this.classList.toggle('active')"><strong>一倍</strong><span class="vocab-details">(yí bèi) - double / twofold</span></div>
+                <div class="vocab-item" onclick="this.classList.toggle('active')"><strong>达到</strong><span class="vocab-details">(dá dào) - to reach / to achieve</span></div>
+                <div class="vocab-item" onclick="this.classList.toggle('active')"><strong>测试</strong><span class="vocab-details">(cè shì) - test / to test</span></div>
+                <div class="vocab-item" onclick="this.classList.toggle('active')"><strong>方向盘</strong><span class="vocab-details">(fāng xiàng pán) - steering wheel</span></div>
+                <div class="vocab-item" onclick="this.classList.toggle('active')"><strong>转动</strong><span class="vocab-details">(zhuǎn dòng) - to turn / to rotate</span></div>
+                <div class="vocab-item" onclick="this.classList.toggle('active')"><strong>神奇</strong><span class="vocab-details">(shén qí) - magical / miraculous</span></div>
+                <div class="vocab-item" onclick="this.classList.toggle('active')"><strong>适应</strong><span class="vocab-details">(shì yìng) - to adapt</span></div>
+                <div class="vocab-item" onclick="this.classList.toggle('active')"><strong>稳</strong><span class="vocab-details">(wěn) - stable / steady</span></div>
+                <div class="vocab-item" onclick="this.classList.toggle('active')"><strong>障碍物</strong><span class="vocab-details">(zhàng ài wù) - obstacle</span></div>
+                <div class="vocab-item" onclick="this.classList.toggle('active')"><strong>信任</strong><span class="vocab-details">(xìn rèn) - to trust</span></div>
+                <div class="vocab-item" onclick="this.classList.toggle('active')"><strong>代替</strong><span class="vocab-details">(dài tì) - to replace / to substitute</span></div>
+                <div class="vocab-item" onclick="this.classList.toggle('active')"><strong>接送</strong><span class="vocab-details">(jiē sòng) - to pick up and drop off</span></div>
+                <div class="vocab-item" onclick="this.classList.toggle('active')"><strong>缓解</strong><span class="vocab-details">(huǎn jiě) - to relieve / to alleviate</span></div>
+                <div class="vocab-item" onclick="this.classList.toggle('active')"><strong>拥堵</strong><span class="vocab-details">(yōng dǔ) - traffic jam / congestion</span></div>
+                <div class="vocab-item" onclick="this.classList.toggle('active')"><strong>现象</strong><span class="vocab-details">(xiàn xiàng) - phenomenon</span></div>
+                <div class="vocab-item" onclick="this.classList.toggle('active')"><strong>大幅度</strong><span class="vocab-details">(dà fú dù) - by a large margin / drastically</span></div>
+                <div class="vocab-item" onclick="this.classList.toggle('active')"><strong>降低</strong><span class="vocab-details">(jiàng dī) - to reduce / to lower</span></div>
+                <div class="vocab-item" onclick="this.classList.toggle('active')"><strong>软件</strong><span class="vocab-details">(ruǎn jiàn) - software</span></div>
+                <div class="vocab-item" onclick="this.classList.toggle('active')"><strong>需求</strong><span class="vocab-details">(xū qiú) - requirement / demand</span></div>
+                <div class="vocab-item" onclick="this.classList.toggle('active')"><strong>优化</strong><span class="vocab-details">(yōu huà) - to optimize</span></div>
+                <div class="vocab-item" onclick="this.classList.toggle('active')"><strong>线路</strong><span class="vocab-details">(xiàn lù) - route / line</span></div>
+                <div class="vocab-item" onclick="this.classList.toggle('active')"><strong>节约</strong><span class="vocab-details">(jié yuē) - to save / to economize</span></div>
+                <div class="vocab-item" onclick="this.classList.toggle('active')"><strong>省钱</strong><span class="vocab-details">(shěng qián) - to save money</span></div>
+                <div class="vocab-item" onclick="this.classList.toggle('active')"><strong>节省</strong><span class="vocab-details">(jié shěng) - to save (time/resources)</span></div>
             </div>
 
             <div class="module module-green">
