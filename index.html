@@ -7,7 +7,7 @@
 <style>
     body {
         background-color: #FAFAFA;
-        /* 1. 字体改为楷体 */
+        /* 字体改为楷体 */
         font-family: 'KaiTi', 'STKaiti', '楷体', serif; 
         color: #333;
         margin: 0;
@@ -37,6 +37,17 @@
         margin-bottom: 10px;
         font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
     }
+    .topic-box {
+        display: inline-block;
+        background-color: #f0f4f8; 
+        color: #555;
+        padding: 10px 25px;
+        border-radius: 20px; 
+        font-size: 1.1em;
+        font-weight: bold;
+        border: 1px solid #dcdcdc;
+        font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    }
 
     /* 上半部分：双栏排版区 */
     .content-wrapper {
@@ -55,10 +66,41 @@
     }
     .left-column p {
         margin-bottom: 25px; 
-        text-indent: 2em; /* 2. 每个段落空两格 */
+        text-indent: 2em; /* 每个段落空两格 */
     }
     
-    /* 3. Format Tips 放在底部 */
+    /* 正文内嵌交互词汇样式 */
+    .inline-item {
+        cursor: pointer;
+        position: relative;
+        transition: opacity 0.2s ease;
+        user-select: none;
+        border-bottom: 1px dashed rgba(0,0,0,0.3); /* 提示可点击的虚线 */
+        padding-bottom: 1px;
+    }
+    .inline-item:hover {
+        opacity: 0.8;
+    }
+    .inline-details {
+        display: none;
+        font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+        font-size: 0.75em;
+        font-weight: normal;
+        background-color: #fff;
+        color: #555;
+        padding: 2px 8px;
+        margin: 0 4px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        vertical-align: middle;
+        box-shadow: 1px 1px 4px rgba(0,0,0,0.1);
+        white-space: nowrap; /* 防止提示气泡折行 */
+    }
+    .inline-item.active .inline-details {
+        display: inline-block;
+    }
+
+    /* Format Tips 放在底部 */
     .format-tips-bottom {
         margin-top: 30px;
         background-color: #FFF3E0;
@@ -173,7 +215,6 @@
     }
     .module-green h3 { color: #2E7D32; }
     .module-red h3 { color: #C62828; }
-    .module-blue h3 { color: #1976D2; }
     
     .module p {
         margin: 12px 0;
@@ -276,22 +317,22 @@
         
         <div class="left-column">
             <p>
-                大家好！欢迎各位 <span class="text-blue">收看</span> 我的 <span class="text-blue">播客</span>。
+                大家好！欢迎各位 <span class="inline-item text-blue" onclick="this.classList.toggle('active')">收看<span class="inline-details">(shōu kàn) - to watch</span></span> 我的 <span class="inline-item text-blue" onclick="this.classList.toggle('active')">播客<span class="inline-details">(bō kè) - podcast</span></span>。
             </p>
             <p>
-                前不久，我报名参加 <span class="text-blue">体验</span> <span class="text-blue">乘坐</span> 新加坡无人驾驶汽车，感觉真是太棒了，今天我就来和大家聊聊无人驾驶汽车。
+                前不久，我报名参加 <span class="inline-item text-blue" onclick="this.classList.toggle('active')">体验<span class="inline-details">(tǐ yàn) - experience</span></span> <span class="inline-item text-blue" onclick="this.classList.toggle('active')">乘坐<span class="inline-details">(chéng zuò) - to take</span></span> 新加坡无人驾驶汽车，感觉真是太棒了，今天我就来和大家聊聊无人驾驶汽车。
             </p>
             <p>
-                这是 <span class="text-blue">全球</span> <span class="text-red">首次</span> <span class="text-green">向</span> 乘客 <span class="text-green">开放的</span> 无人驾驶汽车，报名参与体验的人数比一个月前增加了一 <span class="text-blue">倍</span>，<span class="text-blue">达到</span> 1000人左右。作为本次 <span class="text-blue">测试</span> 的乘客之一，一开始我很紧张，看着 <span class="text-blue">方向盘</span> 自己 <span class="text-blue">转动</span> 时，这种感觉太 <span class="text-blue">神奇</span> 了，<span class="text-green">就像</span> 有个鬼在 <span class="text-blue">驾驶</span> <span class="text-green">一样</span>！但很快我就 <span class="text-blue">适应</span> 了，车子开得很 <span class="text-blue">稳</span>，一些我看不到的 <span class="text-blue">障碍物</span>，车子能看到，让我觉得可以 <span class="text-blue">信任</span> 它。我想以后父亲老了，无人驾驶汽车可以 <span class="text-blue">代替</span> 我 <span class="text-blue">接送</span> 父亲。
+                这是 <span class="inline-item text-blue" onclick="this.classList.toggle('active')">全球<span class="inline-details">(quán qiú) - global</span></span> <span class="text-red">首次</span> <span class="inline-item text-green" onclick="this.classList.toggle('active')">向<span class="inline-details">(xiàng... kāi fàng) - open to...</span></span> 乘客 <span class="inline-item text-green" onclick="this.classList.toggle('active')">开放的<span class="inline-details">(xiàng... kāi fàng) - open to...</span></span> 无人驾驶汽车，报名参与体验的人数比一个月前增加了一<span class="inline-item text-blue" onclick="this.classList.toggle('active')">倍<span class="inline-details">(yí bèi) - double</span></span>，<span class="inline-item text-blue" onclick="this.classList.toggle('active')">达到<span class="inline-details">(dá dào) - to reach</span></span> 1000人左右。作为本次 <span class="inline-item text-blue" onclick="this.classList.toggle('active')">测试<span class="inline-details">(cè shì) - test</span></span> 的乘客之一，一开始我很紧张，看着 <span class="inline-item text-blue" onclick="this.classList.toggle('active')">方向盘<span class="inline-details">(fāng xiàng pán) - steering wheel</span></span> 自己 <span class="inline-item text-blue" onclick="this.classList.toggle('active')">转动<span class="inline-details">(zhuǎn dòng) - to turn</span></span> 时，这种感觉太 <span class="inline-item text-blue" onclick="this.classList.toggle('active')">神奇<span class="inline-details">(shén qí) - magical</span></span> 了，<span class="inline-item text-green" onclick="this.classList.toggle('active')">就像<span class="inline-details">(jiù xiàng... yí yàng) - just like...</span></span> 有个鬼在 <span class="inline-item text-blue" onclick="this.classList.toggle('active')">驾驶<span class="inline-details">(jià shǐ) - to drive</span></span> <span class="inline-item text-green" onclick="this.classList.toggle('active')">一样<span class="inline-details">(jiù xiàng... yí yàng) - just like...</span></span>！但很快我就 <span class="inline-item text-blue" onclick="this.classList.toggle('active')">适应<span class="inline-details">(shì yìng) - to adapt</span></span> 了，车子开得很 <span class="inline-item text-blue" onclick="this.classList.toggle('active')">稳<span class="inline-details">(wěn) - stable</span></span>，一些我看不到的 <span class="inline-item text-blue" onclick="this.classList.toggle('active')">障碍物<span class="inline-details">(zhàng ài wù) - obstacle</span></span>，车子能看到，让我觉得可以 <span class="inline-item text-blue" onclick="this.classList.toggle('active')">信任<span class="inline-details">(xìn rèn) - to trust</span></span> 它。我想以后父亲老了，无人驾驶汽车可以 <span class="inline-item text-blue" onclick="this.classList.toggle('active')">代替<span class="inline-details">(dài tì) - to replace</span></span> 我 <span class="inline-item text-blue" onclick="this.classList.toggle('active')">接送<span class="inline-details">(jiē sòng) - to pick up/drop off</span></span> 父亲。
             </p>
             <p>
-                那么，无人驾驶汽车的发明，<span class="text-red">除了能</span> 改变人们对城市环境的体验，<span class="text-red">还有</span> 什么好处呢？<span class="text-red">首先</span>，无人驾驶汽车 <span class="text-green">有助于</span> <span class="text-blue">缓解</span> 道路 <span class="text-blue">拥堵</span> 的 <span class="text-blue">现象</span>，还能 <span class="text-blue">大幅度</span> <span class="text-blue">降低</span> 乘坐出租车的费用，而且价格比坐公交车还便宜。
+                那么，无人驾驶汽车的发明，<span class="text-red">除了能</span> 改变人们对城市环境的体验，<span class="text-red">还有</span> 什么好处呢？<span class="text-red">首先</span>，无人驾驶汽车 <span class="inline-item text-green" onclick="this.classList.toggle('active')">有助于<span class="inline-details">(yǒu zhù yú) - helps to</span></span> <span class="inline-item text-blue" onclick="this.classList.toggle('active')">缓解<span class="inline-details">(huǎn jiě) - to relieve</span></span> 道路 <span class="inline-item text-blue" onclick="this.classList.toggle('active')">拥堵<span class="inline-details">(yōng dǔ) - traffic jam</span></span> 的 <span class="inline-item text-blue" onclick="this.classList.toggle('active')">现象<span class="inline-details">(xiàn xiàng) - phenomenon</span></span>，还能 <span class="inline-item text-blue" onclick="this.classList.toggle('active')">大幅度<span class="inline-details">(dà fú dù) - by a large margin</span></span> <span class="inline-item text-blue" onclick="this.classList.toggle('active')">降低<span class="inline-details">(jiàng dī) - to reduce</span></span> 乘坐出租车的费用，而且价格比坐公交车还便宜。
             </p>
             <p>
-                <span class="text-red">其次</span>，无人驾驶出租车可以通过 <span class="text-blue">软件</span> 根据乘客的 <span class="text-blue">需求</span> <span class="text-blue">优化</span> <span class="text-blue">线路</span>。<span class="text-red">这样一来</span>，<span class="text-red">不但能</span> <span class="text-blue">节约</span> 乘客的乘车时间，<span class="text-red">也能</span> 让更多的乘客一起乘坐，当然就 <span class="text-blue">省钱</span> 啦！
+                <span class="text-red">其次</span>，无人驾驶出租车可以通过 <span class="inline-item text-blue" onclick="this.classList.toggle('active')">软件<span class="inline-details">(ruǎn jiàn) - software</span></span> 根据乘客的 <span class="inline-item text-blue" onclick="this.classList.toggle('active')">需求<span class="inline-details">(xū qiú) - demand</span></span> <span class="inline-item text-blue" onclick="this.classList.toggle('active')">优化<span class="inline-details">(yōu huà) - to optimize</span></span> <span class="inline-item text-blue" onclick="this.classList.toggle('active')">线路<span class="inline-details">(xiàn lù) - route</span></span>。<span class="text-red">这样一来</span>，<span class="text-red">不但能</span> <span class="inline-item text-blue" onclick="this.classList.toggle('active')">节约<span class="inline-details">(jié yuē) - to save</span></span> 乘客的乘车时间，<span class="text-red">也能</span> 让更多的乘客一起乘坐，当然就 <span class="inline-item text-blue" onclick="this.classList.toggle('active')">省钱<span class="inline-details">(shěng qián) - to save money</span></span> 啦！
             </p>
             <p>
-                <span class="text-red">总的来说</span>，无人驾驶汽车会 <span class="text-green">给</span> 我们的生活 <span class="text-green">带来很多方便</span>，而且还会 <span class="text-blue">节省</span> 时间，也更安全。你会去新加坡体验无人驾驶出租车吗？
+                <span class="text-red">总的来说</span>，无人驾驶汽车会 <span class="inline-item text-green" onclick="this.classList.toggle('active')">给<span class="inline-details">(gěi... dài lái hěn duō fāng biàn) - brings convenience to...</span></span> 我们的生活 <span class="inline-item text-green" onclick="this.classList.toggle('active')">带来很多方便<span class="inline-details">(gěi... dài lái hěn duō fāng biàn) - brings convenience to...</span></span>，而且还会 <span class="inline-item text-blue" onclick="this.classList.toggle('active')">节省<span class="inline-details">(jié shěng) - to save</span></span> 时间，也更安全。你会去新加坡体验无人驾驶出租车吗？
             </p>
             <p>
                 欢迎大家留言和我分享你对无人驾驶汽车的看法。
@@ -358,8 +399,8 @@
 
     <!-- 下半部分：底部词汇墙 -->
     <div class="bottom-section">
-        <div class="module-blue" style="margin-bottom: 20px;">
-            <h3 style="margin: 0; font-size: 1.4em;">Vocabulary</h3>
+        <div style="margin-bottom: 20px;">
+            <h3 style="margin: 0; font-size: 1.4em; color: #1976D2;">Vocabulary</h3>
         </div>
         <div class="click-hint">👆 Click on a word to reveal Pinyin & Translation</div>
         <div class="vocab-grid">
