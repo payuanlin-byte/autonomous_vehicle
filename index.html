@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>【文本一】博客：无人驾驶汽车</title>
+<style>
+    body {
+        background-color: #FAFAFA; /* 极浅的暖灰色/米白色 */
+        font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+        color: #333;
+        margin: 0;
+        padding: 40px;
+        display: flex;
+        justify-content: center;
+    }
+    .poster-container {
+        background-color: #FAFAFA;
+        max-width: 1200px;
+        width: 100%;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.05); /* 轻微阴影增加海报质感 */
+        border: 1px solid #eaeaea;
+        padding: 40px;
+        box-sizing: border-box;
+    }
+    /* 顶部标题区 */
+    .header {
+        text-align: center;
+        margin-bottom: 40px;
+    }
+    .main-title {
+        color: #444; /* 深灰色 */
+        font-size: 2.2em;
+        font-weight: bold;
+        margin-bottom: 15px;
+    }
+    .topic-box {
+        display: inline-block;
+        background-color: #f0f4f8; /* 浅色底纹 */
+        color: #555;
+        padding: 10px 25px;
+        border-radius: 20px; /* 圆角 */
+        font-size: 1.1em;
+        font-weight: bold;
+        border: 1px solid #dcdcdc;
+    }
+    /* 双栏排版区 */
+    .content-wrapper {
+        display: flex;
+        flex-direction: row;
+    }
+    /* 左侧文本阅读区 */
+    .left-column {
+        width: 66.66%;
+        padding-right: 40px;
+        border-right: 2px solid #E0E0E0; /* 浅灰竖线分割 */
+        line-height: 1.9; /* 1.8-2.0 行距 */
+        font-size: 1.15em;
+        text-align: justify;
+    }
+    .left-column p {
+        margin-bottom: 25px; /* 段落间留白 */
+        position: relative;
+    }
+    /* 右侧支架工具区 */
+    .right-column {
+        width: 33.33%;
+        padding-left: 40px;
+    }
+    /* 颜色及加粗设定 */
+    .text-blue { color: #1976D2; font-weight: bold; }
+    
+    /* 调整绿色和红色高亮样式 */
+    .text-green { 
+        color: #2E7D32; 
+        font-weight: bold; 
+        background-color: #E8F5E9; /* 浅绿色高亮，比浅灰色更适配绿色字体，视觉更统一 */
+        padding: 2px 4px;
+        border-radius: 4px;
+    }
+    .text-red { 
+        color: #C62828; 
+        font-weight: bold; 
+        background-color: #FFEBEE; /* 浅粉/浅红色高亮，适配红色字体，起到强调作用 */
+        padding: 2px 4px;
+        border-radius: 4px;
+    }
+    
+    /* 旁注气泡样式 */
+    .callout {
+        float: right;
+        background-color: #FFF3E0;
+        border-left: 4px solid #FFB74D;
+        padding: 5px 12px;
+        font-size: 0.75em;
+        color: #666;
+        border-radius: 4px;
+        margin-left: 15px;
+        margin-top: 5px;
+        line-height: 1.4;
+        max-width: 200px;
+        box-shadow: 1px 1px 5px rgba(0,0,0,0.05);
+    }
+
+    /* 右侧模块样式 */
+    .module {
+        margin-bottom: 35px;
+        background: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+    }
+    .module h3 {
+        margin-top: 0;
+        margin-bottom: 15px;
+        font-size: 1.2em;
+        border-bottom: 2px solid #eee;
+        padding-bottom: 8px;
+    }
+    .module-blue h3, .module-blue p { color: #1976D2; }
+    .module-green h3, .module-green p { color: #2E7D32; }
+    .module-red h3, .module-red p { color: #C62828; }
+    
+    .module p {
+        margin: 8px 0;
+        font-size: 0.95em;
+        line-height: 1.5;
+    }
+</style>
+</head>
+<body>
+
+<div class="poster-container">
+    <div class="header">
+        <div class="main-title">【文本一】博客：无人驾驶汽车</div>
+        <div class="topic-box">话题：体验无人驾驶的感受（科技带来的便利、缓解拥堵、节约时间、降低费用）</div>
+    </div>
+
+    <div class="content-wrapper">
+        
+        <div class="left-column">
+            <p>
+                <span class="callout">💡 Format Tip: Start with a greeting to introduce the topic.</span>
+                大家好！欢迎各位 <span class="text-blue">收看</span> 我的 <span class="text-blue">播客</span>。
+            </p>
+            <p>
+                前不久，我报名参加 <span class="text-blue">体验</span> <span class="text-blue">乘坐</span> 新加坡无人驾驶汽车，感觉真是太棒了，今天我就来和大家聊聊无人驾驶汽车。
+            </p>
+            <p>
+                这是 <span class="text-blue">全球</span> <span class="text-red">首次</span> <span class="text-green">向</span> 乘客 <span class="text-green">开放的</span> 无人驾驶汽车，报名参与体验的人数比一个月前增加了一 <span class="text-blue">倍</span>，<span class="text-blue">达到</span> 1000人左右。作为本次 <span class="text-blue">测试</span> 的乘客之一，一开始我很紧张，看着 <span class="text-blue">方向盘</span> 自己 <span class="text-blue">转动</span> 时，这种感觉太 <span class="text-blue">神奇</span> 了，<span class="text-green">就像</span> 有个鬼在 <span class="text-blue">驾驶</span> <span class="text-green">一样</span>！但很快我就 <span class="text-blue">适应</span> 了，车子开得很 <span class="text-blue">稳</span>，一些我看不到的 <span class="text-blue">障碍物</span>，车子能看到，让我觉得可以 <span class="text-blue">信任</span> 它。我想以后父亲老了，无人驾驶汽车可以 <span class="text-blue">代替</span> 我 <span class="text-blue">接送</span> 父亲。
+            </p>
+            <p>
+                那么，无人驾驶汽车的发明，<span class="text-red">除了能</span> 改变人们对城市环境的体验，<span class="text-red">还有</span> 什么好处呢？<span class="text-red">首先</span>，无人驾驶汽车 <span class="text-green">有助于</span> <span class="text-blue">缓解</span> 道路 <span class="text-blue">拥堵</span> 的 <span class="text-blue">现象</span>，还能 <span class="text-blue">大幅度</span> <span class="text-blue">降低</span> 乘坐出租车的费用，而且价格比坐公交车还便宜。
+            </p>
+            <p>
+                <span class="text-red">其次</span>，无人驾驶出租车可以通过 <span class="text-blue">软件</span> 根据乘客的 <span class="text-blue">需求</span> <span class="text-blue">优化</span> <span class="text-blue">线路</span>。<span class="text-red">这样一来</span>，<span class="text-red">不但能</span> <span class="text-blue">节约</span> 乘客的乘车时间，<span class="text-red">也能</span> 让更多的乘客一起乘坐，当然就 <span class="text-blue">省钱</span> 啦！
+            </p>
+            <p>
+                <span class="text-red">总的来说</span>，无人驾驶汽车会 <span class="text-green">给</span> 我们的生活 <span class="text-green">带来很多方便</span>，而且还会 <span class="text-blue">节省</span> 时间，也更安全。你会去新加坡体验无人驾驶出租车吗？
+            </p>
+            <p>
+                <span class="callout">💡 Format Tip: End with an interactive question, encouraging comments.</span>
+                欢迎大家留言和我分享你对无人驾驶汽车的看法。
+            </p>
+        </div>
+
+        <div class="right-column">
+            
+            <div class="module module-blue">
+                <h3>模块 1：词汇库 (Vocabulary)</h3>
+                <p><strong>驾驶 (jià shǐ)</strong> - to drive</p>
+                <p><strong>收看 (shōu kàn)</strong> - to watch / to tune in</p>
+                <p><strong>体验 (tǐ yàn)</strong> - experience / to experience</p>
+                <p><strong>乘坐 (chéng zuò)</strong> - to take (a vehicle)</p>
+                <p><strong>播客 (bō kè)</strong> - podcast</p>
+                <p><strong>全球 (quán qiú)</strong> - global / worldwide</p>
+                <p><strong>一倍 (yí bèi)</strong> - double / twofold</p>
+                <p><strong>达到 (dá dào)</strong> - to reach / to achieve</p>
+                <p><strong>测试 (cè shì)</strong> - test / to test</p>
+                <p><strong>方向盘 (fāng xiàng pán)</strong> - steering wheel</p>
+                <p><strong>转动 (zhuǎn dòng)</strong> - to turn / to rotate</p>
+                <p><strong>神奇 (shén qí)</strong> - magical / miraculous</p>
+                <p><strong>适应 (shì yìng)</strong> - to adapt</p>
+                <p><strong>稳 (wěn)</strong> - stable / steady</p>
+                <p><strong>障碍物 (zhàng ài wù)</strong> - obstacle</p>
+                <p><strong>信任 (xìn rèn)</strong> - to trust</p>
+                <p><strong>代替 (dài tì)</strong> - to replace / to substitute</p>
+                <p><strong>接送 (jiē sòng)</strong> - to pick up and drop off</p>
+                <p><strong>缓解 (huǎn jiě)</strong> - to relieve / to alleviate</p>
+                <p><strong>拥堵 (yōng dǔ)</strong> - traffic jam / congestion</p>
+                <p><strong>现象 (xiàn xiàng)</strong> - phenomenon</p>
+                <p><strong>大幅度 (dà fú dù)</strong> - by a large margin / drastically</p>
+                <p><strong>降低 (jiàng dī)</strong> - to reduce / to lower</p>
+                <p><strong>软件 (ruǎn jiàn)</strong> - software</p>
+                <p><strong>需求 (xū qiú)</strong> - requirement / demand</p>
+                <p><strong>优化 (yōu huà)</strong> - to optimize</p>
+                <p><strong>线路 (xiàn lù)</strong> - route / line</p>
+                <p><strong>节约 (jié yuē)</strong> - to save / to economize</p>
+                <p><strong>省钱 (shěng qián)</strong> - to save money</p>
+                <p><strong>节省 (jié shěng)</strong> - to save (time/resources)</p>
+            </div>
+
+            <div class="module module-green">
+                <h3>模块 2：万能句型 (Sentence Patterns)</h3>
+                <p><strong>向……开放：</strong> 向 [特定群体] 开放 (open to...)</p>
+                <p><strong>就像……一样：</strong> 就像 [名词] 一样 + [形容词/动作] (just like...)</p>
+                <p><strong>有助于：</strong> 有助于 (helps to) + [解决问题/现象]</p>
+                <p><strong>给……带来很多方便：</strong> 给 [人物/生活] 带来很多方便 (brings a lot of convenience to...)</p>
+            </div>
+
+            <div class="module module-red">
+                <h3>模块 3：逻辑连接 (Key Connectors)</h3>
+                <p><strong>首次：</strong> 首次 (for the first time) + [动作]</p>
+                <p><strong>除了……还有……：</strong> 除了 [已知的好处] ，还有 [新的好处] (Besides... there is also...)</p>
+                <p><strong>不但……也……：</strong> 不但 [优点 1] ，也 [优点 2] (Not only... but also...)</p>
+                <p><strong>这样一来：</strong> [具体做法]。这样一来 (As a result) ，[好结果]</p>
+                <p><strong>逻辑链：</strong> 首先 [论据1]；其次 [论据2]；总的来说 [总结观点] (First... Second... In summary...)</p>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
