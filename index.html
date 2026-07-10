@@ -6,7 +6,7 @@
 <title>【文本一】博客：无人驾驶汽车</title>
 <style>
     body {
-        background-color: #FAFAFA; /* 极浅的暖灰色/米白色 */
+        background-color: #FAFAFA;
         /* 1. 字体改为楷体 */
         font-family: 'KaiTi', 'STKaiti', '楷体', serif; 
         color: #333;
@@ -19,45 +19,38 @@
         background-color: #FAFAFA;
         max-width: 1200px;
         width: 100%;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.05); /* 轻微阴影增加海报质感 */
+        box-shadow: 0 4px 15px rgba(0,0,0,0.05); 
         border: 1px solid #eaeaea;
         padding: 40px;
         box-sizing: border-box;
     }
+    
     /* 顶部标题区 */
     .header {
         text-align: center;
         margin-bottom: 40px;
     }
     .main-title {
-        color: #444; /* 深灰色 */
+        color: #444; 
         font-size: 2.2em;
         font-weight: bold;
-        margin-bottom: 15px;
+        margin-bottom: 10px;
+        font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
     }
-    .topic-box {
-        display: inline-block;
-        background-color: #f0f4f8; /* 浅色底纹 */
-        color: #555;
-        padding: 10px 25px;
-        border-radius: 20px; /* 圆角 */
-        font-size: 1.1em;
-        font-weight: bold;
-        border: 1px solid #dcdcdc;
-        font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif; /* 标签保留无衬线体更现代 */
-    }
-    /* 双栏排版区 */
+
+    /* 上半部分：双栏排版区 */
     .content-wrapper {
         display: flex;
         flex-direction: row;
     }
+    
     /* 左侧文本阅读区 */
     .left-column {
-        width: 66.66%;
+        width: 70%;
         padding-right: 40px;
-        border-right: 2px solid #E0E0E0; /* 浅灰竖线分割 */
+        border-right: 2px solid #E0E0E0; 
         line-height: 1.9; 
-        font-size: 1.25em; /* 楷体视觉稍小，适当放大字号 */
+        font-size: 1.25em; 
         text-align: justify;
     }
     .left-column p {
@@ -65,17 +58,16 @@
         text-indent: 2em; /* 2. 每个段落空两格 */
     }
     
-    /* 3. Format Tips 放在底部样式 */
+    /* 3. Format Tips 放在底部 */
     .format-tips-bottom {
-        margin-top: 40px;
+        margin-top: 30px;
         background-color: #FFF3E0;
         border-left: 4px solid #FFB74D;
         padding: 15px 20px;
         border-radius: 4px;
-        font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif; /* 英文提示用无衬线体更易读 */
+        font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif; 
         font-size: 0.9em;
         color: #555;
-        box-shadow: 1px 1px 5px rgba(0,0,0,0.05);
     }
     .format-tips-bottom h4 {
         margin: 0 0 10px 0;
@@ -88,16 +80,67 @@
         line-height: 1.6;
     }
 
+    /* 话题：简单思维导图支架 */
+    .simple-mindmap {
+        margin-top: 30px;
+        background: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        border: 1px dashed #bdc3c7;
+        font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    }
+    .simple-mindmap h4 {
+        margin: 0 0 15px 0;
+        color: #2c3e50;
+        font-size: 1.1em;
+    }
+    .map-container {
+        display: flex;
+        align-items: center;
+    }
+    .map-root {
+        padding: 12px 20px;
+        background-color: #E3F2FD;
+        color: #1976D2;
+        font-weight: bold;
+        border-radius: 8px;
+        z-index: 2;
+    }
+    .map-branches {
+        border-left: 2px solid #90CAF9;
+        margin-left: 0px;
+        padding-left: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+    .map-branch {
+        position: relative;
+        padding: 8px 15px;
+        background-color: #F5F5F5;
+        border-radius: 4px;
+        color: #555;
+    }
+    .map-branch::before {
+        content: '';
+        position: absolute;
+        left: -20px;
+        top: 50%;
+        width: 20px;
+        height: 2px;
+        background-color: #90CAF9;
+    }
+
     /* 右侧支架工具区 */
     .right-column {
-        width: 33.33%;
+        width: 30%;
         padding-left: 40px;
-        font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif; /* 工具区保持无衬线体 */
+        font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif; 
     }
+    
     /* 颜色及加粗设定 */
     .text-blue { color: #1976D2; font-weight: bold; }
     
-    /* 调整绿色和红色高亮样式 */
     .text-green { 
         color: #2E7D32; 
         font-weight: bold; 
@@ -113,7 +156,7 @@
         border-radius: 4px;
     }
 
-    /* 右侧模块样式 */
+    /* 模块样式 */
     .module {
         margin-bottom: 35px;
         background: #fff;
@@ -128,47 +171,63 @@
         border-bottom: 2px solid #eee;
         padding-bottom: 8px;
     }
+    .module-green h3 { color: #2E7D32; }
+    .module-red h3 { color: #C62828; }
     .module-blue h3 { color: #1976D2; }
-    .module-green h3, .module-green p { color: #2E7D32; }
-    .module-red h3, .module-red p { color: #C62828; }
     
     .module p {
-        margin: 8px 0;
+        margin: 12px 0;
         font-size: 0.95em;
-        line-height: 1.5;
+        line-height: 1.6;
     }
 
+    /* 下半部分：底部词汇墙 (方案 B) */
+    .bottom-section {
+        margin-top: 40px;
+        border-top: 2px solid #E0E0E0;
+        padding-top: 30px;
+        font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    }
+    .click-hint {
+        font-size: 0.85em;
+        color: #999;
+        margin-bottom: 20px;
+        font-style: italic;
+    }
+    .vocab-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+        gap: 12px;
+    }
+    
     /* 4. 词汇点击交互样式 */
     .vocab-item {
         cursor: pointer;
-        padding: 6px 8px;
-        margin-bottom: 4px;
-        border-radius: 4px;
-        transition: background-color 0.2s ease;
+        padding: 8px 12px;
+        background-color: #fff;
+        border: 1px solid #e0e0e0;
+        border-radius: 6px;
+        transition: all 0.2s ease;
         color: #1976D2;
-        user-select: none; /* 防止点击时选中文本 */
+        user-select: none;
     }
     .vocab-item:hover {
-        background-color: #E3F2FD; /* 鼠标悬停时的浅蓝色背景 */
+        background-color: #F0F8FF;
+        border-color: #90CAF9;
     }
     .vocab-item strong {
-        font-size: 1.05em;
+        font-size: 1.1em;
     }
     .vocab-details {
-        display: none; /* 默认隐藏拼音和英文 */
+        display: none; 
         color: #666;
-        font-size: 0.9em;
-        margin-left: 5px;
+        font-size: 0.85em;
+        margin-top: 4px;
+        border-top: 1px dashed #ccc;
+        padding-top: 4px;
     }
     .vocab-item.active .vocab-details {
-        display: inline; /* 点击后显示 */
-    }
-    .click-hint {
-        font-size: 0.8em;
-        color: #999;
-        margin-top: -10px;
-        margin-bottom: 15px;
-        font-style: italic;
+        display: block; 
     }
 </style>
 </head>
@@ -177,9 +236,9 @@
 <div class="poster-container">
     <div class="header">
         <div class="main-title">【文本一】博客：无人驾驶汽车</div>
-        <div class="topic-box">话题：体验无人驾驶的感受（科技带来的便利、缓解拥堵、节约时间、降低费用）</div>
     </div>
 
+    <!-- 上半部分：文本与语法逻辑 -->
     <div class="content-wrapper">
         
         <div class="left-column">
@@ -213,63 +272,81 @@
                     <li>End with an interactive question, encouraging comments.</li>
                 </ul>
             </div>
+
+            <!-- 话题思维导图 (极简大括号版) -->
+            <div class="simple-mindmap">
+                <h4>📊 Topic Breakdown (话题拆解)</h4>
+                <div class="map-container">
+                    <div class="map-root">体验无人驾驶的感受</div>
+                    <div class="map-branches">
+                        <div class="map-branch">科技带来的便利</div>
+                        <div class="map-branch">缓解拥堵</div>
+                        <div class="map-branch">节约时间</div>
+                        <div class="map-branch">降低费用</div>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div class="right-column">
-            
-            <div class="module module-blue">
-                <h3>模块 1：词汇库 (Vocabulary)</h3>
-                <div class="click-hint">👆 Click on a word to reveal Pinyin & Translation</div>
-                <!-- 使用 onclick 切换 active 类，实现点击显隐 -->
-                <div class="vocab-item" onclick="this.classList.toggle('active')"><strong>驾驶</strong><span class="vocab-details">(jià shǐ) - to drive</span></div>
-                <div class="vocab-item" onclick="this.classList.toggle('active')"><strong>收看</strong><span class="vocab-details">(shōu kàn) - to watch / to tune in</span></div>
-                <div class="vocab-item" onclick="this.classList.toggle('active')"><strong>体验</strong><span class="vocab-details">(tǐ yàn) - experience / to experience</span></div>
-                <div class="vocab-item" onclick="this.classList.toggle('active')"><strong>乘坐</strong><span class="vocab-details">(chéng zuò) - to take (a vehicle)</span></div>
-                <div class="vocab-item" onclick="this.classList.toggle('active')"><strong>播客</strong><span class="vocab-details">(bō kè) - podcast</span></div>
-                <div class="vocab-item" onclick="this.classList.toggle('active')"><strong>全球</strong><span class="vocab-details">(quán qiú) - global / worldwide</span></div>
-                <div class="vocab-item" onclick="this.classList.toggle('active')"><strong>一倍</strong><span class="vocab-details">(yí bèi) - double / twofold</span></div>
-                <div class="vocab-item" onclick="this.classList.toggle('active')"><strong>达到</strong><span class="vocab-details">(dá dào) - to reach / to achieve</span></div>
-                <div class="vocab-item" onclick="this.classList.toggle('active')"><strong>测试</strong><span class="vocab-details">(cè shì) - test / to test</span></div>
-                <div class="vocab-item" onclick="this.classList.toggle('active')"><strong>方向盘</strong><span class="vocab-details">(fāng xiàng pán) - steering wheel</span></div>
-                <div class="vocab-item" onclick="this.classList.toggle('active')"><strong>转动</strong><span class="vocab-details">(zhuǎn dòng) - to turn / to rotate</span></div>
-                <div class="vocab-item" onclick="this.classList.toggle('active')"><strong>神奇</strong><span class="vocab-details">(shén qí) - magical / miraculous</span></div>
-                <div class="vocab-item" onclick="this.classList.toggle('active')"><strong>适应</strong><span class="vocab-details">(shì yìng) - to adapt</span></div>
-                <div class="vocab-item" onclick="this.classList.toggle('active')"><strong>稳</strong><span class="vocab-details">(wěn) - stable / steady</span></div>
-                <div class="vocab-item" onclick="this.classList.toggle('active')"><strong>障碍物</strong><span class="vocab-details">(zhàng ài wù) - obstacle</span></div>
-                <div class="vocab-item" onclick="this.classList.toggle('active')"><strong>信任</strong><span class="vocab-details">(xìn rèn) - to trust</span></div>
-                <div class="vocab-item" onclick="this.classList.toggle('active')"><strong>代替</strong><span class="vocab-details">(dài tì) - to replace / to substitute</span></div>
-                <div class="vocab-item" onclick="this.classList.toggle('active')"><strong>接送</strong><span class="vocab-details">(jiē sòng) - to pick up and drop off</span></div>
-                <div class="vocab-item" onclick="this.classList.toggle('active')"><strong>缓解</strong><span class="vocab-details">(huǎn jiě) - to relieve / to alleviate</span></div>
-                <div class="vocab-item" onclick="this.classList.toggle('active')"><strong>拥堵</strong><span class="vocab-details">(yōng dǔ) - traffic jam / congestion</span></div>
-                <div class="vocab-item" onclick="this.classList.toggle('active')"><strong>现象</strong><span class="vocab-details">(xiàn xiàng) - phenomenon</span></div>
-                <div class="vocab-item" onclick="this.classList.toggle('active')"><strong>大幅度</strong><span class="vocab-details">(dà fú dù) - by a large margin / drastically</span></div>
-                <div class="vocab-item" onclick="this.classList.toggle('active')"><strong>降低</strong><span class="vocab-details">(jiàng dī) - to reduce / to lower</span></div>
-                <div class="vocab-item" onclick="this.classList.toggle('active')"><strong>软件</strong><span class="vocab-details">(ruǎn jiàn) - software</span></div>
-                <div class="vocab-item" onclick="this.classList.toggle('active')"><strong>需求</strong><span class="vocab-details">(xū qiú) - requirement / demand</span></div>
-                <div class="vocab-item" onclick="this.classList.toggle('active')"><strong>优化</strong><span class="vocab-details">(yōu huà) - to optimize</span></div>
-                <div class="vocab-item" onclick="this.classList.toggle('active')"><strong>线路</strong><span class="vocab-details">(xiàn lù) - route / line</span></div>
-                <div class="vocab-item" onclick="this.classList.toggle('active')"><strong>节约</strong><span class="vocab-details">(jié yuē) - to save / to economize</span></div>
-                <div class="vocab-item" onclick="this.classList.toggle('active')"><strong>省钱</strong><span class="vocab-details">(shěng qián) - to save money</span></div>
-                <div class="vocab-item" onclick="this.classList.toggle('active')"><strong>节省</strong><span class="vocab-details">(jié shěng) - to save (time/resources)</span></div>
-            </div>
-
+            <!-- 删除了模块字眼 -->
             <div class="module module-green">
-                <h3>模块 2：万能句型 (Sentence Patterns)</h3>
-                <p><strong>向……开放：</strong> 向 [特定群体] 开放 (open to...)</p>
-                <p><strong>就像……一样：</strong> 就像 [名词] 一样 + [形容词/动作] (just like...)</p>
-                <p><strong>有助于：</strong> 有助于 (helps to) + [解决问题/现象]</p>
-                <p><strong>给……带来很多方便：</strong> 给 [人物/生活] 带来很多方便 (brings a lot of convenience to...)</p>
+                <h3>Sentence Patterns</h3>
+                <p><strong>向……开放：</strong> 向 [特定群体] 开放</p>
+                <p><strong>就像……一样：</strong> 就像 [名词] 一样 + [形容词/动作]</p>
+                <p><strong>有助于：</strong> 有助于 + [解决问题/现象]</p>
+                <p><strong>给……带来很多方便：</strong> 给 [人物/生活] 带来很多方便</p>
             </div>
 
             <div class="module module-red">
-                <h3>模块 3：逻辑连接 (Key Connectors)</h3>
-                <p><strong>首次：</strong> 首次 (for the first time) + [动作]</p>
-                <p><strong>除了……还有……：</strong> 除了 [已知的好处] ，还有 [新的好处] (Besides... there is also...)</p>
-                <p><strong>不但……也……：</strong> 不但 [优点 1] ，也 [优点 2] (Not only... but also...)</p>
-                <p><strong>这样一来：</strong> [具体做法]。这样一来 (As a result) ，[好结果]</p>
-                <p><strong>逻辑链：</strong> 首先 [论据1]；其次 [论据2]；总的来说 [总结观点] (First... Second... In summary...)</p>
+                <h3>Key Connectors</h3>
+                <!-- 根据要求，全部删除了后面的英文和公式解释 -->
+                <p><strong>首次：</strong> 首次</p>
+                <p><strong>除了……还有……：</strong> 除了……还有……</p>
+                <p><strong>不但……也……：</strong> 不但……也……</p>
+                <p><strong>这样一来：</strong> 这样一来</p>
+                <p><strong>逻辑链：</strong> 首先……其次……总的来说……</p>
             </div>
+        </div>
+    </div>
 
+    <!-- 下半部分：底部词汇墙 -->
+    <div class="bottom-section">
+        <div class="module-blue" style="margin-bottom: 20px;">
+            <h3 style="margin: 0; font-size: 1.4em;">Vocabulary</h3>
+        </div>
+        <div class="click-hint">👆 Click on a word to reveal Pinyin & Translation</div>
+        <div class="vocab-grid">
+            <div class="vocab-item" onclick="this.classList.toggle('active')"><strong>驾驶</strong><div class="vocab-details">(jià shǐ) - to drive</div></div>
+            <div class="vocab-item" onclick="this.classList.toggle('active')"><strong>收看</strong><div class="vocab-details">(shōu kàn) - to watch / tune in</div></div>
+            <div class="vocab-item" onclick="this.classList.toggle('active')"><strong>体验</strong><div class="vocab-details">(tǐ yàn) - experience</div></div>
+            <div class="vocab-item" onclick="this.classList.toggle('active')"><strong>乘坐</strong><div class="vocab-details">(chéng zuò) - to take (vehicle)</div></div>
+            <div class="vocab-item" onclick="this.classList.toggle('active')"><strong>播客</strong><div class="vocab-details">(bō kè) - podcast</div></div>
+            <div class="vocab-item" onclick="this.classList.toggle('active')"><strong>全球</strong><div class="vocab-details">(quán qiú) - global</div></div>
+            <div class="vocab-item" onclick="this.classList.toggle('active')"><strong>一倍</strong><div class="vocab-details">(yí bèi) - double</div></div>
+            <div class="vocab-item" onclick="this.classList.toggle('active')"><strong>达到</strong><div class="vocab-details">(dá dào) - to reach</div></div>
+            <div class="vocab-item" onclick="this.classList.toggle('active')"><strong>测试</strong><div class="vocab-details">(cè shì) - test</div></div>
+            <div class="vocab-item" onclick="this.classList.toggle('active')"><strong>方向盘</strong><div class="vocab-details">(fāng xiàng pán) - steering wheel</div></div>
+            <div class="vocab-item" onclick="this.classList.toggle('active')"><strong>转动</strong><div class="vocab-details">(zhuǎn dòng) - to turn</div></div>
+            <div class="vocab-item" onclick="this.classList.toggle('active')"><strong>神奇</strong><div class="vocab-details">(shén qí) - magical</div></div>
+            <div class="vocab-item" onclick="this.classList.toggle('active')"><strong>适应</strong><div class="vocab-details">(shì yìng) - to adapt</div></div>
+            <div class="vocab-item" onclick="this.classList.toggle('active')"><strong>稳</strong><div class="vocab-details">(wěn) - stable</div></div>
+            <div class="vocab-item" onclick="this.classList.toggle('active')"><strong>障碍物</strong><div class="vocab-details">(zhàng ài wù) - obstacle</div></div>
+            <div class="vocab-item" onclick="this.classList.toggle('active')"><strong>信任</strong><div class="vocab-details">(xìn rèn) - to trust</div></div>
+            <div class="vocab-item" onclick="this.classList.toggle('active')"><strong>代替</strong><div class="vocab-details">(dài tì) - to replace</div></div>
+            <div class="vocab-item" onclick="this.classList.toggle('active')"><strong>接送</strong><div class="vocab-details">(jiē sòng) - to pick up/drop off</div></div>
+            <div class="vocab-item" onclick="this.classList.toggle('active')"><strong>缓解</strong><div class="vocab-details">(huǎn jiě) - to relieve</div></div>
+            <div class="vocab-item" onclick="this.classList.toggle('active')"><strong>拥堵</strong><div class="vocab-details">(yōng dǔ) - traffic jam</div></div>
+            <div class="vocab-item" onclick="this.classList.toggle('active')"><strong>现象</strong><div class="vocab-details">(xiàn xiàng) - phenomenon</div></div>
+            <div class="vocab-item" onclick="this.classList.toggle('active')"><strong>大幅度</strong><div class="vocab-details">(dà fú dù) - by a large margin</div></div>
+            <div class="vocab-item" onclick="this.classList.toggle('active')"><strong>降低</strong><div class="vocab-details">(jiàng dī) - to reduce</div></div>
+            <div class="vocab-item" onclick="this.classList.toggle('active')"><strong>软件</strong><div class="vocab-details">(ruǎn jiàn) - software</div></div>
+            <div class="vocab-item" onclick="this.classList.toggle('active')"><strong>需求</strong><div class="vocab-details">(xū qiú) - demand</div></div>
+            <div class="vocab-item" onclick="this.classList.toggle('active')"><strong>优化</strong><div class="vocab-details">(yōu huà) - to optimize</div></div>
+            <div class="vocab-item" onclick="this.classList.toggle('active')"><strong>线路</strong><div class="vocab-details">(xiàn lù) - route</div></div>
+            <div class="vocab-item" onclick="this.classList.toggle('active')"><strong>节约</strong><div class="vocab-details">(jié yuē) - to save (time)</div></div>
+            <div class="vocab-item" onclick="this.classList.toggle('active')"><strong>省钱</strong><div class="vocab-details">(shěng qián) - to save money</div></div>
+            <div class="vocab-item" onclick="this.classList.toggle('active')"><strong>节省</strong><div class="vocab-details">(jié shěng) - to save</div></div>
         </div>
     </div>
 </div>
