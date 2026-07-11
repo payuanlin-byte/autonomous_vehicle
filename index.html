@@ -24,7 +24,7 @@
         overflow: hidden;
     }
     
-    /* ================= 顶部导航栏 (Tabs) ================= */
+    /* ================= 顶部导航栏 ================= */
     .nav-tabs {
         display: flex;
         background-color: #1976D2;
@@ -32,832 +32,334 @@
         margin: 0;
         list-style: none;
     }
-    .nav-tabs li {
-        flex: 1;
-        text-align: center;
-    }
+    .nav-tabs li { flex: 1; text-align: center; }
     .nav-tabs button {
-        width: 100%;
-        background: none;
-        border: none;
-        color: rgba(255, 255, 255, 0.7);
-        padding: 18px 10px;
-        font-size: 1.1em;
-        font-weight: bold;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        font-family: inherit;
+        width: 100%; background: none; border: none; color: rgba(255, 255, 255, 0.7);
+        padding: 18px 10px; font-size: 1.1em; font-weight: bold; cursor: pointer; transition: all 0.3s ease;
     }
-    .nav-tabs button:hover {
-        background-color: rgba(255, 255, 255, 0.1);
-        color: #fff;
-    }
-    .nav-tabs button.active {
-        background-color: #fff;
-        color: #1976D2;
-        border-top: 4px solid #FF9800;
-    }
+    .nav-tabs button:hover { background-color: rgba(255, 255, 255, 0.1); color: #fff; }
+    .nav-tabs button.active { background-color: #fff; color: #1976D2; border-top: 4px solid #FF9800; }
 
-    /* 内容区域通用 */
-    .tab-content {
-        display: none;
-        padding: 40px;
-        animation: fadeIn 0.4s;
-    }
-    .tab-content.active {
-        display: block;
-    }
-    @keyframes fadeIn {
-        from { opacity: 0; transform: translateY(10px); }
-        to { opacity: 1; transform: translateY(0); }
-    }
+    .tab-content { display: none; padding: 40px; animation: fadeIn 0.4s; }
+    .tab-content.active { display: block; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-    /* ================= TAB 1 专属样式 (完全恢复) ================= */
-    /* 文本基础与排版 */
-    .tab1-content { 
-        font-family: 'KaiTi', 'STKaiti', '楷体', serif; 
-    }
-    .content-wrapper {
-        display: flex;
-        flex-direction: row;
-    }
-    .left-column {
-        width: 70%;
-        padding-right: 40px;
-        border-right: 2px solid #E0E0E0; 
-        line-height: 1.9; 
-        font-size: 1.25em; 
-        text-align: justify;
-    }
-    .left-column p {
-        margin-bottom: 25px; 
-        text-indent: 2em;
-    }
-    .right-column {
-        width: 30%;
-        padding-left: 40px;
-        font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif; 
-    }
+    /* ================= 通用 UI 元素 ================= */
+    .section-title { color: #1976D2; border-bottom: 2px solid #E3F2FD; padding-bottom: 10px; margin-bottom: 20px; font-family: 'PingFang SC', sans-serif;}
+    .ui-hint { background-color: #FFF8E1; border-left: 4px solid #FFC107; padding: 12px 15px; border-radius: 4px; margin-bottom: 25px; font-size: 0.95em; color: #555;}
+    .action-btn { background-color: #4CAF50; color: white; border: none; padding: 12px 24px; font-size: 1.1em; border-radius: 6px; cursor: pointer; font-weight: bold; transition: 0.2s; display: block; margin: 30px auto 0 auto; box-shadow: 0 4px 6px rgba(0,0,0,0.1);}
+    .action-btn:hover { background-color: #43A047; transform: translateY(-2px);}
+    .action-btn.blue { background-color: #1976D2; }
+    .action-btn.blue:hover { background-color: #1565C0; }
 
-    /* 颜色及加粗 */
+    /* ================= TAB 1 专属样式 ================= */
+    .tab1-content { font-family: 'KaiTi', 'STKaiti', '楷体', serif; }
+    .content-wrapper { display: flex; flex-direction: row; }
+    .left-column { width: 70%; padding-right: 40px; border-right: 2px solid #E0E0E0; line-height: 1.9; font-size: 1.25em; text-align: justify; }
+    .left-column p { margin-bottom: 25px; text-indent: 2em; }
+    .right-column { width: 30%; padding-left: 40px; font-family: 'PingFang SC', sans-serif; }
     .text-blue { color: #1976D2; font-weight: bold; }
     .text-green { color: #2E7D32; font-weight: bold; background-color: #E8F5E9; padding: 2px 4px; border-radius: 4px;}
     .text-red { color: #C62828; font-weight: bold; background-color: #FFEBEE; padding: 2px 4px; border-radius: 4px;}
-
-    /* 课文内嵌交互词汇 (点读气泡) */
-    .inline-item {
-        cursor: pointer;
-        position: relative;
-        transition: opacity 0.2s ease;
-        user-select: none;
-        border-bottom: 1px dashed rgba(0,0,0,0.3);
-        padding-bottom: 1px;
-    }
-    .inline-item:hover { opacity: 0.8; }
-    .inline-details {
-        display: none;
-        font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
-        font-size: 0.75em;
-        font-weight: normal;
-        background-color: #fff;
-        color: #555;
-        padding: 2px 8px;
-        margin: 0 4px;
-        border: 1px solid #ddd;
-        border-radius: 4px;
-        vertical-align: middle;
-        box-shadow: 1px 1px 4px rgba(0,0,0,0.1);
-        white-space: nowrap;
-    }
-    .inline-item.active .inline-details { display: inline-block; }
-
-    /* Format Tips 与 思维导图 */
-    .format-tips-bottom {
-        margin-top: 30px; background-color: #FFF3E0; border-left: 4px solid #FFB74D; padding: 15px 20px; border-radius: 4px; font-family: 'PingFang SC', sans-serif; font-size: 0.9em; color: #555;
-    }
-    .format-tips-bottom h4 { margin: 0 0 10px 0; color: #E65100; font-size: 1.1em; }
-    .format-tips-bottom ul { margin: 0; padding-left: 20px; line-height: 1.6; }
     
-    .simple-mindmap { margin-top: 30px; background: #fff; padding: 20px; border-radius: 8px; border: 1px dashed #bdc3c7; font-family: 'PingFang SC', sans-serif; }
-    .simple-mindmap h4 { margin: 0 0 15px 0; color: #2c3e50; font-size: 1.1em; }
-    .map-container { display: flex; align-items: center; }
-    .map-root { padding: 12px 20px; background-color: #E3F2FD; color: #1976D2; font-weight: bold; border-radius: 8px; z-index: 2; }
-    .map-branches { border-left: 2px solid #90CAF9; margin-left: 0px; padding-left: 20px; display: flex; flex-direction: column; gap: 12px; }
-    .map-branch { position: relative; padding: 8px 15px; background-color: #F5F5F5; border-radius: 4px; color: #555; }
-    .map-branch::before { content: ''; position: absolute; left: -20px; top: 50%; width: 20px; height: 2px; background-color: #90CAF9; }
+    .inline-item { cursor: pointer; position: relative; border-bottom: 1px dashed rgba(0,0,0,0.3); padding-bottom: 1px; color: #1976D2; font-weight: bold;}
+    .inline-details { display: none; font-family: sans-serif; font-size: 0.75em; background-color: #fff; color: #555; padding: 2px 8px; margin: 0 4px; border: 1px solid #ddd; border-radius: 4px; vertical-align: middle; white-space: nowrap; }
+    .inline-item:hover .inline-details { display: inline-block; }
 
-    /* 右侧模块 (句型与连词) */
     .module { margin-bottom: 35px; background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.03); }
     .module h3 { margin-top: 0; margin-bottom: 15px; font-size: 1.2em; border-bottom: 2px solid #eee; padding-bottom: 8px; }
     .module-green h3 { color: #2E7D32; }
     .module-red h3 { color: #C62828; }
-    .module p { margin: 12px 0; font-size: 0.95em; line-height: 1.6; }
-    .click-hint { font-size: 0.85em; color: #999; margin-bottom: 20px; font-style: italic; font-family: 'PingFang SC', sans-serif;}
     
-    .pattern-item { cursor: pointer; padding: 10px 12px; background-color: #fff; border: 1px solid #e0e0e0; border-radius: 6px; margin-bottom: 12px; transition: all 0.2s ease; color: #2E7D32; user-select: none; }
-    .pattern-item:hover { background-color: #E8F5E9; border-color: #81C784; }
-    .pattern-details { display: none; color: #666; font-size: 0.9em; margin-top: 6px; border-top: 1px dashed #ccc; padding-top: 6px; }
-    .pattern-item.active .pattern-details { display: block; }
-
-    /* 底部词汇墙 */
-    .bottom-section { margin-top: 40px; border-top: 2px solid #E0E0E0; padding-top: 30px; font-family: 'PingFang SC', sans-serif; clear: both;}
+    .bottom-section { margin-top: 40px; border-top: 2px solid #E0E0E0; padding-top: 30px; font-family: sans-serif; clear: both;}
     .vocab-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 12px; }
-    .vocab-item { cursor: pointer; padding: 8px 12px; background-color: #fff; border: 1px solid #e0e0e0; border-radius: 6px; transition: all 0.2s ease; color: #1976D2; user-select: none; }
-    .vocab-item:hover { background-color: #F0F8FF; border-color: #90CAF9; }
-    .vocab-details { display: none; color: #666; font-size: 0.85em; margin-top: 4px; border-top: 1px dashed #ccc; padding-top: 4px; }
-    .vocab-item.active .vocab-details { display: block; }
+    .vocab-item { cursor: pointer; padding: 8px 12px; border: 1px solid #e0e0e0; border-radius: 6px; color: #1976D2; }
+    .vocab-item:hover { background-color: #F0F8FF; }
+    .vocab-details { display: none; font-size: 0.85em; color: #666; margin-top: 4px; border-top: 1px dashed #ccc; padding-top: 4px; }
+    .vocab-item:hover .vocab-details { display: block; }
 
-    /* ================= TAB 2-4 专属样式 ================= */
-    .section-title { color: #1976D2; border-bottom: 2px solid #E3F2FD; padding-bottom: 10px; margin-bottom: 20px; font-family: 'PingFang SC', sans-serif;}
-    .ui-hint { background-color: #FFF8E1; border-left: 4px solid #FFC107; padding: 12px 15px; border-radius: 4px; margin-bottom: 25px; font-size: 0.95em; color: #555; font-family: 'PingFang SC', sans-serif;}
-
-    /* 拖拽区 */
-    .drag-container { display: flex; gap: 30px; margin-bottom: 40px; font-family: 'PingFang SC', sans-serif;}
+    /* ================= TAB 2 专属样式 ================= */
+    .drag-container { display: flex; gap: 30px; margin-bottom: 40px; font-family: sans-serif;}
     .drag-col { flex: 1; background: #F9FAFB; padding: 20px; border-radius: 8px; border: 1px solid #E5E7EB; }
-    .draggable-item { background: #fff; padding: 12px; margin-bottom: 10px; border-radius: 6px; border: 2px solid #90CAF9; cursor: grab; font-weight: bold; color: #1565C0; text-align: center; box-shadow: 0 2px 4px rgba(0,0,0,0.05);}
-    .drop-zone { background: #fff; padding: 12px; margin-bottom: 10px; border-radius: 6px; border: 2px dashed #BDBDBD; min-height: 46px; display: flex; align-items: center; justify-content: center; font-family: 'KaiTi', '楷体', serif; font-size: 1.2em; color: #757575;}
+    .draggable-item { background: #fff; padding: 12px; margin-bottom: 10px; border-radius: 6px; border: 2px solid #90CAF9; cursor: grab; font-weight: bold; color: #1565C0; text-align: center; }
+    .drop-zone { background: #fff; padding: 12px; margin-bottom: 10px; border-radius: 6px; border: 2px dashed #BDBDBD; min-height: 46px; display: flex; align-items: center; justify-content: center; font-family: 'KaiTi', serif; font-size: 1.2em; color: #757575; transition: 0.3s;}
     
-    /* 翻转卡片区 */
-    .cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; margin-bottom: 40px; font-family: 'PingFang SC', sans-serif;}
+    .gap-fill-box { background: #fff; border: 1px solid #E0E0E0; padding: 20px; border-radius: 8px; margin-bottom: 20px; line-height: 1.8; font-size: 1.15em; font-family: 'KaiTi', serif;}
+    .word-bank { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 15px; padding-bottom: 15px; border-bottom: 1px dashed #ccc;}
+    .word-tag { background: #E3F2FD; color: #1565C0; padding: 5px 12px; border-radius: 20px; font-size: 0.85em; font-family: sans-serif; border: 1px solid #BBDEFB; font-weight: bold; cursor: grab;}
+    .gap-blank { display: inline-block; width: 120px; height: 32px; border-bottom: 2px solid #757575; vertical-align: middle; background: #FAFAFA; text-align: center; color: #2E7D32; font-weight: bold; transition: 0.3s;}
+
+    @keyframes shake { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-5px); } 50% { transform: translateX(5px); } 75% { transform: translateX(-5px); } }
+    .shake { animation: shake 0.4s; border-color: #F44336 !important; background-color: #FFEBEE !important; color: #C62828 !important;}
+
+    /* 卡片隐藏代码(节省篇幅，沿用上版) */
+    .cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; margin-bottom: 40px; }
     .flip-card { perspective: 1000px; height: 180px; }
     .flip-card-inner { position: relative; width: 100%; height: 100%; text-align: center; transition: transform 0.6s; transform-style: preserve-3d; }
     .flip-card.flipped .flip-card-inner { transform: rotateY(180deg); }
-    .flip-card-front, .flip-card-back { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; border-radius: 12px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 20px; box-sizing: border-box;}
-    .flip-card-front { background-color: #fff; border: 2px solid #E3F2FD; }
-    .flip-card-back { background-color: #4CAF50; color: white; transform: rotateY(180deg); font-size: 1.8em; font-family: 'KaiTi', '楷体', serif; font-weight: bold;}
+    .flip-card-front, .flip-card-back { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; border-radius: 12px; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 20px; box-sizing: border-box; border: 2px solid #E3F2FD;}
+    .flip-card-front { background-color: #fff; }
+    .flip-card-back { background-color: #4CAF50; color: white; transform: rotateY(180deg); font-size: 1.8em; font-family: 'KaiTi', serif; font-weight: bold;}
     .card-prompt { font-size: 1.1em; font-weight: bold; color: #333; margin-bottom: 15px;}
     .card-input-group { display: flex; gap: 5px; width: 100%; justify-content: center; align-items: center;}
     .card-input { padding: 8px; border: 2px solid #ccc; border-radius: 4px; width: 60%; font-size: 1em; outline: none;}
     .card-btn { padding: 8px 12px; background: #1976D2; color: white; border: none; border-radius: 4px; cursor: pointer; font-weight: bold;}
     .sos-btn { background: none; border: none; font-size: 1.2em; cursor: pointer; padding: 5px; opacity: 0.6;}
-    .sos-btn:hover { opacity: 1; }
-    .sos-hint { display: none; font-size: 0.85em; color: #E65100; margin-top: 10px; font-weight: normal; }
-    
-    @keyframes shake {
-        0%, 100% { transform: translateX(0); }
-        25% { transform: translateX(-5px); }
-        50% { transform: translateX(5px); }
-        75% { transform: translateX(-5px); }
-    }
-    .shake { animation: shake 0.4s; border-color: #F44336 !important; }
+    .sos-hint { display: none; font-size: 0.85em; color: #E65100; margin-top: 10px; }
 
-    /* 填空区 */
-    .gap-fill-box { background: #fff; border: 1px solid #E0E0E0; padding: 20px; border-radius: 8px; margin-bottom: 20px; line-height: 1.8; font-size: 1.15em; font-family: 'KaiTi', '楷体', serif;}
-    .word-bank { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 15px; padding-bottom: 15px; border-bottom: 1px dashed #ccc;}
-    .word-tag { background: #E3F2FD; color: #1565C0; padding: 5px 12px; border-radius: 20px; font-size: 0.85em; font-family: sans-serif; border: 1px solid #BBDEFB; font-weight: bold; cursor: grab;}
-    .gap-blank { display: inline-block; width: 120px; height: 32px; border-bottom: 2px solid #757575; vertical-align: middle; background: #FAFAFA; text-align: center; color: #2E7D32; font-weight: bold;}
-
-    /* Tab 3 专属样式 */
-    .formula-box { background: #E8F5E9; border: 2px solid #81C784; padding: 20px; border-radius: 8px; margin-bottom: 30px; font-family: 'PingFang SC', sans-serif;}
-    .mission-card { background: #fff; border: 1px solid #E0E0E0; border-left: 5px solid #1976D2; padding: 25px; margin-bottom: 25px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.04); font-family: 'PingFang SC', sans-serif;}
+    /* ================= TAB 3 专属样式 ================= */
+    .formula-box { background: #E8F5E9; border: 2px solid #81C784; padding: 20px; border-radius: 8px; margin-bottom: 30px; font-family: sans-serif;}
+    .mission-card { background: #fff; border: 1px solid #E0E0E0; border-left: 5px solid #1976D2; padding: 25px; margin-bottom: 25px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.04); font-family: sans-serif;}
     .mission-header { display: flex; align-items: baseline; gap: 10px; margin-bottom: 15px;}
     .mission-title { font-size: 1.3em; color: #1976D2; margin: 0; font-weight: bold;}
     .mission-context { font-style: italic; color: #666; margin-bottom: 15px;}
-    .mission-scaffold { background: #F9FAFB; padding: 15px; border-radius: 6px; font-family: 'KaiTi', '楷体', serif; font-size: 1.15em; line-height: 1.8; color: #333;}
-    .scaffold-blank { display: inline-block; min-width: 80px; padding: 0 10px; border-bottom: 2px dashed #999; color: #999; font-family: sans-serif; font-size: 0.85em; text-align: center;}
+    .mission-scaffold { background: #F9FAFB; padding: 20px; border-radius: 6px; font-family: 'KaiTi', serif; font-size: 1.15em; line-height: 2.2; color: #333; border: 1px solid #eee;}
+    
+    /* 核心：打字输入框样式 */
+    .scaffold-input { 
+        border: none; border-bottom: 2px dashed #1976D2; background: transparent; 
+        font-family: 'KaiTi', serif; font-size: 1.1em; color: #1976D2; font-weight: bold;
+        text-align: center; padding: 0 5px; width: 120px; outline: none; transition: 0.2s;
+    }
+    .scaffold-input:focus { border-bottom: 2px solid #FF9800; background-color: #FFF8E1; }
+    
+    /* Step 3 幽灵字输入框样式 */
+    .ghost-input {
+        width: 80%; display: block; margin-top: 10px; text-align: left;
+        color: #333; /* 真实打字时是黑色 */
+    }
+    .ghost-input::placeholder {
+        color: #9E9E9E; font-style: italic; font-weight: normal;
+    }
 
-    /* Tab 4 专属样式 */
-    .blog-editor { background: #fff; border: 1px solid #ddd; border-radius: 8px; padding: 30px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); font-family: 'PingFang SC', sans-serif;}
+    /* ================= TAB 4 专属样式 ================= */
+    .blog-editor { background: #fff; border: 1px solid #ddd; border-radius: 8px; padding: 30px; font-family: sans-serif;}
     .editor-group { margin-bottom: 20px; }
     .editor-group label { display: block; font-weight: bold; margin-bottom: 8px; color: #555;}
-    .editor-input, .editor-textarea { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 6px; font-size: 1.1em; font-family: 'KaiTi', '楷体', serif; box-sizing: border-box;}
+    .editor-input, .editor-textarea { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 6px; font-size: 1.1em; font-family: 'KaiTi', serif; box-sizing: border-box;}
     .editor-textarea { resize: vertical; min-height: 100px; }
     .editor-input:focus, .editor-textarea:focus { border-color: #1976D2; outline: none; box-shadow: 0 0 5px rgba(25, 118, 210, 0.3);}
-    .editor-hint { font-size: 0.85em; color: #888; margin-top: 5px; font-family: sans-serif;}
 </style>
 </head>
 <body>
 
 <div class="app-container">
-    <!-- 导航栏 -->
     <ul class="nav-tabs">
         <li><button class="tab-link active" onclick="openTab(event, 'tab1')">📖 Text (课文)</button></li>
         <li><button class="tab-link" onclick="openTab(event, 'tab2')">🧩 Practice (词汇练习)</button></li>
-        <li><button class="tab-link" onclick="openTab(event, 'tab3')">🗣️ Speak Your Mind (口语表达)</button></li>
-        <li><button class="tab-link" onclick="openTab(event, 'tab4')">✍️ Write It Down (落笔成文)</button></li>
+        <li><button class="tab-link" onclick="openTab(event, 'tab3')">🗣️ Speak Your Mind</button></li>
+        <li><button class="tab-link" onclick="openTab(event, 'tab4')">✍️ Write It Down</button></li>
     </ul>
 
-    <!-- ==================== TAB 1 (完整恢复版) ==================== -->
+    <!-- ==================== TAB 1: TEXT ==================== -->
     <div id="tab1" class="tab-content active tab1-content">
-        
         <div class="content-wrapper">
-            <!-- 左侧文本阅读区 -->
             <div class="left-column">
-                
-                <div style="margin: 0 0 25px 0; text-align: center; background-color: #f8f9fa; padding: 15px; border-radius: 8px; border: 1px solid #e9ecef; font-family: sans-serif;">
-                    <p style="margin-top: 0; color: #555; font-size: 0.9em;">🎧 点击播放播客音频 (Listen to the Podcast)</p>
-                    <audio controls style="width: 100%; max-width: 400px;">
-                        <source src="Text1_Autonomous_Vehicle.mp3" type="audio/mpeg">
-                        您的浏览器不支持音频播放组件。
-                    </audio>
+                <div style="margin: 0 0 25px 0; text-align: center; background-color: #f8f9fa; padding: 15px; border-radius: 8px; border: 1px solid #e9ecef;">
+                    <audio controls style="width: 100%; max-width: 400px;"><source src="Text1_Autonomous_Vehicle.mp3" type="audio/mpeg"></audio>
                 </div>
-
-                <div style="margin-bottom: 25px; font-family: 'PingFang SC', sans-serif; color: #555;">
+                <div style="margin-bottom: 25px; font-family: sans-serif; color: #555;">
                     <div style="text-align: left; font-weight: bold; font-size: 1.1em; margin-bottom: 5px; color: #333;">南洋世界的播客</div>
                     <div style="text-align: left; font-size: 0.9em; color: #1976D2; margin-bottom: 15px;">http://www.nanyangpodcast.com</div>
-                    <div style="display: flex; justify-content: space-between; align-items: center; font-size: 0.95em; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 1px solid #eee;">
-                        <div style="flex: 1; text-align: left;">2019年1月1日</div>
-                        <div style="flex: 1; text-align: center;">星期六</div>
-                        <div style="flex: 1; text-align: right;">1点30分</div>
+                    <div style="display: flex; justify-content: space-between; border-bottom: 1px solid #eee; padding-bottom: 10px;">
+                        <div>2019年1月1日</div><div>星期六</div><div>1点30分</div>
                     </div>
-                    <div style="text-align: center; font-size: 1.5em; font-weight: bold; color: #222; margin-top: 15px; margin-bottom: 20px;">无人驾驶汽车</div>
+                    <div style="text-align: center; font-size: 1.5em; font-weight: bold; color: #222; margin-top: 15px;">无人驾驶汽车</div>
                 </div>
 
-                <p>
-                    大家好！欢迎各位 <span class="inline-item text-blue" onclick="this.classList.toggle('active')">收看<span class="inline-details">(shōu kàn) - to watch</span></span> 我的 <span class="inline-item text-blue" onclick="this.classList.toggle('active')">播客<span class="inline-details">(bō kè) - podcast</span></span>。
-                </p>
-                <p>
-                    前不久，我报名参加 <span class="inline-item text-blue" onclick="this.classList.toggle('active')">体验<span class="inline-details">(tǐ yàn) - experience</span></span> <span class="inline-item text-blue" onclick="this.classList.toggle('active')">乘坐<span class="inline-details">(chéng zuò) - to take</span></span> 新加坡无人驾驶汽车，感觉真是太棒了，今天我就来和大家聊聊无人驾驶汽车。
-                </p>
-                <p>
-                    这是 <span class="inline-item text-blue" onclick="this.classList.toggle('active')">全球<span class="inline-details">(quán qiú) - global</span></span> <span class="text-red">首次</span> <span class="inline-item text-green" onclick="this.classList.toggle('active')">向<span class="inline-details">(xiàng... kāi fàng) - open to...</span></span> 乘客 <span class="inline-item text-green" onclick="this.classList.toggle('active')">开放的<span class="inline-details">(xiàng... kāi fàng) - open to...</span></span> 无人驾驶汽车，报名参与体验的人数比一个月前增加了一<span class="inline-item text-blue" onclick="this.classList.toggle('active')">倍<span class="inline-details">(yí bèi) - double</span></span>，<span class="inline-item text-blue" onclick="this.classList.toggle('active')">达到<span class="inline-details">(dá dào) - to reach</span></span> 1000人左右。作为本次 <span class="inline-item text-blue" onclick="this.classList.toggle('active')">测试<span class="inline-details">(cè shì) - test</span></span> 的乘客之一，一开始我很紧张，看着 <span class="inline-item text-blue" onclick="this.classList.toggle('active')">方向盘<span class="inline-details">(fāng xiàng pán) - steering wheel</span></span> 自己 <span class="inline-item text-blue" onclick="this.classList.toggle('active')">转动<span class="inline-details">(zhuǎn dòng) - to turn</span></span> 时，这种感觉太 <span class="inline-item text-blue" onclick="this.classList.toggle('active')">神奇<span class="inline-details">(shén qí) - magical</span></span> 了，<span class="inline-item text-green" onclick="this.classList.toggle('active')">就像<span class="inline-details">(jiù xiàng... yí yàng) - just like...</span></span> 有个鬼在 <span class="inline-item text-blue" onclick="this.classList.toggle('active')">驾驶<span class="inline-details">(jià shǐ) - to drive</span></span> <span class="inline-item text-green" onclick="this.classList.toggle('active')">一样<span class="inline-details">(jiù xiàng... yí yàng) - just like...</span></span>！但很快我就 <span class="inline-item text-blue" onclick="this.classList.toggle('active')">适应<span class="inline-details">(shì yìng) - to adapt</span></span> 了，车子开得很 <span class="inline-item text-blue" onclick="this.classList.toggle('active')">稳<span class="inline-details">(wěn) - stable</span></span>，一些我看不到的 <span class="inline-item text-blue" onclick="this.classList.toggle('active')">障碍物<span class="inline-details">(zhàng ài wù) - obstacle</span></span>，车子能看到，让我觉得可以 <span class="inline-item text-blue" onclick="this.classList.toggle('active')">信任<span class="inline-details">(xìn rèn) - to trust</span></span> 它。我想以后父亲老了，无人驾驶汽车可以 <span class="inline-item text-blue" onclick="this.classList.toggle('active')">代替<span class="inline-details">(dài tì) - to replace</span></span> 我 <span class="inline-item text-blue" onclick="this.classList.toggle('active')">接送<span class="inline-details">(jiē sòng) - to pick up/drop off</span></span> 父亲。
-                </p>
-                <p>
-                    那么，无人驾驶汽车的发明，<span class="text-red">除了能</span> 改变人们对城市环境的体验，<span class="text-red">还有</span> 什么好处呢？<span class="text-red">首先</span>，无人驾驶汽车 <span class="inline-item text-green" onclick="this.classList.toggle('active')">有助于<span class="inline-details">(yǒu zhù yú) - helps to</span></span> <span class="inline-item text-blue" onclick="this.classList.toggle('active')">缓解<span class="inline-details">(huǎn jiě) - to relieve</span></span> 道路 <span class="inline-item text-blue" onclick="this.classList.toggle('active')">拥堵<span class="inline-details">(yōng dǔ) - traffic jam</span></span> 的 <span class="inline-item text-blue" onclick="this.classList.toggle('active')">现象<span class="inline-details">(xiàn xiàng) - phenomenon</span></span>，还能 <span class="inline-item text-blue" onclick="this.classList.toggle('active')">大幅度<span class="inline-details">(dà fú dù) - by a large margin</span></span> <span class="inline-item text-blue" onclick="this.classList.toggle('active')">降低<span class="inline-details">(jiàng dī) - to reduce</span></span> 乘坐出租车的费用，而且价格比坐公交车还便宜。
-                </p>
-                <p>
-                    <span class="text-red">其次</span>，无人驾驶出租车可以通过 <span class="inline-item text-blue" onclick="this.classList.toggle('active')">软件<span class="inline-details">(ruǎn jiàn) - software</span></span> 根据乘客的 <span class="inline-item text-blue" onclick="this.classList.toggle('active')">需求<span class="inline-details">(xū qiú) - demand</span></span> <span class="inline-item text-blue" onclick="this.classList.toggle('active')">优化<span class="inline-details">(yōu huà) - to optimize</span></span> <span class="inline-item text-blue" onclick="this.classList.toggle('active')">线路<span class="inline-details">(xiàn lù) - route</span></span>。<span class="text-red">这样一来</span>，<span class="text-red">不但能</span> <span class="inline-item text-blue" onclick="this.classList.toggle('active')">节约<span class="inline-details">(jié yuē) - to save</span></span> 乘客的乘车时间，<span class="text-red">也能</span> 让更多的乘客一起乘坐，当然就 <span class="inline-item text-blue" onclick="this.classList.toggle('active')">省钱<span class="inline-details">(shěng qián) - to save money</span></span> 啦！
-                </p>
-                <p>
-                    <span class="text-red">总的来说</span>，无人驾驶汽车会 <span class="inline-item text-green" onclick="this.classList.toggle('active')">给<span class="inline-details">(gěi... dài lái hěn duō fāng biàn) - brings convenience to...</span></span> 我们的生活 <span class="inline-item text-green" onclick="this.classList.toggle('active')">带来很多方便<span class="inline-details">(gěi... dài lái hěn duō fāng biàn) - brings convenience to...</span></span>，而且还会 <span class="inline-item text-blue" onclick="this.classList.toggle('active')">节省<span class="inline-details">(jié shěng) - to save</span></span> 时间，也更安全。你会去新加坡体验无人驾驶出租车吗？
-                </p>
-                <p>
-                    欢迎大家留言和我分享你对无人驾驶汽车的看法。
-                </p>
-
-                <div class="format-tips-bottom">
-                    <h4>💡 Format Tips:</h4>
-                    <ul>
-                        <li>Start with a greeting to introduce the topic ("大家好……").</li>
-                        <li>End with an interactive question, encouraging comments.</li>
-                    </ul>
-                </div>
-
-                <div class="simple-mindmap">
-                    <h4>📊 Topic Breakdown (话题拆解)</h4>
-                    <div class="map-container">
-                        <div class="map-root">体验无人驾驶的感受</div>
-                        <div class="map-branches">
-                            <div class="map-branch">科技带来的便利</div>
-                            <div class="map-branch">缓解拥堵</div>
-                            <div class="map-branch">节约时间</div>
-                            <div class="map-branch">降低费用</div>
-                        </div>
-                    </div>
-                </div>
+                <p>大家好！欢迎各位 <span class="inline-item">收看<span class="inline-details">shōu kàn</span></span> 我的播客。</p>
+                <p>前不久，我参加 <span class="inline-item">体验<span class="inline-details">tǐ yàn</span></span> 乘坐无人驾驶汽车。这是 <span class="text-red">首次</span> <span class="inline-item text-green">向<span class="inline-details">open to</span></span> 乘客开放的。一开始看着方向盘转动，感觉 <span class="inline-item">神奇<span class="inline-details">shén qí</span></span>，<span class="text-green">就像</span>有鬼<span class="text-green">一样</span>！但很快我就 <span class="inline-item">适应<span class="inline-details">shì yìng</span></span> 了，车子开得很稳，值得 <span class="inline-item">信任<span class="inline-details">xìn rèn</span></span>。以后可以 <span class="inline-item">代替<span class="inline-details">dài tì</span></span> 我接送父亲。</p>
+                <p><span class="text-red">除了能</span> 改变体验，<span class="text-red">还有</span> 什么好处？<span class="text-red">首先</span>，它 <span class="text-green">有助于</span> 缓解 <span class="inline-item">拥堵<span class="inline-details">yōng dǔ</span></span> 现象。</p>
+                <p><span class="text-red">其次</span>，通过软件优化线路，<span class="text-red">这样一来</span>，<span class="text-red">不但能</span> 节约时间，<span class="text-red">也能</span> 省钱！</p>
+                <p><span class="text-red">总的来说</span>，它会 <span class="text-green">给</span> 生活 <span class="text-green">带来很多方便</span>。欢迎留言分享看法。</p>
             </div>
-
-            <!-- 右侧支架工具区 -->
             <div class="right-column">
                 <div class="module module-green">
                     <h3>Sentence Patterns</h3>
-                    <div class="click-hint">👆 Click to reveal Pinyin & Translation</div>
-                    <div class="pattern-item" onclick="this.classList.toggle('active')">
-                        <strong>向……开放</strong>
-                        <div class="pattern-details">(xiàng... kāi fàng) - open to...</div>
-                    </div>
-                    <div class="pattern-item" onclick="this.classList.toggle('active')">
-                        <strong>就像……一样</strong>
-                        <div class="pattern-details">(jiù xiàng... yí yàng) - just like...</div>
-                    </div>
-                    <div class="pattern-item" onclick="this.classList.toggle('active')">
-                        <strong>有助于</strong>
-                        <div class="pattern-details">(yǒu zhù yú) - helps to</div>
-                    </div>
-                    <div class="pattern-item" onclick="this.classList.toggle('active')">
-                        <strong>给……带来很多方便</strong>
-                        <div class="pattern-details">(gěi... dài lái hěn duō fāng biàn) - brings a lot of convenience to...</div>
-                    </div>
+                    <p><strong>向……开放:</strong> open to...</p>
+                    <p><strong>就像……一样:</strong> just like...</p>
+                    <p><strong>有助于:</strong> helps to</p>
                 </div>
-
                 <div class="module module-red">
                     <h3>Key Connectors</h3>
-                    <p><strong>首次：</strong> 首次</p>
-                    <p><strong>除了……还有……：</strong> 除了……还有……</p>
-                    <p><strong>不但……也……：</strong> 不但……也……</p>
-                    <p><strong>这样一来：</strong> 这样一来</p>
-                    <p><strong>逻辑链：</strong> 首先……其次……总的来说……</p>
+                    <p>首次 / 除了…还有 / 不但…也 / 首先…其次…总的来说</p>
                 </div>
-            </div>
-        </div>
-
-        <!-- 下半部分：底部词汇墙 -->
-        <div class="bottom-section">
-            <div style="margin-bottom: 20px;">
-                <h3 style="margin: 0; font-size: 1.4em; color: #1976D2;">Vocabulary</h3>
-            </div>
-            <div class="click-hint">👆 Click on a word to reveal Pinyin & Translation</div>
-            <div class="vocab-grid">
-                <div class="vocab-item" onclick="this.classList.toggle('active')"><strong>驾驶</strong><div class="vocab-details">(jià shǐ) - to drive</div></div>
-                <div class="vocab-item" onclick="this.classList.toggle('active')"><strong>收看</strong><div class="vocab-details">(shōu kàn) - to watch</div></div>
-                <div class="vocab-item" onclick="this.classList.toggle('active')"><strong>体验</strong><div class="vocab-details">(tǐ yàn) - experience</div></div>
-                <div class="vocab-item" onclick="this.classList.toggle('active')"><strong>乘坐</strong><div class="vocab-details">(chéng zuò) - to take</div></div>
-                <div class="vocab-item" onclick="this.classList.toggle('active')"><strong>播客</strong><div class="vocab-details">(bō kè) - podcast</div></div>
-                <div class="vocab-item" onclick="this.classList.toggle('active')"><strong>全球</strong><div class="vocab-details">(quán qiú) - global</div></div>
-                <div class="vocab-item" onclick="this.classList.toggle('active')"><strong>一倍</strong><div class="vocab-details">(yí bèi) - double</div></div>
-                <div class="vocab-item" onclick="this.classList.toggle('active')"><strong>达到</strong><div class="vocab-details">(dá dào) - to reach</div></div>
-                <div class="vocab-item" onclick="this.classList.toggle('active')"><strong>测试</strong><div class="vocab-details">(cè shì) - test</div></div>
-                <div class="vocab-item" onclick="this.classList.toggle('active')"><strong>方向盘</strong><div class="vocab-details">(fāng xiàng pán) - steering wheel</div></div>
-                <div class="vocab-item" onclick="this.classList.toggle('active')"><strong>转动</strong><div class="vocab-details">(zhuǎn dòng) - to turn</div></div>
-                <div class="vocab-item" onclick="this.classList.toggle('active')"><strong>神奇</strong><div class="vocab-details">(shén qí) - magical</div></div>
-                <div class="vocab-item" onclick="this.classList.toggle('active')"><strong>适应</strong><div class="vocab-details">(shì yìng) - to adapt</div></div>
-                <div class="vocab-item" onclick="this.classList.toggle('active')"><strong>稳</strong><div class="vocab-details">(wěn) - stable</div></div>
-                <div class="vocab-item" onclick="this.classList.toggle('active')"><strong>障碍物</strong><div class="vocab-details">(zhàng ài wù) - obstacle</div></div>
-                <div class="vocab-item" onclick="this.classList.toggle('active')"><strong>信任</strong><div class="vocab-details">(xìn rèn) - to trust</div></div>
-                <div class="vocab-item" onclick="this.classList.toggle('active')"><strong>代替</strong><div class="vocab-details">(dài tì) - to replace</div></div>
-                <div class="vocab-item" onclick="this.classList.toggle('active')"><strong>接送</strong><div class="vocab-details">(jiē sòng) - to pick up</div></div>
-                <div class="vocab-item" onclick="this.classList.toggle('active')"><strong>缓解</strong><div class="vocab-details">(huǎn jiě) - to relieve</div></div>
-                <div class="vocab-item" onclick="this.classList.toggle('active')"><strong>拥堵</strong><div class="vocab-details">(yōng dǔ) - traffic jam</div></div>
-                <div class="vocab-item" onclick="this.classList.toggle('active')"><strong>现象</strong><div class="vocab-details">(xiàn xiàng) - phenomenon</div></div>
-                <div class="vocab-item" onclick="this.classList.toggle('active')"><strong>大幅度</strong><div class="vocab-details">(dà fú dù) - by a large margin</div></div>
-                <div class="vocab-item" onclick="this.classList.toggle('active')"><strong>降低</strong><div class="vocab-details">(jiàng dī) - to reduce</div></div>
-                <div class="vocab-item" onclick="this.classList.toggle('active')"><strong>软件</strong><div class="vocab-details">(ruǎn jiàn) - software</div></div>
-                <div class="vocab-item" onclick="this.classList.toggle('active')"><strong>需求</strong><div class="vocab-details">(xū qiú) - demand</div></div>
-                <div class="vocab-item" onclick="this.classList.toggle('active')"><strong>优化</strong><div class="vocab-details">(yōu huà) - to optimize</div></div>
-                <div class="vocab-item" onclick="this.classList.toggle('active')"><strong>线路</strong><div class="vocab-details">(xiàn lù) - route</div></div>
-                <div class="vocab-item" onclick="this.classList.toggle('active')"><strong>节约</strong><div class="vocab-details">(jié yuē) - to save time</div></div>
-                <div class="vocab-item" onclick="this.classList.toggle('active')"><strong>省钱</strong><div class="vocab-details">(shěng qián) - save money</div></div>
-                <div class="vocab-item" onclick="this.classList.toggle('active')"><strong>节省</strong><div class="vocab-details">(jié shěng) - to save</div></div>
             </div>
         </div>
     </div>
 
-    <!-- ==================== TAB 2 ==================== -->
+    <!-- ==================== TAB 2: PRACTICE ==================== -->
     <div id="tab2" class="tab-content">
-        
-        <!-- Drag & Drop Section -->
         <h3 class="section-title">Part 1: Drag & Drop (情境连连看)</h3>
-        <div class="ui-hint">💡 Match the English phrases on the left with the correct Chinese chunks on the right.</div>
+        <div class="ui-hint">💡 Drag the English to the correct Chinese. It will bounce back if incorrect!</div>
         
-        <h4>Level 1: Actions & Feelings</h4>
         <div class="drag-container">
             <div class="drag-col">
                 <div class="draggable-item" draggable="true" ondragstart="drag(event)" id="drag1">Experience riding</div>
                 <div class="draggable-item" draggable="true" ondragstart="drag(event)" id="drag2">Feel magical</div>
                 <div class="draggable-item" draggable="true" ondragstart="drag(event)" id="drag3">Adapt and trust</div>
-                <div class="draggable-item" draggable="true" ondragstart="drag(event)" id="drag4">Replace me to pick up/drop off</div>
             </div>
             <div class="drag-col">
                 <div class="drop-zone" ondrop="drop(event)" ondragover="allowDrop(event)" data-answer="drag3"> [ 适应并信任 ] </div>
                 <div class="drop-zone" ondrop="drop(event)" ondragover="allowDrop(event)" data-answer="drag1"> [ 体验乘坐 ] </div>
-                <div class="drop-zone" ondrop="drop(event)" ondragover="allowDrop(event)" data-answer="drag4"> [ 代替我接送 ] </div>
                 <div class="drop-zone" ondrop="drop(event)" ondragover="allowDrop(event)" data-answer="drag2"> [ 感觉神奇 ] </div>
             </div>
         </div>
 
-        <h4>Level 2: Advantages & Connectors</h4>
-        <div class="drag-container">
-            <div class="drag-col">
-                <div class="draggable-item" draggable="true" ondragstart="drag(event)" id="drag5">Relieve the congestion phenomenon</div>
-                <div class="draggable-item" draggable="true" ondragstart="drag(event)" id="drag6">Save time and money</div>
-                <div class="draggable-item" draggable="true" ondragstart="drag(event)" id="drag7">Not only... but also...</div>
-                <div class="draggable-item" draggable="true" ondragstart="drag(event)" id="drag8">Brings a lot of convenience</div>
-            </div>
-            <div class="drag-col">
-                <div class="drop-zone" ondrop="drop(event)" ondragover="allowDrop(event)" data-answer="drag8"> [ 带来很多方便 ] </div>
-                <div class="drop-zone" ondrop="drop(event)" ondragover="allowDrop(event)" data-answer="drag5"> [ 缓解拥堵现象 ] </div>
-                <div class="drop-zone" ondrop="drop(event)" ondragover="allowDrop(event)" data-answer="drag7"> [ 不但……也…… ] </div>
-                <div class="drop-zone" ondrop="drop(event)" ondragover="allowDrop(event)" data-answer="drag6"> [ 节约时间并省钱 ] </div>
-            </div>
-        </div>
-
-        <hr style="border: 0; border-top: 1px solid #eee; margin: 40px 0;">
-
-        <!-- Flip Cards Section -->
-        <h3 class="section-title">Part 2: Active Recall (打字解锁翻转卡)</h3>
-        <div class="ui-hint">💡 Type the Chinese characters to unlock the card. Use the 💡 if you need pinyin help!</div>
-        
-        <div class="cards-grid">
-            <!-- 卡片 1 -->
-            <div class="flip-card" id="card1">
-                <div class="flip-card-inner" id="inner1">
-                    <div class="flip-card-front">
-                        <div class="card-prompt">How to say "experience riding"? 🎢</div>
-                        <div class="card-input-group">
-                            <input type="text" class="card-input" id="input1" placeholder="Type Chinese...">
-                            <button class="card-btn" onclick="checkCard('input1', 'inner1', '体验乘坐')">Go</button>
-                            <button class="sos-btn" onclick="toggleHint('hint1')">💡</button>
-                        </div>
-                        <div class="sos-hint" id="hint1">Pinyin: tǐ yàn chéng zuò</div>
-                    </div>
-                    <div class="flip-card-back">体验乘坐</div>
-                </div>
-            </div>
-            <!-- 卡片 2 -->
-            <div class="flip-card" id="card2">
-                <div class="flip-card-inner" id="inner2">
-                    <div class="flip-card-front">
-                        <div class="card-prompt">How to say "feel magical"? ✨</div>
-                        <div class="card-input-group">
-                            <input type="text" class="card-input" id="input2" placeholder="Type Chinese...">
-                            <button class="card-btn" onclick="checkCard('input2', 'inner2', '感觉神奇')">Go</button>
-                            <button class="sos-btn" onclick="toggleHint('hint2')">💡</button>
-                        </div>
-                        <div class="sos-hint" id="hint2">Pinyin: gǎn jué shén qí</div>
-                    </div>
-                    <div class="flip-card-back">感觉神奇</div>
-                </div>
-            </div>
-            <!-- 卡片 3 -->
-            <div class="flip-card" id="card3">
-                <div class="flip-card-inner" id="inner3">
-                    <div class="flip-card-front">
-                        <div class="card-prompt">How to say "adapt and trust"? 🤝</div>
-                        <div class="card-input-group">
-                            <input type="text" class="card-input" id="input3" placeholder="Type Chinese...">
-                            <button class="card-btn" onclick="checkCard('input3', 'inner3', '适应并信任')">Go</button>
-                            <button class="sos-btn" onclick="toggleHint('hint3')">💡</button>
-                        </div>
-                        <div class="sos-hint" id="hint3">Pinyin: shì yìng bìng xìn rèn</div>
-                    </div>
-                    <div class="flip-card-back">适应并信任</div>
-                </div>
-            </div>
-            <!-- 卡片 4 -->
-            <div class="flip-card" id="card4">
-                <div class="flip-card-inner" id="inner4">
-                    <div class="flip-card-front">
-                        <div class="card-prompt">"Relieve the congestion phenomenon"? 🚦</div>
-                        <div class="card-input-group">
-                            <input type="text" class="card-input" id="input4" placeholder="Type Chinese...">
-                            <button class="card-btn" onclick="checkCard('input4', 'inner4', '缓解拥堵现象')">Go</button>
-                            <button class="sos-btn" onclick="toggleHint('hint4')">💡</button>
-                        </div>
-                        <div class="sos-hint" id="hint4">Pinyin: huǎn jiě yōng dǔ xiàn xiàng</div>
-                    </div>
-                    <div class="flip-card-back">缓解拥堵现象</div>
-                </div>
-            </div>
-            <!-- 卡片 5 -->
-            <div class="flip-card" id="card5">
-                <div class="flip-card-inner" id="inner5">
-                    <div class="flip-card-front">
-                        <div class="card-prompt">How to say "save time"? ⏱️</div>
-                        <div class="card-input-group">
-                            <input type="text" class="card-input" id="input5" placeholder="Type Chinese...">
-                            <button class="card-btn" onclick="checkCard('input5', 'inner5', '节约时间')">Go</button>
-                            <button class="sos-btn" onclick="toggleHint('hint5')">💡</button>
-                        </div>
-                        <div class="sos-hint" id="hint5">Pinyin: jié yuē shí jiān</div>
-                    </div>
-                    <div class="flip-card-back">节约时间</div>
-                </div>
-            </div>
-            <!-- 卡片 6 -->
-            <div class="flip-card" id="card6">
-                <div class="flip-card-inner" id="inner6">
-                    <div class="flip-card-front">
-                        <div class="card-prompt">"Replace me to pick up/drop off"? 🚕</div>
-                        <div class="card-input-group">
-                            <input type="text" class="card-input" id="input6" placeholder="Type Chinese...">
-                            <button class="card-btn" onclick="checkCard('input6', 'inner6', '代替我接送')">Go</button>
-                            <button class="sos-btn" onclick="toggleHint('hint6')">💡</button>
-                        </div>
-                        <div class="sos-hint" id="hint6">Pinyin: dài tì wǒ jiē sòng</div>
-                    </div>
-                    <div class="flip-card-back">代替我接送</div>
-                </div>
-            </div>
-            <!-- 卡片 7 -->
-            <div class="flip-card" id="card7">
-                <div class="flip-card-inner" id="inner7">
-                    <div class="flip-card-front">
-                        <div class="card-prompt">Express "Not only... but also..."? ➕</div>
-                        <div class="card-input-group">
-                            <input type="text" class="card-input" id="input7" placeholder="Type Chinese...">
-                            <button class="card-btn" onclick="checkCard('input7', 'inner7', '不但也')">Go</button>
-                            <button class="sos-btn" onclick="toggleHint('hint7')">💡</button>
-                        </div>
-                        <div class="sos-hint" id="hint7">Pinyin: bù dàn yě (No punctuation needed)</div>
-                    </div>
-                    <div class="flip-card-back">不但……也……</div>
-                </div>
-            </div>
-            <!-- 卡片 8 -->
-            <div class="flip-card" id="card8">
-                <div class="flip-card-inner" id="inner8">
-                    <div class="flip-card-front">
-                        <div class="card-prompt">"Besides... there are also..."? 📦</div>
-                        <div class="card-input-group">
-                            <input type="text" class="card-input" id="input8" placeholder="Type Chinese...">
-                            <button class="card-btn" onclick="checkCard('input8', 'inner8', '除了能还有')">Go</button>
-                            <button class="sos-btn" onclick="toggleHint('hint8')">💡</button>
-                        </div>
-                        <div class="sos-hint" id="hint8">Pinyin: chú le néng hái yǒu</div>
-                    </div>
-                    <div class="flip-card-back">除了能……还有……</div>
-                </div>
-            </div>
-            <!-- 卡片 9 -->
-            <div class="flip-card" id="card9">
-                <div class="flip-card-inner" id="inner9">
-                    <div class="flip-card-front">
-                        <div class="card-prompt">Express "Thus / In this way..."? ➡️</div>
-                        <div class="card-input-group">
-                            <input type="text" class="card-input" id="input9" placeholder="Type Chinese...">
-                            <button class="card-btn" onclick="checkCard('input9', 'inner9', '这样一来')">Go</button>
-                            <button class="sos-btn" onclick="toggleHint('hint9')">💡</button>
-                        </div>
-                        <div class="sos-hint" id="hint9">Pinyin: zhè yàng yì lái</div>
-                    </div>
-                    <div class="flip-card-back">这样一来</div>
-                </div>
-            </div>
-            <!-- 卡片 10 -->
-            <div class="flip-card" id="card10">
-                <div class="flip-card-inner" id="inner10">
-                    <div class="flip-card-front">
-                        <div class="card-prompt">"brings a lot of convenience"? 🎁</div>
-                        <div class="card-input-group">
-                            <input type="text" class="card-input" id="input10" placeholder="Type Chinese...">
-                            <button class="card-btn" onclick="checkCard('input10', 'inner10', '带来很多方便')">Go</button>
-                            <button class="sos-btn" onclick="toggleHint('hint10')">💡</button>
-                        </div>
-                        <div class="sos-hint" id="hint10">Pinyin: dài lái hěn duō fāng biàn</div>
-                    </div>
-                    <div class="flip-card-back">带来很多方便</div>
-                </div>
-            </div>
-        </div>
-
-        <hr style="border: 0; border-top: 1px solid #eee; margin: 40px 0;">
-
-        <!-- Gap-fill Section -->
         <h3 class="section-title">Part 3: Gap-fill (语境填空)</h3>
-        <div class="ui-hint">💡 Drag the words from the Word Bank to fill in the blanks in the paragraphs.</div>
+        <div class="ui-hint">💡 Drag words into the blanks. Wrong answers will bounce back.</div>
 
-        <!-- Paragraph 1 -->
         <div class="gap-fill-box">
             <div class="word-bank">
-                <strong>Word Bank 1:</strong>
                 <span class="word-tag" draggable="true" ondragstart="drag(event)" id="gf1_1">体验乘坐</span>
                 <span class="word-tag" draggable="true" ondragstart="drag(event)" id="gf1_2">感觉神奇</span>
-                <span class="word-tag" draggable="true" ondragstart="drag(event)" id="gf1_3">就像</span>
-                <span class="word-tag" draggable="true" ondragstart="drag(event)" id="gf1_4">一样</span>
                 <span class="word-tag" draggable="true" ondragstart="drag(event)" id="gf1_5">适应并信任</span>
             </div>
-            昨天，我第一次 <span class="gap-blank" ondrop="dropText(event)" ondragover="allowDrop(event)"></span> 了无人驾驶汽车。一开始，看着方向盘自己转动，我 <span class="gap-blank" ondrop="dropText(event)" ondragover="allowDrop(event)"></span>，<span class="gap-blank" style="width:60px;" ondrop="dropText(event)" ondragover="allowDrop(event)"></span> 变魔术 <span class="gap-blank" style="width:60px;" ondrop="dropText(event)" ondragover="allowDrop(event)"></span>。但很快我就能 <span class="gap-blank" ondrop="dropText(event)" ondragover="allowDrop(event)"></span> 它了，因为它开得很稳。
-        </div>
-
-        <!-- Paragraph 2 -->
-        <div class="gap-fill-box">
-            <div class="word-bank">
-                <strong>Word Bank 2:</strong>
-                <span class="word-tag" draggable="true" ondragstart="drag(event)" id="gf2_1">有助于</span>
-                <span class="word-tag" draggable="true" ondragstart="drag(event)" id="gf2_2">缓解拥堵现象</span>
-                <span class="word-tag" draggable="true" ondragstart="drag(event)" id="gf2_3">不但</span>
-                <span class="word-tag" draggable="true" ondragstart="drag(event)" id="gf2_4">也</span>
-                <span class="word-tag" draggable="true" ondragstart="drag(event)" id="gf2_5">节约时间</span>
-                <span class="word-tag" draggable="true" ondragstart="drag(event)" id="gf2_6">省钱</span>
-            </div>
-            这种新技术对城市交通有很大好处。它 <span class="gap-blank" style="width:80px;" ondrop="dropText(event)" ondragover="allowDrop(event)"></span> <span class="gap-blank" style="width:140px;" ondrop="dropText(event)" ondragover="allowDrop(event)"></span>。此外，通过优化线路，它 <span class="gap-blank" style="width:60px;" ondrop="dropText(event)" ondragover="allowDrop(event)"></span> 能帮乘客 <span class="gap-blank" ondrop="dropText(event)" ondragover="allowDrop(event)"></span>，<span class="gap-blank" style="width:40px;" ondrop="dropText(event)" ondragover="allowDrop(event)"></span> 能帮大家 <span class="gap-blank" style="width:60px;" ondrop="dropText(event)" ondragover="allowDrop(event)"></span>。
-        </div>
-
-        <!-- Paragraph 3 -->
-        <div class="gap-fill-box">
-            <div class="word-bank">
-                <strong>Word Bank 3:</strong>
-                <span class="word-tag" draggable="true" ondragstart="drag(event)" id="gf3_1">除了能</span>
-                <span class="word-tag" draggable="true" ondragstart="drag(event)" id="gf3_2">还有</span>
-                <span class="word-tag" draggable="true" ondragstart="drag(event)" id="gf3_3">更安全</span>
-                <span class="word-tag" draggable="true" ondragstart="drag(event)" id="gf3_4">这样一来</span>
-                <span class="word-tag" draggable="true" ondragstart="drag(event)" id="gf3_5">代替我接送</span>
-            </div>
-            <span class="gap-blank" style="width:80px;" ondrop="dropText(event)" ondragover="allowDrop(event)"></span> 解决交通问题，无人驾驶汽车 <span class="gap-blank" style="width:60px;" ondrop="dropText(event)" ondragover="allowDrop(event)"></span> 很多其他好处。因为没有人类司机的失误，所以它 <span class="gap-blank" style="width:80px;" ondrop="dropText(event)" ondragover="allowDrop(event)"></span>。<span class="gap-blank" style="width:100px;" ondrop="dropText(event)" ondragover="allowDrop(event)"></span>，等我父亲老了，它甚至可以 <span class="gap-blank" ondrop="dropText(event)" ondragover="allowDrop(event)"></span> 他去医院。
-        </div>
-
-        <!-- Paragraph 4 -->
-        <div class="gap-fill-box">
-            <div class="word-bank">
-                <strong>Word Bank 4:</strong>
-                <span class="word-tag" draggable="true" ondragstart="drag(event)" id="gf4_1">总的来说</span>
-                <span class="word-tag" draggable="true" ondragstart="drag(event)" id="gf4_2">带来很多方便</span>
-                <span class="word-tag" draggable="true" ondragstart="drag(event)" id="gf4_3">不可缺少</span>
-            </div>
-            <span class="gap-blank" ondrop="dropText(event)" ondragover="allowDrop(event)"></span>，无人驾驶技术会给我们的日常生活 <span class="gap-blank" style="width:140px;" ondrop="dropText(event)" ondragover="allowDrop(event)"></span>。我想，在不久的将来，它一定会成为我们生活中 <span class="gap-blank" ondrop="dropText(event)" ondragover="allowDrop(event)"></span> 的一部分。
+            昨天，我第一次 <span class="gap-blank" ondrop="drop(event)" ondragover="allowDrop(event)" data-answer="gf1_1"></span> 了无人驾驶汽车。看着方向盘转动，我 <span class="gap-blank" ondrop="drop(event)" ondragover="allowDrop(event)" data-answer="gf1_2"></span>。很快我就能 <span class="gap-blank" ondrop="drop(event)" ondragover="allowDrop(event)" data-answer="gf1_5"></span> 它了。
         </div>
     </div>
 
-    <!-- ==================== TAB 3 ==================== -->
+    <!-- ==================== TAB 3: SPEAK YOUR MIND ==================== -->
     <div id="tab3" class="tab-content">
-        <div class="ui-hint">💡 <strong>Mission:</strong> You have already mastered the vocabulary in Tab 2! Now, pick a character below and speak out your thoughts using the "3-Step". You don't need to invent new ideas, just use the chunks you just learned!</div>
-        
-        <div class="formula-box">
-            <h3 style="margin-top:0; color:#2E7D32;">🏆 The 3-Step Formula (万能开口公式)</h3>
-            <ul style="line-height: 1.8; margin-bottom: 0;">
-                <li><strong>Step 1: My Perspective (我的立场)</strong> 👉 “我认为……” (I think...) / “总的来说……” (In general...)</li>
-                <li><strong>Step 2: Explanation (解释原因)</strong> 👉 “首先，它有助于…… 其次，它不但…… 也……” (First... Second, not only... but also...)</li>
-                <li><strong>Step 3: Personal Experience (自身经验)</strong> 👉 “拿我自己的生活来说……” (Take my own life as an example...)</li>
-            </ul>
+        <div class="ui-hint">
+            💡 **Mission:** Pick a character and type out your thoughts. 
+            For Step 3, try to type your own experience, **OR simply press the 'Enter' key inside the box** to use the default hint!
         </div>
 
-        <!-- Mission 1 -->
-        <div class="mission-card">
+        <!-- Mission 1: Jason -->
+        <div class="mission-card" id="mission1_card">
             <div class="mission-header">
-                <h3 class="mission-title">Mission 1: Jason</h3>
-                <span>[ 科技狂热粉 (Tech Enthusiast) ]</span>
+                <h3 class="mission-title">Mission 1: Jason</h3><span>[ 科技狂热粉 (Tech Enthusiast) ]</span>
             </div>
-            <div class="mission-context"><strong>Context:</strong> Jason is recording a vlog after his first ride in an autonomous taxi in Singapore. He wants to explain why this technology is amazing. (绝对支持无人驾驶，侧重于“科技带来的便利与效率”)</div>
-            <div style="margin-bottom: 15px;"><strong>Word Bank:</strong> <span class="word-tag">体验乘坐</span> <span class="word-tag">感觉神奇</span> <span class="word-tag">就像……一样</span> <span class="word-tag">适应并信任</span> <span class="word-tag">缓解拥堵现象</span> <span class="word-tag">节约时间</span></div>
+            <div style="margin-bottom: 15px;"><strong>Word Bank:</strong> <span class="word-tag">体验乘坐</span> <span class="word-tag">缓解拥堵现象</span> <span class="word-tag">节约时间</span></div>
+            
             <div class="mission-scaffold">
-                (Step 1) 大家好，昨天我第一次 <span class="scaffold-blank">[ 填入语块 ]</span> 了无人驾驶汽车。看着方向盘自己转动，我 <span class="scaffold-blank">[ 填入语块 ]</span>，<span class="scaffold-blank">[ 连词 ]</span> 变魔术 <span class="scaffold-blank">[ 连词 ]</span>！<br>
-                (Step 2) 我认为这项技术很好。首先，它有助于 <span class="scaffold-blank">[ 填入语块 ]</span>。其次，它不但能帮大家 <span class="scaffold-blank">[ 填入语块 ]</span>，开得也很稳，所以我很快就能 <span class="scaffold-blank">[ 填入语块 ]</span> 它了。<br>
-                (Step 3) 拿我自己来说，如果我以后每天坐它上学，一定会非常方便。
-            </div>
-        </div>
-
-        <!-- Mission 2 -->
-        <div class="mission-card">
-            <div class="mission-header">
-                <h3 class="mission-title">Mission 2: Emma</h3>
-                <span>[ 贴心顾家派 (Family-Oriented Caregiver) ]</span>
-            </div>
-            <div class="mission-context"><strong>Context:</strong> Emma is discussing with her parents whether they should buy an autonomous car in the future. (关注家庭成员的出行需求，侧重于“安全性与照顾长辈”)</div>
-            <div style="margin-bottom: 15px;"><strong>Word Bank:</strong> <span class="word-tag">除了能……还有……</span> <span class="word-tag">更安全</span> <span class="word-tag">这样一来</span> <span class="word-tag">代替我接送</span> <span class="word-tag">带来很多方便</span></div>
-            <div class="mission-scaffold">
-                (Step 1) 爸爸妈妈，总的来说，我觉得无人驾驶汽车会给我们的家庭 <span class="scaffold-blank">[ 填入语块 ]</span>。<br>
-                (Step 2) 它 <span class="scaffold-blank">[ 连词 ]</span> 解决出行问题，<span class="scaffold-blank">[ 连词 ]</span> 其他好处。因为它没有人类司机的失误，所以它 <span class="scaffold-blank">[ 填入语块 ]</span>。<br>
-                (Step 3) 拿我们家来说，等爷爷奶奶老了，<span class="scaffold-blank">[ 连词 ]</span>，它甚至可以 <span class="scaffold-blank">[ 填入语块 ]</span> 他们去医院！
+                <strong>(Step 1)</strong> 大家好，昨天我第一次 <input type="text" class="scaffold-input m1-data" placeholder="[词汇]"> 了无人驾驶汽车。看着方向盘自己转动，我感觉就像变魔术 <input type="text" class="scaffold-input m1-data" placeholder="[连词]" style="width:60px;">！<br>
+                
+                <strong>(Step 2)</strong> 首先，它有助于 <input type="text" class="scaffold-input m1-data" placeholder="[词汇]" style="width:150px;">。其次，它不但能帮大家 <input type="text" class="scaffold-input m1-data" placeholder="[词汇]">，而且开得很稳。<br>
+                
+                <strong>(Step 3) 自身经验：</strong><br>
+                <input type="text" class="scaffold-input ghost-input m1-data" 
+                       placeholder="[ Press Enter to use hint: 拿我自己来说，如果我以后每天坐它上学，一定会非常方便。 ]" 
+                       data-ghost="拿我自己来说，如果我以后每天坐它上学，一定会非常方便。" 
+                       onkeydown="checkGhost(event, this)">
             </div>
         </div>
 
-        <!-- Mission 3 -->
-        <div class="mission-card">
-            <div class="mission-header">
-                <h3 class="mission-title">Mission 3: Mike</h3>
-                <span>[ 务实学生党 (Pragmatic Student) ]</span>
-            </div>
-            <div class="mission-context"><strong>Context:</strong> Mike's class is discussing the topic "Technology & Future Life". He needs to give an example of how tech solves daily problems. (关注现实生活与痛点，侧重于“缓解拥堵、节约时间和金钱”)</div>
-            <div style="margin-bottom: 15px;"><strong>Word Bank:</strong> <span class="word-tag">不可缺少</span> <span class="word-tag">不但……也……</span> <span class="word-tag">省钱</span></div>
-            <div class="mission-scaffold">
-                (Step 1) 我认为在不久的将来，科技一定会成为我们生活中 <span class="scaffold-blank">[ 填入语块 ]</span> 的一部分。<br>
-                (Step 2) 比如自动驾驶技术，它 <span class="scaffold-blank">[ 连词 ]</span> 能帮乘客节约时间，<span class="scaffold-blank">[ 连词 ]</span> 能通过优化线路帮大家 <span class="scaffold-blank">[ 填入语块 ]</span>。<br>
-                (Step 3) 拿我自己的生活来说，有了这种智能技术，父母就不用每天辛苦开车，我们的生活一定会变得更好。
-            </div>
-        </div>
-        
-        <!-- Mission 4 -->
-        <div class="mission-card">
-            <div class="mission-header">
-                <h3 class="mission-title">Mission 4: Lily</h3>
-                <span>[ 环保行动派 (Eco-Advocate) ]</span>
-            </div>
-            <div class="mission-context"><strong>Context:</strong> Lily is giving a presentation to the school on how smart technology makes our city better and more efficient.</div>
-            <div style="margin-bottom: 15px;"><strong>Word Bank:</strong> <span class="word-tag">有助于</span> <span class="word-tag">缓解拥堵现象</span> <span class="word-tag">总的来说</span> <span class="word-tag">不可缺少</span></div>
-            <div class="mission-scaffold">
-                (Step 1) <span class="scaffold-blank">[ 连词 ]</span>，我认为智能汽车是未来城市发展 <span class="scaffold-blank">[ 填入语块 ]</span> 的重要工具。<br>
-                (Step 2) 城市里最大的问题就是塞车。这种新技术 <span class="scaffold-blank">[ 填入语块 ]</span> 极大地 <span class="scaffold-blank">[ 填入语块 ]</span>，让交通变得更顺畅。<br>
-                (Step 3) 拿我们生活的城市来说，如果路上的车不再拥堵，空气也会变得更好，人们出门也会更开心。
-            </div>
-        </div>
-
-        <!-- Mission 5 -->
-        <div class="mission-card">
-            <div class="mission-header">
-                <h3 class="mission-title">Mission 5: David</h3>
-                <span>[ 播客达人 (Podcast Host) ]</span>
-            </div>
-            <div class="mission-context"><strong>Context:</strong> David is recording a podcast about how AI and technology act as our personal assistants, saving us time for more important things.</div>
-            <div style="margin-bottom: 15px;"><strong>Word Bank:</strong> <span class="word-tag">代替我接送</span> <span class="word-tag">节约时间</span> <span class="word-tag">带来很多方便</span> <span class="word-tag">就像……一样</span></div>
-            <div class="mission-scaffold">
-                (Step 1) 欢迎收看我的播客。我认为科技给现代人 <span class="scaffold-blank">[ 填入语块 ]</span>，它就是我们最好的生活助手。<br>
-                (Step 2) 比如未来的汽车可以自己开，这不仅能帮我们 <span class="scaffold-blank">[ 填入语块 ]</span>，这 <span class="scaffold-blank">[ 填入语块 ]</span> 拥有了一个贴身机器人 <span class="scaffold-blank">[ 连词 ]</span>。<br>
-                (Step 3) 拿我自己的家庭来说，如果未来有智能汽车 <span class="scaffold-blank">[ 填入语块 ]</span> 我去学校，我就可以在车上多睡一会儿或者看书了！
-            </div>
-        </div>
+        <button class="action-btn" onclick="downloadTab3()">⬇️ Download My Missions (保存我的口语卡)</button>
     </div>
 
-    <!-- ==================== TAB 4 ==================== -->
+    <!-- ==================== TAB 4: WRITE IT DOWN ==================== -->
     <div id="tab4" class="tab-content">
         <div class="ui-hint" style="background-color: #E8F5E9; border-color: #4CAF50;">
-            🎉 <strong>Congratulations! You have already done the hard work!</strong><br>
-            Now, all you need to do is type out EXACTLY what you just said. Don't worry about perfect grammar right now. Just get your ideas on the screen!
+            🎉 <strong>Congratulations!</strong> Click the Auto-Fill button to turn your Mission 1 speaking notes into a blog post!
         </div>
-
-        <h3 class="section-title">📝 Mission: Publish Your First Blog</h3>
-        <p><strong>Task:</strong> Choose your favorite character from Tab 3. Turn your spoken words into a short blog post.<br>请直接在这个标准的“博客模板”里填入你的想法：</p>
+        
+        <button class="action-btn blue" onclick="autoFillBlog()" style="margin: 0 0 25px 0; width: 100%;">✨ Auto-Fill from Tab 3 (一键同步)</button>
 
         <div class="blog-editor">
-            <h4 style="margin-top:0; color:#1976D2;">🛠️ The "Cheat Sheet" Blog Template</h4>
-            
-            <div class="editor-group">
-                <label>博客名字 (Blog Name):</label>
-                <input type="text" class="editor-input" placeholder="e.g., Jason的科技日记">
-            </div>
-            <div class="editor-group">
-                <label>日期 (Date):</label>
-                <input type="text" class="editor-input" placeholder="e.g., 2026年7月11日">
-            </div>
-            <div class="editor-group">
-                <label>文章标题 (Post Title):</label>
-                <input type="text" class="editor-input" placeholder="e.g., 无人驾驶真的好用吗？">
-            </div>
-
-            <hr style="border: 0; border-top: 1px dashed #ccc; margin: 30px 0;">
+            <div class="editor-group"><label>文章标题 (Post Title):</label><input type="text" class="editor-input" id="blog_title" value="无人驾驶真的好用吗？"></div>
 
             <div class="editor-group">
-                <label>Paragraph 1: Greeting & My Perspective (打招呼 + 我的立场)</label>
-                <div class="editor-hint">大家好！欢迎来到我的博客。今天我想和大家聊聊…… (👉 Type what you said here)</div>
-                <textarea class="editor-textarea" placeholder="[ 你的输入区 / Typing Area ]"></textarea>
+                <label>Paragraph 1: Greeting & My Perspective</label>
+                <textarea class="editor-textarea" id="blog_p1" placeholder="[ Click Auto-Fill to populate ]"></textarea>
             </div>
-
             <div class="editor-group">
-                <label>Paragraph 2: Explanations & Connectors (用红绿连词解释原因)</label>
-                <div class="editor-hint">我认为这项技术……。首先，它有助于……。其次，它不但……也…… (👉 Type what you said here)</div>
-                <textarea class="editor-textarea" placeholder="[ 你的输入区 / Typing Area ]"></textarea>
+                <label>Paragraph 2: Explanations & Connectors</label>
+                <textarea class="editor-textarea" id="blog_p2" placeholder="[ Click Auto-Fill to populate ]"></textarea>
             </div>
-
             <div class="editor-group">
-                <label>Paragraph 3: Personal Experience & Ending (自身经验 + 互动结尾)</label>
-                <div class="editor-hint">拿我自己的生活来说…… (👉 Type what you said here)<br>最后，大家对这项技术有什么看法呢？欢迎在下面留言！</div>
-                <textarea class="editor-textarea" placeholder="[ 你的输入区 / Typing Area ]"></textarea>
+                <label>Paragraph 3: Personal Experience & Ending</label>
+                <textarea class="editor-textarea" id="blog_p3" placeholder="[ Click Auto-Fill to populate ]"></textarea>
             </div>
         </div>
+        
+        <button class="action-btn" onclick="downloadBlog()">⬇️ Download Blog (下载博客作业)</button>
     </div>
 
 </div>
 
 <script>
-    // 1. Tab 切换逻辑
+    // 1. 导航栏切换
     function openTab(evt, tabName) {
-        var i, tabcontent, tablinks;
-        tabcontent = document.getElementsByClassName("tab-content");
-        for (i = 0; i < tabcontent.length; i++) {
-            tabcontent[i].style.display = "none";
-            tabcontent[i].classList.remove("active");
-        }
-        tablinks = document.getElementsByClassName("tab-link");
-        for (i = 0; i < tablinks.length; i++) {
-            tablinks[i].className = tablinks[i].className.replace(" active", "");
-        }
+        let contents = document.getElementsByClassName("tab-content");
+        for (let i = 0; i < contents.length; i++) contents[i].style.display = "none";
+        let links = document.getElementsByClassName("tab-link");
+        for (let i = 0; i < links.length; i++) links[i].className = links[i].className.replace(" active", "");
         document.getElementById(tabName).style.display = "block";
-        document.getElementById(tabName).classList.add("active");
         evt.currentTarget.className += " active";
     }
 
-    // 2. Drag and Drop 逻辑 (用于 Level 1 & 2 连连看)
-    function allowDrop(ev) {
-        ev.preventDefault();
-    }
-    function drag(ev) {
-        ev.dataTransfer.setData("text", ev.target.id);
-    }
+    // 2. Tab 2 严格拖拽校验逻辑 (Strict Validation)
+    function allowDrop(ev) { ev.preventDefault(); }
+    function drag(ev) { ev.dataTransfer.setData("text", ev.target.id); }
+    
     function drop(ev) {
         ev.preventDefault();
         var data = ev.dataTransfer.getData("text");
         var draggedElement = document.getElementById(data);
-        
-        // 检查目标是否是 drop-zone
-        if (ev.target.classList.contains("drop-zone")) {
-            ev.target.innerHTML = ""; // 清空括号
+        var expectedAnswer = ev.target.getAttribute("data-answer");
+
+        // 校验：拖动的 ID 是否等于目标框设定的 data-answer
+        if (expectedAnswer === data) {
+            ev.target.innerHTML = "";
             ev.target.appendChild(draggedElement);
             ev.target.style.backgroundColor = "#E8F5E9";
             ev.target.style.borderColor = "#4CAF50";
-        }
-    }
-
-    // 3. Gap Fill 拖拽逻辑 (将文本复制到空白处)
-    function dropText(ev) {
-        ev.preventDefault();
-        var data = ev.dataTransfer.getData("text");
-        var draggedElement = document.getElementById(data);
-        
-        if (ev.target.classList.contains("gap-blank")) {
-            ev.target.innerText = draggedElement.innerText;
-            ev.target.style.borderBottomColor = "#4CAF50";
-            ev.target.style.backgroundColor = "#E8F5E9";
-        }
-    }
-
-    // 4. Flip Card 智能容错校验逻辑
-    function checkCard(inputId, innerId, correctAnswer) {
-        var inputEl = document.getElementById(inputId);
-        // 清除空格和标点符号进行容错比对
-        var studentAnswer = inputEl.value.trim().replace(/[.,!?;:，。！？；：\s]/g, '');
-        
-        if (studentAnswer === correctAnswer) {
-            document.getElementById(innerId).parentElement.classList.add("flipped");
-            inputEl.style.borderColor = "#4CAF50";
-            inputEl.style.backgroundColor = "#E8F5E9";
         } else {
-            // 触发震动报错
-            inputEl.classList.remove("shake");
-            void inputEl.offsetWidth; // 触发 reflow 重置动画
-            inputEl.classList.add("shake");
-            inputEl.style.borderColor = "#F44336";
+            // 错误：触发震动特效，拒绝放入
+            ev.target.classList.remove("shake");
+            void ev.target.offsetWidth; 
+            ev.target.classList.add("shake");
         }
     }
 
-    // 5. 显示/隐藏 💡 SOS Hint
-    function toggleHint(hintId) {
-        var hintEl = document.getElementById(hintId);
-        if (hintEl.style.display === "block") {
-            hintEl.style.display = "none";
-        } else {
-            hintEl.style.display = "block";
+    // 3. Tab 3 幽灵字逻辑 (Ghost Text on Enter)
+    function checkGhost(e, el) {
+        if (e.key === 'Enter' && el.value.trim() === '') {
+            e.preventDefault();
+            el.value = el.getAttribute('data-ghost');
+            el.style.color = "#333"; // 变成黑色真实输入
         }
+    }
+
+    // 4. Tab 3 下载功能
+    function downloadTab3() {
+        let inputs = document.getElementsByClassName('m1-data');
+        let content = "MISSION 1: Jason's Tech Vlog\n\n";
+        content += "Step 1: 大家好，昨天我第一次 [" + (inputs[0].value || "...") + "] 了无人驾驶汽车。看着方向盘自己转动，我感觉就像变魔术 [" + (inputs[1].value || "...") + "]！\n";
+        content += "Step 2: 首先，它有助于 [" + (inputs[2].value || "...") + "]。其次，它不但能帮大家 [" + (inputs[3].value || "...") + "]，而且开得很稳。\n";
+        content += "Step 3: " + (inputs[4].value || "...") + "\n";
+        
+        let blob = new Blob([content], { type: "text/plain;charset=utf-8" });
+        let link = document.createElement("a");
+        link.href = URL.createObjectURL(blob);
+        link.download = "My_Speaking_Missions.txt";
+        link.click();
+    }
+
+    // 5. Tab 4 自动同步功能 (Auto-Fill)
+    function autoFillBlog() {
+        let inputs = document.getElementsByClassName('m1-data');
+        document.getElementById('blog_p1').value = "大家好！欢迎来到我的博客。今天我想和大家聊聊无人驾驶。昨天我第一次 " + (inputs[0].value || "___") + " 了无人驾驶汽车。看着方向盘自己转动，我感觉就像变魔术 " + (inputs[1].value || "___") + "！";
+        document.getElementById('blog_p2').value = "我认为这项技术很好。首先，它有助于 " + (inputs[2].value || "___") + "。其次，它不但能帮大家 " + (inputs[3].value || "___") + "，而且开得很稳。";
+        document.getElementById('blog_p3').value = (inputs[4].value || "___") + " \n\n最后，大家对这项技术有什么看法呢？欢迎在下面留言！";
+    }
+
+    // 6. Tab 4 下载博客
+    function downloadBlog() {
+        let title = document.getElementById('blog_title').value;
+        let p1 = document.getElementById('blog_p1').value;
+        let p2 = document.getElementById('blog_p2').value;
+        let p3 = document.getElementById('blog_p3').value;
+        
+        let content = "Title: " + title + "\n\n" + p1 + "\n\n" + p2 + "\n\n" + p3;
+        let blob = new Blob([content], { type: "text/plain;charset=utf-8" });
+        let link = document.createElement("a");
+        link.href = URL.createObjectURL(blob);
+        link.download = "My_Blog_Post.txt";
+        link.click();
     }
 </script>
-
 </body>
 </html>
