@@ -316,6 +316,35 @@
     <div class="content-wrapper">
         
         <div class="left-column">
+            
+            <!-- 1. 新增：MP3 播放器模块 -->
+            <div style="margin: 0 0 25px 0; text-align: center; background-color: #f8f9fa; padding: 15px; border-radius: 8px; border: 1px solid #e9ecef;">
+                <p style="margin-top: 0; color: #555; font-size: 0.9em; font-family: 'PingFang SC', sans-serif;">🎧 点击播放播客音频 (Listen to the Podcast)</p>
+                <audio controls style="width: 100%; max-width: 400px;">
+                    <source src="Text1_Autonomous_Vehicle.mp3" type="audio/mpeg">
+                    您的浏览器不支持音频播放组件。
+                </audio>
+            </div>
+
+            <!-- 2. 新增：博客标准头部信息 (格式化排版) -->
+            <div style="margin-bottom: 25px; font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif; color: #555;">
+                <!-- 第一行：靠左 -->
+                <div style="text-align: left; font-weight: bold; font-size: 1.1em; margin-bottom: 5px; color: #333;">南洋世界的播客</div>
+                
+                <!-- 第二行：靠左 -->
+                <div style="text-align: left; font-size: 0.9em; color: #1976D2; margin-bottom: 15px;">http://www.nanyangpodcast.com</div>
+                
+                <!-- 第三行：左、中、右排版 -->
+                <div style="display: flex; justify-content: space-between; align-items: center; font-size: 0.95em; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 1px solid #eee;">
+                    <div style="flex: 1; text-align: left;">2019年1月1日</div>
+                    <div style="flex: 1; text-align: center;">星期六</div>
+                    <div style="flex: 1; text-align: right;">1点30分</div>
+                </div>
+
+                <!-- 第四行：居中 -->
+                <div style="text-align: center; font-size: 1.5em; font-weight: bold; color: #222; margin-top: 15px; margin-bottom: 20px;">无人驾驶汽车</div>
+            </div>
+
             <p>
                 大家好！欢迎各位 <span class="inline-item text-blue" onclick="this.classList.toggle('active')">收看<span class="inline-details">(shōu kàn) - to watch</span></span> 我的 <span class="inline-item text-blue" onclick="this.classList.toggle('active')">播客<span class="inline-details">(bō kè) - podcast</span></span>。
             </p>
