@@ -86,7 +86,7 @@
     .presentation-img img { width: 100%; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
     .presentation-scaffold { flex: 6; }
 
-    /* 大树提示卡 (Cue Card) */
+    /* 大纲样式 */
     .tree-container { background: #fff; border: 1px solid #E0E0E0; border-radius: 12px; padding: 25px; margin-bottom: 20px;}
     .tree-node { border-left: 4px solid #1976D2; padding-left: 20px; margin-bottom: 20px; position: relative;}
     .tree-node::before { content: ''; position: absolute; left: -12px; top: 0; width: 18px; height: 18px; background: #fff; border: 4px solid #1976D2; border-radius: 50%; box-sizing: border-box;}
@@ -98,6 +98,8 @@
     .speech-box { background: #F9FAFB; padding: 25px; border-radius: 8px; border-left: 4px solid #4CAF50; line-height: 2; font-family: 'KaiTi', serif; font-size: 1.15em;}
     .speech-input { border: none; border-bottom: 2px dashed #4CAF50; background: transparent; font-family: 'KaiTi', serif; font-size: 1em; color: #2E7D32; padding: 0 5px; outline: none; text-align: center;}
     .speech-input:focus { border-bottom: 2px solid #FF9800; background: #FFF3E0;}
+    .blueprint-textarea { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 6px; font-size: 1em; font-family: 'KaiTi', '楷体', serif; resize: vertical; min-height: 80px; box-sizing: border-box; outline: none; margin-bottom: 10px; margin-top: 10px;}
+    .blueprint-textarea:focus { border-color: #4CAF50; box-shadow: 0 0 5px rgba(76, 175, 80, 0.3);}
 
 </style>
 </head>
@@ -129,6 +131,7 @@
             </div>
 
             <div class="reading-text">
+                <h3 style="text-align: center; margin-top: 0;">无人驾驶汽车</h3>
                 <p>大家好！欢迎各位来到我的博客。前不久，我<span class="blue-word" onclick="togglePop(this)">报名<span class="popover">(bào míng) sign up</span></span>参加了新加坡无人驾驶汽车<span class="blue-word" onclick="togglePop(this)">体验<span class="popover">(tǐ yàn) experience</span></span>，感觉真是太棒了，今天我就来和大家聊聊无人驾驶汽车。</p>
                 <p>这是新加坡<span class="blue-word" onclick="togglePop(this)">首次<span class="popover">(shǒu cì) for the first time</span></span><span class="blue-word" onclick="togglePop(this)">允许<span class="popover">(yǔn xǔ) allow</span></span>乘客体验无人驾驶汽车，参与的人数比一个月前<span class="blue-word" onclick="togglePop(this)">增加<span class="popover">(zēng jiā) increase</span></span>了一倍，达到1000人左右。作为本次的乘客之一，一开始我很<span class="blue-word" onclick="togglePop(this)">紧张<span class="popover">(jǐn zhāng) nervous</span></span>，看着<span class="blue-word" onclick="togglePop(this)">方向盘<span class="popover">(fāng xiàng pán) steering wheel</span></span>自己转动时，这种感觉太<span class="blue-word" onclick="togglePop(this)">奇妙<span class="popover">(qí miào) amazing / wonderful</span></span>了，简直像有个鬼在开车！但很快我就<span class="blue-word" onclick="togglePop(this)">适应<span class="popover">(shì yìng) adapt to</span></span>了，车子开得很<span class="blue-word" onclick="togglePop(this)">平稳<span class="popover">(píng wěn) smooth / steady</span></span>，一些我看不到的<span class="blue-word" onclick="togglePop(this)">盲区<span class="popover">(máng qū) blind spot</span></span>，车子能看到，让我觉得可以<span class="blue-word" onclick="togglePop(this)">信任<span class="popover">(xìn rèn) trust</span></span>它。我想以后父亲老了，无人驾驶汽车可以<span class="blue-word" onclick="togglePop(this)">代替<span class="popover">(dài tì) replace / substitute</span></span>我接送父亲。</p>
                 <p>那么，无人驾驶汽车的<span class="blue-word" onclick="togglePop(this)">发明<span class="popover">(fā míng) invention</span></span>，<span class="red-pattern" onclick="togglePop(this)">除了……还有<span class="popover">(chú le ... hái yǒu ...) besides ... also ...</span></span>什么好处呢？<span class="red-pattern" onclick="togglePop(this)">首先<span class="popover">(shǒu xiān) firstly</span></span>，无人驾驶汽车能减少道路<span class="blue-word" onclick="togglePop(this)">拥堵<span class="popover">(yōng dǔ) congestion</span></span>的情况，还能<span class="blue-word" onclick="togglePop(this)">降低<span class="popover">(jiàng dī) reduce</span></span>乘坐出租车的<span class="blue-word" onclick="togglePop(this)">费用<span class="popover">(fèi yòng) cost / expense</span></span>，而且价格比坐公交车还便宜。</p>
@@ -177,24 +180,23 @@
     <!-- ========================================================================= -->
     <h2 class="step-title">Part 2: 个人演讲 (Topic Presentation)</h2>
     <div class="target-mission">
-        🎯 结合上面学到的词汇和连词，看着下面这张深圳小马智行（Pony.ai）的实景图，借助“思维导图提示卡”，完成2-3分钟的口语演讲模拟！
+        🎯 Combine the vocabulary and connectors learned above, look at the real-life picture of Shenzhen Pony.ai below, and use the "Outline" to complete a 2-3 minute oral presentation simulation!
     </div>
 
     <div class="presentation-split">
-        <!-- 左侧图片 -->
+        <!-- 左侧图片，已更新为 PIC.jpg -->
         <div class="presentation-img">
-            <img src="截屏2026-08-01 08.38.09.jpg" alt="深圳无人驾驶汽车" style="width:100%; border-radius:8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+            <img src="PIC.jpg" alt="深圳无人驾驶汽车" style="width:100%; border-radius:8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
         </div>
 
-        <!-- 右侧大树导图提示卡与填空 -->
+        <!-- 右侧大纲与填空 -->
         <div class="presentation-scaffold">
             
             <div class="tree-container">
-                <h3 style="color:#1976D2; border-bottom:1px dashed #ccc; padding-bottom:10px; margin-top:0;">📝 考场提示卡 (Cue Card Mind Map)</h3>
+                <h3 style="color:#1976D2; border-bottom:1px dashed #ccc; padding-bottom:10px; margin-top:0;">📝 演讲大纲 (Presentation Outline)</h3>
                 
                 <div class="tree-node">
-                    <div class="tree-title">🌱 引入 (Intro)：描述图片</div>
-                    <div style="font-size: 0.9em; color: #666;">(5W1H 提取)</div>
+                    <div class="tree-title">第一部分 引入 (Intro)：描述图片 (Describe the picture)</div>
                     <div class="cue-words">
                         <span class="cue-chip">深圳街头</span>
                         <span class="cue-chip">后排乘客</span>
@@ -203,8 +205,8 @@
                 </div>
 
                 <div class="tree-node">
-                    <div class="tree-title">🪵 展开 (Body)：利弊分析</div>
-                    <div style="font-size: 0.9em; color: #D32F2F; font-weight: bold;">(强制连词：不仅…而且还… / 一方面…另一方面…)</div>
+                    <div class="tree-title">第二部分 展开 (Body)：利弊分析 (Pros & Cons analysis)</div>
+                    <div style="font-size: 0.9em; color: #D32F2F; font-weight: bold;">(Key Connectors: 不仅…而且还… / 一方面…另一方面…)</div>
                     <div class="cue-words">
                         <span class="cue-chip">休息/自由</span>
                         <span class="cue-chip">降低费用</span>
@@ -214,8 +216,8 @@
                 </div>
 
                 <div class="tree-node" style="border-left: none; margin-bottom: 0;">
-                    <div class="tree-title" style="transform: translateX(-19px);">🌳 总结 (Conclusion)：个人期待</div>
-                    <div style="font-size: 0.9em; color: #D32F2F; font-weight: bold; padding-left: 15px;">(强制连词：总的来说…)</div>
+                    <div class="tree-title" style="transform: translateX(-19px);">第三部分 总结 (Conclusion)：个人期待 (Personal expectation)</div>
+                    <div style="font-size: 0.9em; color: #D32F2F; font-weight: bold; padding-left: 15px;">(Key Connectors: 总的来说…)</div>
                     <div class="cue-words" style="padding-left: 15px;">
                         <span class="cue-chip">科技进步</span>
                         <span class="cue-chip">期待体验</span>
@@ -226,11 +228,18 @@
             <!-- 填空练习 -->
             <div class="speech-box">
                 <strong>[演讲模板填空]</strong><br><br>
-                老师好，今天我的演讲话题是“科技与生活”。大家请看这张图片，这是在 <input type="text" class="speech-input" style="width:120px;" placeholder="地点"> 的街头。图片里有一个年轻女孩，她坐在汽车的后排，正在 <input type="text" class="speech-input" style="width:120px;" placeholder="动作">。这辆车最神奇的地方是，它的驾驶座上 <input type="text" class="speech-input" style="width:120px;" placeholder="神奇之处">！汽车完全是自己开的。
+                老师好，今天我的演讲话题是“科技与生活”。大家请看这张图片。
+                <textarea class="blueprint-textarea" placeholder="👉 [Describe the picture: Location? Who is in it? What is special about the car? How do you feel?]"></textarea>
+                
+                我认为这种无人驾驶汽车有很多好处。<br>
+                它<strong>不仅</strong> <input type="text" class="speech-input" style="width:30%;" placeholder="[Benefit 1]">，<strong>而且还</strong> <input type="text" class="speech-input" style="width:30%;" placeholder="[Benefit 2]">。
                 <br><br>
-                我认为这种无人驾驶汽车有很多好处。它<strong>不仅</strong>能让乘客在车里休息，<strong>而且还</strong>能大大 <input type="text" class="speech-input" style="width:150px;" placeholder="降低什么">。但是，任何科技都有利有弊。<strong>一方面</strong>，它让出行更方便；<strong>但另一方面</strong>，也有人担心它的 <input type="text" class="speech-input" style="width:120px;" placeholder="担忧一"> 问题，或者担心出租车司机会 <input type="text" class="speech-input" style="width:120px;" placeholder="担忧二">。
-                <br><br>
-                <strong>总的来说</strong>，科技的进步是不可阻挡的。拿我自己来说，我非常 <input type="text" class="speech-input" style="width:150px;" placeholder="个人感受"> 未来能亲自去体验一次。谢谢老师！
+                但是，任何科技都有利有弊。<br>
+                <strong>一方面</strong>，<input type="text" class="speech-input" style="width:40%;" placeholder="[Short summary of advantage]">；<br>
+                <strong>但另一方面</strong>，<textarea class="blueprint-textarea" placeholder="👉 [What are the negative aspects or concerns? (e.g., safety, jobs)]"></textarea>
+                
+                <strong>总的来说</strong>，<textarea class="blueprint-textarea" placeholder="👉 [Your personal expectation or conclusion]"></textarea> 
+                我的演讲结束了，谢谢老师！
             </div>
 
         </div>
