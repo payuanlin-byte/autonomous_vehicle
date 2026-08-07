@@ -36,7 +36,7 @@
         margin-bottom: 30px;
         width: 100%;
         max-width: 1200px;
-        flex-wrap: wrap;
+        flex-wrap: wrap; /* 防止屏幕较小折行 */
     }
     .tab-btn {
         padding: 12px 25px;
@@ -114,7 +114,7 @@
     .pattern-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; }
     .pattern-item { background: #fff; padding: 15px; border-radius: 8px; text-align: center; border: 1px solid #FFE0B2; font-weight: bold; color: #C62828; font-size: 1.1em;}
 
-    /* ================= Tab 2 & 3: 练习区通用样式 ================= */
+    /* ================= Tab 通用练习区样式 ================= */
     .exercise-section { background: #fff; padding: 25px; border-radius: 12px; border: 1px solid #E0E0E0; margin-bottom: 30px; box-shadow: 0 2px 8px rgba(0,0,0,0.03);}
     .exercise-section h3 { color: #2E7D32; margin-top: 0; border-bottom: 2px solid #C8E6C9; padding-bottom: 10px; margin-bottom: 20px;}
     
@@ -154,21 +154,22 @@
     .outline-icon { color: #1976D2; margin-right: 12px; font-size: 1.3em; line-height: 1.1; }
     .outline-text { color: #1565C0; font-weight: bold; font-size: 1.15em; line-height: 1.4; }
 
-    /* ================= Tab 5: 写作练习专属样式 ================= */
-    .email-template { background: #F8FAFC; border: 1px solid #CFD8DC; border-radius: 8px; padding: 20px; font-family: 'PingFang SC', sans-serif; }
-    .email-header { border-bottom: 1px solid #ECEFF1; padding-bottom: 15px; margin-bottom: 15px; color: #555; }
-    .email-header div { margin-bottom: 8px; }
-    .email-body { line-height: 2; font-size: 1.1em; color: #333; }
-    .email-input { border: none; border-bottom: 1px dashed #1976D2; background: transparent; padding: 2px 5px; font-size: 1em; color: #1976D2; outline: none; text-align: center; }
-    .email-input:focus { border-bottom: 2px solid #FF9800; }
-    .final-textarea { width: 100%; height: 200px; padding: 15px; border: 1px solid #BCAAA4; border-radius: 8px; font-family: 'KaiTi', serif; font-size: 1.2em; resize: vertical; outline: none; box-sizing: border-box; }
-    .final-textarea:focus { border-color: #FF9800; box-shadow: 0 0 5px rgba(255,152,0,0.3); }
+    /* ================= Tab 5: 写作区样式 ================= */
+    .email-container { background: #F9FAFB; padding: 25px; border-radius: 8px; border: 1px solid #E0E0E0; font-family: 'KaiTi', serif; font-size: 1.2em; line-height: 2;}
+    .email-header-line { margin-bottom: 15px; border-bottom: 1px dashed #ccc; padding-bottom: 15px;}
+    .email-field { display: flex; align-items: center; margin-bottom: 10px;}
+    .email-field label { width: 80px; color: #555; font-weight: bold;}
+    .email-field input { flex: 1; max-width: 400px; padding: 8px; font-family: 'KaiTi', serif; font-size: 1em; border: 1px solid #ccc; border-radius: 4px; outline: none;}
+    .email-field input:focus { border-color: #1976D2; }
+    .email-body p { margin: 10px 0; }
+    .writing-textarea { width: 100%; height: 80px; padding: 10px; font-family: 'KaiTi', serif; font-size: 1em; border: 1px dashed #BCAAA4; border-radius: 6px; box-sizing: border-box; resize: vertical; outline: none; margin-bottom: 15px; background: #fff;}
+    .writing-textarea:focus { border-color: #FF9800; background: #FFFDE7;}
 
 </style>
 </head>
 <body>
 
-<!-- 顶部 Tabs 导航 (5 Tabs) -->
+<!-- 顶部 Tabs 导航 (更新为 5 Tabs) -->
 <div class="tabs-nav">
     <button class="tab-btn active" onclick="switchTab('tab1', this)">📖 Tab 1: 文本</button>
     <button class="tab-btn" onclick="switchTab('tab2', this)">✍️ Tab 2: 词语/句型练习</button>
@@ -187,7 +188,6 @@
         <h2 class="step-title">文本一：无人驾驶汽车</h2>
 
         <div class="split-section">
-            <!-- 左侧：音频与文章 -->
             <div class="left-col">
                 <div class="audio-box">
                     <p style="margin-top: 0; color: #555; font-size: 0.9em;">🎧 听录音 (Listen to the Audio)</p>
@@ -276,7 +276,6 @@
             </div>
         </div>
 
-        <!-- 底部：关键连词与句型 -->
         <div class="full-width-section">
             <div class="patterns-card">
                 <h3>🔗 关键连词与句型 (Key Connectors & Patterns)</h3>
@@ -297,10 +296,8 @@
     <div id="tab2" class="tab-content">
         <h2 class="step-title">一、词语练习 Vocabulary Practice</h2>
         
-        <!-- 1. 词语搭配 -->
         <div class="exercise-section">
             <h3>1. 词语搭配 Matching</h3>
-            
             <div style="display: flex; gap: 40px; flex-wrap: wrap;">
                 <!-- Group 1 -->
                 <div class="matching-group">
@@ -390,7 +387,6 @@
             </div>
         </div>
 
-        <!-- 2. 选词填空 -->
         <div class="exercise-section">
             <h3>2. 选词填空 Fill in the blanks</h3>
             
@@ -430,7 +426,6 @@
             </div>
         </div>
 
-        <!-- 二、句型练习 -->
         <h2 class="step-title">二、句型练习 Sentence Pattern Practice</h2>
         <div class="exercise-section">
             <p style="font-size: 1.1em; color: #555; margin-bottom: 25px;"><strong>Part A:</strong> You don't need to invent ideas! Just use the provided "sentence patterns" to logically combine the "Ideas" into one complete Chinese sentence based on the Context.</p>
@@ -515,7 +510,6 @@
     <div id="tab3" class="tab-content">
         <h2 class="step-title">三、阅读理解 Reading Comprehension</h2>
         
-        <!-- 题型一：词汇匹配 -->
         <div class="exercise-section">
             <h3>一、找出与下列解释意思相符的词语 (Vocabulary Matching)</h3>
             <p style="color:#666; margin-bottom: 20px;">从文本一中找出与下列解释意思相符的词语填入括号中。</p>
@@ -529,7 +523,6 @@
             </ol>
         </div>
 
-        <!-- 题型二：判断正误 -->
         <div class="exercise-section">
             <h3>二、判断正误并写出理由 (True/False & Justification)</h3>
             <p style="color:#666; margin-bottom: 20px;">判断下面句子的正误（打 ✔）。无论正确还是错误，都请从文章中找出一个完整的句子来证明你的理由。（这是 0523 的经典考法，训练精准提取原文）</p>
@@ -580,7 +573,6 @@
             </div>
         </div>
 
-        <!-- 题型三：简答题 -->
         <div class="exercise-section">
             <h3>三、简答题 (Short Answer Questions)</h3>
             <p style="color:#666; margin-bottom: 20px;">根据博客内容，简要回答下列问题。答案必须基于文章内容。</p>
@@ -620,20 +612,16 @@
     <!--                            TAB 4: 口语演练区                              -->
     <!-- ========================================================================= -->
     <div id="tab4" class="tab-content">
-        <h2 class="step-title">四、口语练习 Topic Presentation</h2>
+        <h2 class="step-title">口语练习：Topic Presentation</h2>
         
         <div class="presentation-split">
-            <!-- 左侧图片：已锁定为 PIC.png -->
             <div class="presentation-img">
                 <img src="PIC.png" alt="深圳无人驾驶汽车" style="width:100%; border-radius:8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
             </div>
 
-            <!-- 右侧大纲 -->
             <div class="presentation-scaffold">
-                
                 <div class="outline-container">
                     <h3 class="outline-header">📝 演讲大纲 (Presentation Outline)</h3>
-                    
                     <ul class="outline-list">
                         <li class="outline-item">
                             <span class="outline-icon">📍</span>
@@ -649,7 +637,6 @@
                         </li>
                     </ul>
                 </div>
-
             </div>
         </div>
     </div>
@@ -658,52 +645,62 @@
     <!--                            TAB 5: 写作练习区                              -->
     <!-- ========================================================================= -->
     <div id="tab5" class="tab-content">
-        <h2 class="step-title">五、短文写作 Short Writing (Exercise 4)</h2>
+        <h2 class="step-title">短文写作 (Short Writing)</h2>
         
         <div class="exercise-section">
-            <div style="background: #E3F2FD; padding: 20px; border-radius: 8px; margin-bottom: 25px; border-left: 5px solid #1976D2;">
-                <p style="margin-top:0; font-weight:bold; color:#1565C0;">📝 题目要求 (Task Prompt)：</p>
-                <p>你最近在深圳体验了无人驾驶汽车。请给你的一位喜欢科技的朋友写一封电子邮件，分享你的体验。<br>
-                <strong>字数：</strong>100-120 个汉字。满分为8分，其中内容占3分，语言占5分。</p>
-                <p style="margin-bottom:0;"><strong>在电子邮件中，你必须：</strong></p>
-                <ul style="margin-top:5px; margin-bottom:0;">
+            <p style="font-size: 1.15em; color: #333; line-height: 1.8; margin-bottom: 20px;">
+                你最近在深圳体验了无人驾驶汽车。请给你的一位喜欢科技的朋友写一封电子邮件，分享你的体验。<br>
+                <strong>字数：</strong>100-120 个汉字。满分为8分，其中内容占3分，语言占5分。
+            </p>
+            
+            <div class="pattern-task" style="background: #FAFAFA; border-left-color: #1976D2;">
+                <p style="font-size: 1.1em; color: #333; font-weight: bold; margin-bottom: 10px;">在电子邮件中，你必须：</p>
+                <ul style="font-size: 1.1em; color: #555; line-height: 1.8;">
                     <li>写明你体验无人驾驶汽车的时间和地点。</li>
                     <li>描述你坐在无人驾驶汽车里的感受。</li>
                     <li>解释无人驾驶汽车的一个好处。</li>
                 </ul>
             </div>
-
-            <h3>Step 1: 邮件结构与逻辑组装 (Guided Email Assembly)</h3>
-            <p style="color:#666;">利用英文提示和我们学过的连词，填空完成这封邮件。 (Use the English prompts and the connectors we learned to fill in the blanks.)</p>
-            
-            <div class="email-template">
-                <div class="email-header">
-                    <div><strong>发件人 (From)：</strong> <input type="text" class="email-input" placeholder="[你的名字]" style="width:100px;"></div>
-                    <div><strong>收件人 (To)：</strong> [你朋友的名字]</div>
-                    <div><strong>主题 (Subject)：</strong> 分享无人驾驶汽车的体验</div>
-                </div>
-                <div class="email-body">
-                    <p>[你朋友的名字]：</p>
-                    <p>你好！</p>
-                    <p style="color: #1976D2; font-size: 0.9em; margin-bottom: 0; margin-top: 15px;">(1) 回应第一个点（时间与地点）：</p>
-                    <p style="margin-top: 5px;">我上个周末去了 <input type="text" class="email-input" placeholder="(Idea: Shenzhen)" style="width:150px;">，并且第一次体验了 <input type="text" class="email-input" placeholder="(Idea: driverless car)" style="width:180px;">。</p>
-                    
-                    <p style="color: #1976D2; font-size: 0.9em; margin-bottom: 0; margin-top: 15px;">(2) 回应第二个点（描述感受 - 试着用“虽然...但是”）：</p>
-                    <p style="margin-top: 5px;">刚上车的时候，因为没有司机，<strong>虽然</strong>我感到非常 <input type="text" class="email-input" placeholder="(Idea: nervous)" style="width:120px;">，<strong>但是</strong>车子开得非常 <input type="text" class="email-input" placeholder="(Idea: smooth)" style="width:120px;">。看着方向盘自己转动，我觉得太神奇了！</p>
-                    
-                    <p style="color: #1976D2; font-size: 0.9em; margin-bottom: 0; margin-top: 15px;">(3) 回应第三个点（解释好处 - 试着用“不但能...而且也能”）：</p>
-                    <p style="margin-top: 5px;">我认为这种汽车<strong>不但能</strong>帮助城市缓解 <input type="text" class="email-input" placeholder="(Idea: traffic congestion)" style="width:200px;">，<strong>而且也能</strong>帮乘客节省 <input type="text" class="email-input" placeholder="(Idea: time / cost)" style="width:150px;">。</p>
-                    
-                    <p style="margin-top: 15px;">你下次有空吗？我们可以一起去体验！</p>
-                    <p>祝好！<br><input type="text" class="email-input" placeholder="[你的名字]" style="width:100px; margin-top: 10px;"></p>
-                </div>
-            </div>
         </div>
 
         <div class="exercise-section">
-            <h3>Step 2: 完整输出 (Final Production)</h3>
-            <p style="color:#666;">现在，请将上面拼装好的句子完整地打在下方的文本框中。注意邮件的正确格式。（Now, copy your completed sentences into the box below to write the full email.）</p>
-            <textarea class="final-textarea" placeholder="在这里输入你的完整电子邮件... (Type your full email here...)"></textarea>
+            <h3>Step 1: 邮件格式 (Format)</h3>
+            <div class="email-container">
+                <div class="email-header-line">
+                    <div class="email-field">
+                        <label>发件人：</label>
+                        <input type="text" placeholder="[你的名字]">
+                    </div>
+                    <div class="email-field">
+                        <label>收件人：</label>
+                        <input type="text" placeholder="[你朋友的名字]">
+                    </div>
+                    <div class="email-field" style="margin-bottom: 0;">
+                        <label>主题：</label>
+                        <input type="text" placeholder="[邮件的主题]" style="max-width: 100%;">
+                    </div>
+                </div>
+                
+                <div class="email-body">
+                    <p style="margin-top: 20px;"><input type="text" style="width: 120px; padding: 5px; font-family: 'KaiTi', serif; font-size: 1em; border: 1px solid #ccc; border-radius: 4px; outline: none;" placeholder="[你朋友的名字]"> ：</p>
+                    <p>你好！</p>
+                    
+                    <div style="margin-left: 20px; margin-top: 15px;">
+                        <p style="color: #1976D2; font-size: 0.9em; margin-bottom: 5px; font-weight: bold;">(1) 回应第一个点（时间与地点）：</p>
+                        <textarea class="writing-textarea"></textarea>
+                        
+                        <p style="color: #1976D2; font-size: 0.9em; margin-bottom: 5px; font-weight: bold;">(2) 回应第二个点（描述感受）：</p>
+                        <textarea class="writing-textarea"></textarea>
+                        
+                        <p style="color: #1976D2; font-size: 0.9em; margin-bottom: 5px; font-weight: bold;">(3) 回应第三个点（解释好处）：</p>
+                        <textarea class="writing-textarea" style="margin-bottom: 20px;"></textarea>
+                    </div>
+                    
+                    <p>你下次有空吗？我们可以一起去体验！</p>
+                    <p style="margin-bottom: 5px;">祝好！</p>
+                    <p><input type="text" style="width: 120px; padding: 5px; font-family: 'KaiTi', serif; font-size: 1em; border: 1px solid #ccc; border-radius: 4px; outline: none;" placeholder="[你的名字]"></p>
+                </div>
+            </div>
         </div>
     </div>
 
