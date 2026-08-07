@@ -28,6 +28,34 @@
         box-sizing: border-box;
     }
 
+    /* ================= 顶部 Tabs 导航 ================= */
+    .tabs-nav {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        margin-bottom: 30px;
+        width: 100%;
+        max-width: 1200px;
+    }
+    .tab-btn {
+        padding: 12px 30px;
+        font-size: 1.1em;
+        font-weight: bold;
+        border: none;
+        border-radius: 30px;
+        cursor: pointer;
+        background-color: #E0E0E0;
+        color: #555;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    }
+    .tab-btn:hover { background-color: #D5D5D5; transform: translateY(-2px); }
+    .tab-btn.active { background-color: #1976D2; color: #FFFFFF; box-shadow: 0 4px 12px rgba(25, 118, 210, 0.4); }
+
+    .tab-content { display: none; animation: fadeIn 0.4s ease-in-out; }
+    .tab-content.active { display: block; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
     /* ================= 布局控制 ================= */
     .full-width-section { width: 100%; margin-bottom: 30px; }
     
@@ -46,11 +74,10 @@
         padding: 6px 16px; border-radius: 20px; font-weight: bold; font-size: 0.9em; margin-bottom: 20px;
     }
     h2.step-title {
-        color: #1976D2; border-bottom: 2px solid #E3F2FD; padding-bottom: 10px; font-size: 1.4em; margin-top: 30px; margin-bottom: 20px;
+        color: #1976D2; border-bottom: 2px solid #E3F2FD; padding-bottom: 10px; font-size: 1.4em; margin-top: 10px; margin-bottom: 25px;
     }
-    h2.step-title.mt-0 { margin-top: 0; }
 
-    /* ================= Part 1: 阅读区 ================= */
+    /* ================= Tab 1: 阅读区 ================= */
     .audio-box { text-align: center; background-color: #f8f9fa; padding: 15px; border-radius: 8px; border: 1px solid #e9ecef; margin-bottom: 20px;}
     .reading-text {
         font-family: 'KaiTi', 'STKaiti', '楷体', serif; font-size: 1.3em; line-height: 2; text-align: justify; padding: 30px; background: #FAFAFA; border-radius: 8px; border: 1px solid #EEEEEE;
@@ -70,35 +97,50 @@
     .popover::after { content: ''; position: absolute; top: 100%; left: 50%; margin-left: -5px; border-width: 5px; border-style: solid; border-color: #333 transparent transparent transparent; }
     .blue-word.active .popover, .green-pattern.active .popover, .red-pattern.active .popover { display: block; }
 
-    /* ================= 词汇区 ================= */
+    /* 词汇区 */
     .vocab-card { background: #E8F5E9; border: 2px solid #4CAF50; border-radius: 10px; padding: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
     .vocab-card h3 { color: #2E7D32; margin-top: 0; border-bottom: 2px dashed #A5D6A7; padding-bottom: 10px; margin-bottom: 15px;}
-    
-    /* 词汇滚动区域 */
-    .vocab-grid { 
-        display: grid; grid-template-columns: 1fr 1fr; gap: 10px; 
-        max-height: 600px; overflow-y: auto; padding-right: 10px;
-    }
+    .vocab-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; max-height: 600px; overflow-y: auto; padding-right: 10px; }
     .vocab-grid::-webkit-scrollbar { width: 6px; }
     .vocab-grid::-webkit-scrollbar-thumb { background-color: #A5D6A7; border-radius: 3px; }
-    
     .vocab-item { background: #fff; padding: 8px 10px; border-radius: 6px; border-left: 4px solid #4CAF50; font-size: 0.9em;}
     .vocab-cn { font-family: 'KaiTi', serif; font-size: 1.15em; font-weight: bold; color: #1565C0; }
     .vocab-en { font-size: 0.85em; color: #666; display: block; margin-top: 2px; }
 
-    /* ================= 连词句型区 ================= */
+    /* 连词句型区 */
     .patterns-card { background: #FFF3E0; border: 2px solid #FF9800; border-radius: 10px; padding: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
     .patterns-card h3 { color: #E65100; margin-top: 0; border-bottom: 2px dashed #FFCC80; padding-bottom: 10px; }
     .pattern-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; }
     .pattern-item { background: #fff; padding: 15px; border-radius: 8px; text-align: center; border: 1px solid #FFE0B2; font-weight: bold; color: #C62828; font-size: 1.1em;}
 
-    /* ================= Part 2: 口语演练区 ================= */
+    /* ================= Tab 2: 练习区样式 ================= */
+    .exercise-section { background: #fff; padding: 25px; border-radius: 12px; border: 1px solid #E0E0E0; margin-bottom: 30px; box-shadow: 0 2px 8px rgba(0,0,0,0.03);}
+    .exercise-section h3 { color: #2E7D32; margin-top: 0; border-bottom: 2px solid #C8E6C9; padding-bottom: 10px; margin-bottom: 20px;}
+    
+    /* 词语搭配 */
+    .matching-group { display: flex; justify-content: space-between; max-width: 600px; margin-bottom: 20px; background: #F9FAFB; padding: 15px; border-radius: 8px;}
+    .matching-col { display: flex; flex-direction: column; gap: 12px; font-family: 'KaiTi', serif; font-size: 1.2em;}
+    
+    /* 选词填空 */
+    .fill-blank-box { margin-bottom: 20px; }
+    .word-bank { background: #E3F2FD; color: #1565C0; padding: 10px 15px; border-radius: 6px; font-weight: bold; text-align: center; margin-bottom: 15px; font-size: 1.1em;}
+    .fill-paragraph { font-family: 'KaiTi', serif; font-size: 1.2em; line-height: 2; padding: 15px; background: #FAFAFA; border-left: 4px solid #1976D2; border-radius: 4px;}
+    .blank-line { display: inline-block; width: 60px; border-bottom: 1px solid #333; margin: 0 5px; }
+    
+    /* 句型练习 */
+    .pattern-task { background: #F1F8E9; padding: 20px; border-radius: 8px; margin-bottom: 20px; border-left: 4px solid #4CAF50;}
+    .pattern-task h4 { margin-top: 0; color: #1976D2; font-size: 1.1em;}
+    .pattern-task ul { padding-left: 20px; color: #555; margin-top: 5px; margin-bottom: 15px;}
+    .pattern-task li { margin-bottom: 5px; }
+    .sentence-input { width: 100%; padding: 12px; border: 1px solid #BCAAA4; border-radius: 6px; font-family: 'KaiTi', serif; font-size: 1.1em; box-sizing: border-box; outline: none; transition: 0.3s;}
+    .sentence-input:focus { border-color: #FF9800; box-shadow: 0 0 5px rgba(255,152,0,0.3);}
+
+    /* ================= Tab 3: 口语演练区 ================= */
     .presentation-split { display: flex; gap: 30px; margin-top: 20px;}
     .presentation-img { flex: 5; }
     .presentation-img img { width: 100%; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
     .presentation-scaffold { flex: 5; }
 
-    /* 清爽线性大纲样式 (替代树状图) */
     .outline-container { background: #F9FAFB; border: 2px solid #1976D2; border-radius: 12px; padding: 25px; margin-bottom: 20px;}
     .outline-header { color: #1976D2; border-bottom: 1px dashed #ccc; padding-bottom: 10px; margin-top: 0; margin-bottom: 20px; font-size: 1.2em; font-weight: bold; }
     .outline-list { list-style: none; padding: 0; margin: 0; }
@@ -111,160 +153,398 @@
 </head>
 <body>
 
+<!-- 顶部 Tabs 导航 -->
+<div class="tabs-nav">
+    <button class="tab-btn active" onclick="switchTab('tab1', this)">📖 Tab 1: 文本</button>
+    <button class="tab-btn" onclick="switchTab('tab2', this)">✍️ Tab 2: 词语/句型练习</button>
+    <button class="tab-btn" onclick="switchTab('tab3', this)">🗣️ Tab 3: 口语练习</button>
+</div>
+
 <div class="app-container">
-    
     <div class="topic-tag">#Topic: 科技与生活 - 无人驾驶汽车</div>
 
     <!-- ========================================================================= -->
-    <!--                               文本阅读区                                  -->
+    <!--                               TAB 1: 文本区                               -->
     <!-- ========================================================================= -->
-    <h2 class="step-title mt-0">文本一：无人驾驶汽车</h2>
+    <div id="tab1" class="tab-content active">
+        <h2 class="step-title">文本一：无人驾驶汽车</h2>
 
-    <div class="split-section">
+        <div class="split-section">
+            <!-- 左侧：音频与文章 -->
+            <div class="left-col">
+                <div class="audio-box">
+                    <p style="margin-top: 0; color: #555; font-size: 0.9em;">🎧 听录音 (Listen to the Audio)</p>
+                    <audio controls style="width: 100%; max-width: 400px;">
+                        <source src="Driverless_Car_Singapore.mp3" type="audio/mpeg">
+                        您的浏览器不支持音频播放组件。
+                    </audio>
+                </div>
+
+                <div class="reading-text">
+                    <div class="podcast-header">
+                        南洋世界的播客<br>
+                        http://www.nanyangpodcast.com<br>
+                        2019年1月1日 星期六 1分30秒 12MB
+                    </div>
+                    
+                    <h3 style="text-align: center; margin-top: 0;">无人驾驶汽车</h3>
+                    <p>大家好！<span class="blue-word" onclick="togglePop(this)">欢迎<span class="popover">(huān yíng) welcome</span></span>各位收看我的播客。</p>
+                    <p>前不久，我<span class="blue-word" onclick="togglePop(this)">报名<span class="popover">(bào míng) sign up</span></span>参加<span class="blue-word" onclick="togglePop(this)">体验<span class="popover">(tǐ yàn) experience</span></span><span class="blue-word" onclick="togglePop(this)">乘坐<span class="popover">(chéng zuò) take (a ride)</span></span>新加坡无人驾驶汽车，感觉真是太棒了，今天我就来和大家聊聊无人驾驶汽车。</p>
+                    <p>这是<span class="blue-word" onclick="togglePop(this)">全球<span class="popover">(quán qiú) global</span></span><span class="blue-word" onclick="togglePop(this)">首次<span class="popover">(shǒu cì) first time</span></span><span class="green-pattern" onclick="togglePop(this)">向<span class="popover">(xiàng) towards / to</span></span><span class="blue-word" onclick="togglePop(this)">乘客<span class="popover">(chéng kè) passenger</span></span><span class="green-pattern" onclick="togglePop(this)">开放的<span class="popover">(kāi fàng de) open</span></span>无人驾驶汽车，<span class="blue-word" onclick="togglePop(this)">报名<span class="popover">(bào míng) sign up</span></span>参与<span class="blue-word" onclick="togglePop(this)">体验<span class="popover">(tǐ yàn) experience</span></span>的<span class="blue-word" onclick="togglePop(this)">人数<span class="popover">(rén shù) number of people</span></span>比一个月前<span class="blue-word" onclick="togglePop(this)">增加<span class="popover">(zēng jiā) increase</span></span>了<span class="blue-word" onclick="togglePop(this)">一倍<span class="popover">(yī bèi) double</span></span>，<span class="blue-word" onclick="togglePop(this)">达到<span class="popover">(dá dào) reach</span></span>1000人左右。<span class="green-pattern" onclick="togglePop(this)">作为<span class="popover">(zuò wéi) as</span></span><span class="blue-word" onclick="togglePop(this)">本次<span class="popover">(běn cì) this time</span></span><span class="blue-word" onclick="togglePop(this)">测试<span class="popover">(cè shì) test</span></span>的<span class="blue-word" onclick="togglePop(this)">乘客<span class="popover">(chéng kè) passenger</span></span>之一，一开始我很<span class="blue-word" onclick="togglePop(this)">紧张<span class="popover">(jǐn zhāng) nervous</span></span>，看着<span class="blue-word" onclick="togglePop(this)">方向盘<span class="popover">(fāng xiàng pán) steering wheel</span></span>自己<span class="blue-word" onclick="togglePop(this)">转动<span class="popover">(zhuǎn dòng) turn</span></span>时，这种感觉太<span class="blue-word" onclick="togglePop(this)">神奇<span class="popover">(shén qí) magical</span></span>了，<span class="green-pattern" onclick="togglePop(this)">就像<span class="popover">(jiù xiàng) just like</span></span>有个<span class="blue-word" onclick="togglePop(this)">鬼<span class="popover">(guǐ) ghost</span></span>在开车<span class="green-pattern" onclick="togglePop(this)">一样<span class="popover">(yī yàng) same / as</span></span>！但很快我就<span class="blue-word" onclick="togglePop(this)">适应<span class="popover">(shì yìng) adapt</span></span>了，车子开得很稳，一些我看不到的障碍物，车子能看到，让我觉得可以信任它。我想以后父亲老了，无人驾驶汽车可以<span class="blue-word" onclick="togglePop(this)">代替<span class="popover">(dài tì) replace</span></span>我<span class="blue-word" onclick="togglePop(this)">接送<span class="popover">(jiē sòng) pick up and drop off</span></span>父亲。</p>
+                    <p><span class="red-pattern" onclick="togglePop(this)">那么<span class="popover">(nà me) then</span></span>，无人驾驶汽车的<span class="blue-word" onclick="togglePop(this)">发明<span class="popover">(fā míng) invention</span></span>，<span class="red-pattern" onclick="togglePop(this)">除了<span class="popover">(chú le) besides</span></span>能<span class="blue-word" onclick="togglePop(this)">改变<span class="popover">(gǎi biàn) change</span></span>人们对<span class="blue-word" onclick="togglePop(this)">城市<span class="popover">(chéng shì) city</span></span><span class="blue-word" onclick="togglePop(this)">环境<span class="popover">(huán jìng) environment</span></span>的体验，<span class="red-pattern" onclick="togglePop(this)">还有<span class="popover">(hái yǒu) also have</span></span>什么好处呢？<span class="red-pattern" onclick="togglePop(this)">首先<span class="popover">(shǒu xiān) firstly</span></span>，无人驾驶汽车<span class="green-pattern" onclick="togglePop(this)">有助于<span class="popover">(yǒu zhù yú) contribute to</span></span><span class="blue-word" onclick="togglePop(this)">缓解<span class="popover">(huǎn jiě) relieve</span></span><span class="blue-word" onclick="togglePop(this)">道路<span class="popover">(dào lù) road</span></span><span class="blue-word" onclick="togglePop(this)">拥堵<span class="popover">(yōng dǔ) congestion</span></span>的<span class="blue-word" onclick="togglePop(this)">现象<span class="popover">(xiàn xiàng) phenomenon</span></span>，还能<span class="blue-word" onclick="togglePop(this)">大幅度<span class="popover">(dà fú dù) significantly</span></span><span class="blue-word" onclick="togglePop(this)">降低<span class="popover">(jiàng dī) reduce</span></span>乘坐出租车的<span class="blue-word" onclick="togglePop(this)">费用<span class="popover">(fèi yòng) cost</span></span>，<span class="red-pattern" onclick="togglePop(this)">而且<span class="popover">(ér qiě) moreover</span></span><span class="blue-word" onclick="togglePop(this)">价格<span class="popover">(jià gé) price</span></span>比坐公交车还便宜。</p>
+                    <p><span class="red-pattern" onclick="togglePop(this)">其次<span class="popover">(qí cì) secondly</span></span>，无人驾驶出租车可以<span class="green-pattern" onclick="togglePop(this)">通过<span class="popover">(tōng guò) through</span></span><span class="blue-word" onclick="togglePop(this)">软件<span class="popover">(ruǎn jiàn) software</span></span>根据乘客的<span class="blue-word" onclick="togglePop(this)">需求<span class="popover">(xū qiú) demand</span></span><span class="blue-word" onclick="togglePop(this)">优化<span class="popover">(yōu huà) optimize</span></span><span class="blue-word" onclick="togglePop(this)">线路<span class="popover">(xiàn lù) route</span></span>。<span class="green-pattern" onclick="togglePop(this)">这样一来<span class="popover">(zhè yàng yī lái) in this way</span></span>，<span class="red-pattern" onclick="togglePop(this)">不但<span class="popover">(bù dàn) not only</span></span>能<span class="blue-word" onclick="togglePop(this)">节约<span class="popover">(jié yuē) save</span></span>乘客的<span class="blue-word" onclick="togglePop(this)">乘车<span class="popover">(chéng chē) ride</span></span>时间，<span class="red-pattern" onclick="togglePop(this)">也<span class="popover">(yě) also</span></span>能让更多的乘客一起乘坐，当然就<span class="blue-word" onclick="togglePop(this)">省钱<span class="popover">(shěng qián) save money</span></span>啦！</p>
+                    <p><span class="red-pattern" onclick="togglePop(this)">总的来说<span class="popover">(zǒng de lái shuō) generally speaking</span></span>，无人驾驶汽车会给我们的生活带来很多方便，<span class="red-pattern" onclick="togglePop(this)">而且<span class="popover">(ér qiě) moreover</span></span>还会<span class="blue-word" onclick="togglePop(this)">节省<span class="popover">(jié shěng) save</span></span>时间，<span class="red-pattern" onclick="togglePop(this)">也<span class="popover">(yě) also</span></span>更安全。你会去新加坡体验无人驾驶出租车吗？</p>
+                    <p><span class="blue-word" onclick="togglePop(this)">欢迎<span class="popover">(huān yíng) welcome</span></span>大家留言和我<span class="blue-word" onclick="togglePop(this)">分享<span class="popover">(fēn xiǎng) share</span></span>你对无人驾驶汽车的看法。</p>
+                    <p style="font-size:0.8em; color:#888;">
+                        <span class="blue-word" onclick="togglePop(this)">播放<span class="popover">(bō fàng) play</span></span>(53) 
+                        <span class="blue-word" onclick="togglePop(this)">评论<span class="popover">(píng lùn) comment</span></span>(10) 
+                        <span class="blue-word" onclick="togglePop(this)">分享<span class="popover">(fēn xiǎng) share</span></span>(30) 
+                        <span class="blue-word" onclick="togglePop(this)">订阅<span class="popover">(dìng yuè) subscribe</span></span>(45)
+                    </p>
+                </div>
+            </div>
+
+            <!-- 右侧：词汇库 -->
+            <div class="right-col">
+                <div class="vocab-card">
+                    <h3>📖 核心词汇 (Vocabulary)</h3>
+                    <div class="vocab-grid">
+                        <div class="vocab-item"><span class="vocab-cn">报名</span><span class="vocab-en">(bào míng) sign up</span></div>
+                        <div class="vocab-item"><span class="vocab-cn">体验</span><span class="vocab-en">(tǐ yàn) experience</span></div>
+                        <div class="vocab-item"><span class="vocab-cn">乘坐</span><span class="vocab-en">(chéng zuò) take (a ride)</span></div>
+                        <div class="vocab-item"><span class="vocab-cn">全球</span><span class="vocab-en">(quán qiú) global</span></div>
+                        <div class="vocab-item"><span class="vocab-cn">首次</span><span class="vocab-en">(shǒu cì) first time</span></div>
+                        <div class="vocab-item"><span class="vocab-cn">人数</span><span class="vocab-en">(rén shù) number of people</span></div>
+                        <div class="vocab-item"><span class="vocab-cn">增加</span><span class="vocab-en">(zēng jiā) increase</span></div>
+                        <div class="vocab-item"><span class="vocab-cn">一倍</span><span class="vocab-en">(yī bèi) double</span></div>
+                        <div class="vocab-item"><span class="vocab-cn">达到</span><span class="vocab-en">(dá dào) reach</span></div>
+                        <div class="vocab-item"><span class="vocab-cn">本次</span><span class="vocab-en">(běn cì) this time</span></div>
+                        <div class="vocab-item"><span class="vocab-cn">测试</span><span class="vocab-en">(cè shì) test</span></div>
+                        <div class="vocab-item"><span class="vocab-cn">乘客</span><span class="vocab-en">(chéng kè) passenger</span></div>
+                        <div class="vocab-item"><span class="vocab-cn">紧张</span><span class="vocab-en">(jǐn zhāng) nervous</span></div>
+                        <div class="vocab-item"><span class="vocab-cn">方向盘</span><span class="vocab-en">(fāng xiàng pán) steering wheel</span></div>
+                        <div class="vocab-item"><span class="vocab-cn">转动</span><span class="vocab-en">(zhuǎn dòng) turn</span></div>
+                        <div class="vocab-item"><span class="vocab-cn">神奇</span><span class="vocab-en">(shén qí) magical</span></div>
+                        <div class="vocab-item"><span class="vocab-cn">鬼</span><span class="vocab-en">(guǐ) ghost</span></div>
+                        <div class="vocab-item"><span class="vocab-cn">适应</span><span class="vocab-en">(shì yìng) adapt</span></div>
+                        <div class="vocab-item"><span class="vocab-cn">代替</span><span class="vocab-en">(dài tì) replace</span></div>
+                        <div class="vocab-item"><span class="vocab-cn">接送</span><span class="vocab-en">(jiē sòng) pick up/drop off</span></div>
+                        <div class="vocab-item"><span class="vocab-cn">发明</span><span class="vocab-en">(fā míng) invention</span></div>
+                        <div class="vocab-item"><span class="vocab-cn">改变</span><span class="vocab-en">(gǎi biàn) change</span></div>
+                        <div class="vocab-item"><span class="vocab-cn">城市</span><span class="vocab-en">(chéng shì) city</span></div>
+                        <div class="vocab-item"><span class="vocab-cn">环境</span><span class="vocab-en">(huán jìng) environment</span></div>
+                        <div class="vocab-item"><span class="vocab-cn">缓解</span><span class="vocab-en">(huǎn jiě) relieve</span></div>
+                        <div class="vocab-item"><span class="vocab-cn">道路</span><span class="vocab-en">(dào lù) road</span></div>
+                        <div class="vocab-item"><span class="vocab-cn">拥堵</span><span class="vocab-en">(yōng dǔ) congestion</span></div>
+                        <div class="vocab-item"><span class="vocab-cn">现象</span><span class="vocab-en">(xiàn xiàng) phenomenon</span></div>
+                        <div class="vocab-item"><span class="vocab-cn">大幅度</span><span class="vocab-en">(dà fú dù) significantly</span></div>
+                        <div class="vocab-item"><span class="vocab-cn">降低</span><span class="vocab-en">(jiàng dī) reduce</span></div>
+                        <div class="vocab-item"><span class="vocab-cn">费用</span><span class="vocab-en">(fèi yòng) cost</span></div>
+                        <div class="vocab-item"><span class="vocab-cn">价格</span><span class="vocab-en">(jià gé) price</span></div>
+                        <div class="vocab-item"><span class="vocab-cn">软件</span><span class="vocab-en">(ruǎn jiàn) software</span></div>
+                        <div class="vocab-item"><span class="vocab-cn">需求</span><span class="vocab-en">(xū qiú) demand</span></div>
+                        <div class="vocab-item"><span class="vocab-cn">优化</span><span class="vocab-en">(yōu huà) optimize</span></div>
+                        <div class="vocab-item"><span class="vocab-cn">线路</span><span class="vocab-en">(xiàn lù) route</span></div>
+                        <div class="vocab-item"><span class="vocab-cn">节约</span><span class="vocab-en">(jié yuē) save</span></div>
+                        <div class="vocab-item"><span class="vocab-cn">乘车</span><span class="vocab-en">(chéng chē) ride</span></div>
+                        <div class="vocab-item"><span class="vocab-cn">省钱</span><span class="vocab-en">(shěng qián) save money</span></div>
+                        <div class="vocab-item"><span class="vocab-cn">节省</span><span class="vocab-en">(jié shěng) save</span></div>
+                        <div class="vocab-item"><span class="vocab-cn">欢迎</span><span class="vocab-en">(huān yíng) welcome</span></div>
+                        <div class="vocab-item"><span class="vocab-cn">分享</span><span class="vocab-en">(fēn xiǎng) share</span></div>
+                        <div class="vocab-item"><span class="vocab-cn">播放</span><span class="vocab-en">(bō fàng) play</span></div>
+                        <div class="vocab-item"><span class="vocab-cn">评论</span><span class="vocab-en">(píng lùn) comment</span></div>
+                        <div class="vocab-item"><span class="vocab-cn">订阅</span><span class="vocab-en">(dìng yuè) subscribe</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 底部：关键连词与句型 -->
+        <div class="full-width-section">
+            <div class="patterns-card">
+                <h3>🔗 关键连词与句型 (Key Connectors & Patterns)</h3>
+                <div class="pattern-grid">
+                    <div class="pattern-item">除了......，还有.......。</div>
+                    <div class="pattern-item">首先，.......。其次，.......。</div>
+                    <div class="pattern-item">不但能.......，而且也能.......。</div>
+                    <div class="pattern-item">总的来说，.......。</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ========================================================================= -->
+    <!--                            TAB 2: 词语/句型练习区                          -->
+    <!-- ========================================================================= -->
+    <div id="tab2" class="tab-content">
+        <h2 class="step-title">一、词语练习 Vocabulary Practice</h2>
         
-        <!-- 左侧：音频与文章 -->
-        <div class="left-col">
-            <div class="audio-box">
-                <p style="margin-top: 0; color: #555; font-size: 0.9em;">🎧 听录音 (Listen to the Audio)</p>
-                <audio controls style="width: 100%; max-width: 400px;">
-                    <source src="Driverless_Car_Singapore.mp3" type="audio/mpeg">
-                    您的浏览器不支持音频播放组件。
-                </audio>
-            </div>
-
-            <div class="reading-text">
-                <div class="podcast-header">
-                    南洋世界的播客<br>
-                    http://www.nanyangpodcast.com<br>
-                    2019年1月1日 星期六 1分30秒 12MB
-                </div>
-                
-                <h3 style="text-align: center; margin-top: 0;">无人驾驶汽车</h3>
-                <p>大家好！<span class="blue-word" onclick="togglePop(this)">欢迎<span class="popover">(huān yíng) welcome</span></span>各位收看我的播客。</p>
-                <p>前不久，我<span class="blue-word" onclick="togglePop(this)">报名<span class="popover">(bào míng) sign up</span></span>参加<span class="blue-word" onclick="togglePop(this)">体验<span class="popover">(tǐ yàn) experience</span></span><span class="blue-word" onclick="togglePop(this)">乘坐<span class="popover">(chéng zuò) take (a ride)</span></span>新加坡无人驾驶汽车，感觉真是太棒了，今天我就来和大家聊聊无人驾驶汽车。</p>
-                <p>这是<span class="blue-word" onclick="togglePop(this)">全球<span class="popover">(quán qiú) global</span></span><span class="blue-word" onclick="togglePop(this)">首次<span class="popover">(shǒu cì) first time</span></span><span class="green-pattern" onclick="togglePop(this)">向<span class="popover">(xiàng) towards / to</span></span><span class="blue-word" onclick="togglePop(this)">乘客<span class="popover">(chéng kè) passenger</span></span><span class="green-pattern" onclick="togglePop(this)">开放的<span class="popover">(kāi fàng de) open</span></span>无人驾驶汽车，<span class="blue-word" onclick="togglePop(this)">报名<span class="popover">(bào míng) sign up</span></span>参与<span class="blue-word" onclick="togglePop(this)">体验<span class="popover">(tǐ yàn) experience</span></span>的<span class="blue-word" onclick="togglePop(this)">人数<span class="popover">(rén shù) number of people</span></span>比一个月前<span class="blue-word" onclick="togglePop(this)">增加<span class="popover">(zēng jiā) increase</span></span>了<span class="blue-word" onclick="togglePop(this)">一倍<span class="popover">(yī bèi) double</span></span>，<span class="blue-word" onclick="togglePop(this)">达到<span class="popover">(dá dào) reach</span></span>1000人左右。<span class="green-pattern" onclick="togglePop(this)">作为<span class="popover">(zuò wéi) as</span></span><span class="blue-word" onclick="togglePop(this)">本次<span class="popover">(běn cì) this time</span></span><span class="blue-word" onclick="togglePop(this)">测试<span class="popover">(cè shì) test</span></span>的<span class="blue-word" onclick="togglePop(this)">乘客<span class="popover">(chéng kè) passenger</span></span>之一，一开始我很<span class="blue-word" onclick="togglePop(this)">紧张<span class="popover">(jǐn zhāng) nervous</span></span>，看着<span class="blue-word" onclick="togglePop(this)">方向盘<span class="popover">(fāng xiàng pán) steering wheel</span></span>自己<span class="blue-word" onclick="togglePop(this)">转动<span class="popover">(zhuǎn dòng) turn</span></span>时，这种感觉太<span class="blue-word" onclick="togglePop(this)">神奇<span class="popover">(shén qí) magical</span></span>了，<span class="green-pattern" onclick="togglePop(this)">就像<span class="popover">(jiù xiàng) just like</span></span>有个<span class="blue-word" onclick="togglePop(this)">鬼<span class="popover">(guǐ) ghost</span></span>在开车<span class="green-pattern" onclick="togglePop(this)">一样<span class="popover">(yī yàng) same / as</span></span>！但很快我就<span class="blue-word" onclick="togglePop(this)">适应<span class="popover">(shì yìng) adapt</span></span>了，车子开得很稳，一些我看不到的障碍物，车子能看到，让我觉得可以信任它。我想以后父亲老了，无人驾驶汽车可以<span class="blue-word" onclick="togglePop(this)">代替<span class="popover">(dài tì) replace</span></span>我<span class="blue-word" onclick="togglePop(this)">接送<span class="popover">(jiē sòng) pick up and drop off</span></span>父亲。</p>
-                <p><span class="red-pattern" onclick="togglePop(this)">那么<span class="popover">(nà me) then</span></span>，无人驾驶汽车的<span class="blue-word" onclick="togglePop(this)">发明<span class="popover">(fā míng) invention</span></span>，<span class="red-pattern" onclick="togglePop(this)">除了<span class="popover">(chú le) besides</span></span>能<span class="blue-word" onclick="togglePop(this)">改变<span class="popover">(gǎi biàn) change</span></span>人们对<span class="blue-word" onclick="togglePop(this)">城市<span class="popover">(chéng shì) city</span></span><span class="blue-word" onclick="togglePop(this)">环境<span class="popover">(huán jìng) environment</span></span>的体验，<span class="red-pattern" onclick="togglePop(this)">还有<span class="popover">(hái yǒu) also have</span></span>什么好处呢？<span class="red-pattern" onclick="togglePop(this)">首先<span class="popover">(shǒu xiān) firstly</span></span>，无人驾驶汽车<span class="green-pattern" onclick="togglePop(this)">有助于<span class="popover">(yǒu zhù yú) contribute to</span></span><span class="blue-word" onclick="togglePop(this)">缓解<span class="popover">(huǎn jiě) relieve</span></span><span class="blue-word" onclick="togglePop(this)">道路<span class="popover">(dào lù) road</span></span><span class="blue-word" onclick="togglePop(this)">拥堵<span class="popover">(yōng dǔ) congestion</span></span>的<span class="blue-word" onclick="togglePop(this)">现象<span class="popover">(xiàn xiàng) phenomenon</span></span>，还能<span class="blue-word" onclick="togglePop(this)">大幅度<span class="popover">(dà fú dù) significantly</span></span><span class="blue-word" onclick="togglePop(this)">降低<span class="popover">(jiàng dī) reduce</span></span>乘坐出租车的<span class="blue-word" onclick="togglePop(this)">费用<span class="popover">(fèi yòng) cost</span></span>，<span class="red-pattern" onclick="togglePop(this)">而且<span class="popover">(ér qiě) moreover</span></span><span class="blue-word" onclick="togglePop(this)">价格<span class="popover">(jià gé) price</span></span>比坐公交车还便宜。</p>
-                <p><span class="red-pattern" onclick="togglePop(this)">其次<span class="popover">(qí cì) secondly</span></span>，无人驾驶出租车可以<span class="green-pattern" onclick="togglePop(this)">通过<span class="popover">(tōng guò) through</span></span><span class="blue-word" onclick="togglePop(this)">软件<span class="popover">(ruǎn jiàn) software</span></span>根据乘客的<span class="blue-word" onclick="togglePop(this)">需求<span class="popover">(xū qiú) demand</span></span><span class="blue-word" onclick="togglePop(this)">优化<span class="popover">(yōu huà) optimize</span></span><span class="blue-word" onclick="togglePop(this)">线路<span class="popover">(xiàn lù) route</span></span>。<span class="green-pattern" onclick="togglePop(this)">这样一来<span class="popover">(zhè yàng yī lái) in this way</span></span>，<span class="red-pattern" onclick="togglePop(this)">不但<span class="popover">(bù dàn) not only</span></span>能<span class="blue-word" onclick="togglePop(this)">节约<span class="popover">(jié yuē) save</span></span>乘客的<span class="blue-word" onclick="togglePop(this)">乘车<span class="popover">(chéng chē) ride</span></span>时间，<span class="red-pattern" onclick="togglePop(this)">也<span class="popover">(yě) also</span></span>能让更多的乘客一起乘坐，当然就<span class="blue-word" onclick="togglePop(this)">省钱<span class="popover">(shěng qián) save money</span></span>啦！</p>
-                <p><span class="red-pattern" onclick="togglePop(this)">总的来说<span class="popover">(zǒng de lái shuō) generally speaking</span></span>，无人驾驶汽车会给我们的生活带来很多方便，<span class="red-pattern" onclick="togglePop(this)">而且<span class="popover">(ér qiě) moreover</span></span>还会<span class="blue-word" onclick="togglePop(this)">节省<span class="popover">(jié shěng) save</span></span>时间，<span class="red-pattern" onclick="togglePop(this)">也<span class="popover">(yě) also</span></span>更安全。你会去新加坡体验无人驾驶出租车吗？</p>
-                <p><span class="blue-word" onclick="togglePop(this)">欢迎<span class="popover">(huān yíng) welcome</span></span>大家留言和我<span class="blue-word" onclick="togglePop(this)">分享<span class="popover">(fēn xiǎng) share</span></span>你对无人驾驶汽车的看法。</p>
-                <p style="font-size:0.8em; color:#888;">
-                    <span class="blue-word" onclick="togglePop(this)">播放<span class="popover">(bō fàng) play</span></span>(53) 
-                    <span class="blue-word" onclick="togglePop(this)">评论<span class="popover">(píng lùn) comment</span></span>(10) 
-                    <span class="blue-word" onclick="togglePop(this)">分享<span class="popover">(fēn xiǎng) share</span></span>(30) 
-                    <span class="blue-word" onclick="togglePop(this)">订阅<span class="popover">(dìng yuè) subscribe</span></span>(45)
-                </p>
-            </div>
-        </div>
-
-        <!-- 右侧：词汇库 -->
-        <div class="right-col">
-            <div class="vocab-card">
-                <h3>📖 核心词汇 (Vocabulary)</h3>
-                <div class="vocab-grid">
-                    <div class="vocab-item"><span class="vocab-cn">报名</span><span class="vocab-en">(bào míng) sign up</span></div>
-                    <div class="vocab-item"><span class="vocab-cn">体验</span><span class="vocab-en">(tǐ yàn) experience</span></div>
-                    <div class="vocab-item"><span class="vocab-cn">乘坐</span><span class="vocab-en">(chéng zuò) take (a ride)</span></div>
-                    <div class="vocab-item"><span class="vocab-cn">全球</span><span class="vocab-en">(quán qiú) global</span></div>
-                    <div class="vocab-item"><span class="vocab-cn">首次</span><span class="vocab-en">(shǒu cì) first time</span></div>
-                    <div class="vocab-item"><span class="vocab-cn">人数</span><span class="vocab-en">(rén shù) number of people</span></div>
-                    <div class="vocab-item"><span class="vocab-cn">增加</span><span class="vocab-en">(zēng jiā) increase</span></div>
-                    <div class="vocab-item"><span class="vocab-cn">一倍</span><span class="vocab-en">(yī bèi) double</span></div>
-                    <div class="vocab-item"><span class="vocab-cn">达到</span><span class="vocab-en">(dá dào) reach</span></div>
-                    <div class="vocab-item"><span class="vocab-cn">本次</span><span class="vocab-en">(běn cì) this time</span></div>
-                    <div class="vocab-item"><span class="vocab-cn">测试</span><span class="vocab-en">(cè shì) test</span></div>
-                    <div class="vocab-item"><span class="vocab-cn">乘客</span><span class="vocab-en">(chéng kè) passenger</span></div>
-                    <div class="vocab-item"><span class="vocab-cn">紧张</span><span class="vocab-en">(jǐn zhāng) nervous</span></div>
-                    <div class="vocab-item"><span class="vocab-cn">方向盘</span><span class="vocab-en">(fāng xiàng pán) steering wheel</span></div>
-                    <div class="vocab-item"><span class="vocab-cn">转动</span><span class="vocab-en">(zhuǎn dòng) turn</span></div>
-                    <div class="vocab-item"><span class="vocab-cn">神奇</span><span class="vocab-en">(shén qí) magical</span></div>
-                    <div class="vocab-item"><span class="vocab-cn">鬼</span><span class="vocab-en">(guǐ) ghost</span></div>
-                    <div class="vocab-item"><span class="vocab-cn">适应</span><span class="vocab-en">(shì yìng) adapt</span></div>
-                    <div class="vocab-item"><span class="vocab-cn">代替</span><span class="vocab-en">(dài tì) replace</span></div>
-                    <div class="vocab-item"><span class="vocab-cn">接送</span><span class="vocab-en">(jiē sòng) pick up/drop off</span></div>
-                    <div class="vocab-item"><span class="vocab-cn">发明</span><span class="vocab-en">(fā míng) invention</span></div>
-                    <div class="vocab-item"><span class="vocab-cn">改变</span><span class="vocab-en">(gǎi biàn) change</span></div>
-                    <div class="vocab-item"><span class="vocab-cn">城市</span><span class="vocab-en">(chéng shì) city</span></div>
-                    <div class="vocab-item"><span class="vocab-cn">环境</span><span class="vocab-en">(huán jìng) environment</span></div>
-                    <div class="vocab-item"><span class="vocab-cn">缓解</span><span class="vocab-en">(huǎn jiě) relieve</span></div>
-                    <div class="vocab-item"><span class="vocab-cn">道路</span><span class="vocab-en">(dào lù) road</span></div>
-                    <div class="vocab-item"><span class="vocab-cn">拥堵</span><span class="vocab-en">(yōng dǔ) congestion</span></div>
-                    <div class="vocab-item"><span class="vocab-cn">现象</span><span class="vocab-en">(xiàn xiàng) phenomenon</span></div>
-                    <div class="vocab-item"><span class="vocab-cn">大幅度</span><span class="vocab-en">(dà fú dù) significantly</span></div>
-                    <div class="vocab-item"><span class="vocab-cn">降低</span><span class="vocab-en">(jiàng dī) reduce</span></div>
-                    <div class="vocab-item"><span class="vocab-cn">费用</span><span class="vocab-en">(fèi yòng) cost</span></div>
-                    <div class="vocab-item"><span class="vocab-cn">价格</span><span class="vocab-en">(jià gé) price</span></div>
-                    <div class="vocab-item"><span class="vocab-cn">软件</span><span class="vocab-en">(ruǎn jiàn) software</span></div>
-                    <div class="vocab-item"><span class="vocab-cn">需求</span><span class="vocab-en">(xū qiú) demand</span></div>
-                    <div class="vocab-item"><span class="vocab-cn">优化</span><span class="vocab-en">(yōu huà) optimize</span></div>
-                    <div class="vocab-item"><span class="vocab-cn">线路</span><span class="vocab-en">(xiàn lù) route</span></div>
-                    <div class="vocab-item"><span class="vocab-cn">节约</span><span class="vocab-en">(jié yuē) save</span></div>
-                    <div class="vocab-item"><span class="vocab-cn">乘车</span><span class="vocab-en">(chéng chē) ride</span></div>
-                    <div class="vocab-item"><span class="vocab-cn">省钱</span><span class="vocab-en">(shěng qián) save money</span></div>
-                    <div class="vocab-item"><span class="vocab-cn">节省</span><span class="vocab-en">(jié shěng) save</span></div>
-                    <div class="vocab-item"><span class="vocab-cn">欢迎</span><span class="vocab-en">(huān yíng) welcome</span></div>
-                    <div class="vocab-item"><span class="vocab-cn">分享</span><span class="vocab-en">(fēn xiǎng) share</span></div>
-                    <div class="vocab-item"><span class="vocab-cn">播放</span><span class="vocab-en">(bō fàng) play</span></div>
-                    <div class="vocab-item"><span class="vocab-cn">评论</span><span class="vocab-en">(píng lùn) comment</span></div>
-                    <div class="vocab-item"><span class="vocab-cn">订阅</span><span class="vocab-en">(dìng yuè) subscribe</span></div>
-                </div>
-            </div>
-        </div>
-
-    </div>
-
-    <!-- 底部：关键连词与句型 -->
-    <div class="full-width-section">
-        <div class="patterns-card">
-            <h3>🔗 关键连词与句型 (Key Connectors & Patterns)</h3>
-            <div class="pattern-grid">
-                <div class="pattern-item">除了......，还有.......。</div>
-                <div class="pattern-item">首先，.......。其次，.......。</div>
-                <div class="pattern-item">不但能.......，而且也能.......。</div>
-                <div class="pattern-item">总的来说，.......。</div>
-            </div>
-        </div>
-    </div>
-
-
-    <!-- ========================================================================= -->
-    <!--                               PART 2: 口语演练区                          -->
-    <!-- ========================================================================= -->
-    <h2 class="step-title">口语练习：Topic Presentation</h2>
-    
-    <div class="presentation-split">
-        <!-- 左侧图片：已锁定为 PIC.png -->
-        <div class="presentation-img">
-            <img src="PIC.png" alt="深圳无人驾驶汽车" style="width:100%; border-radius:8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
-        </div>
-
-        <!-- 右侧大纲 -->
-        <div class="presentation-scaffold">
+        <!-- 1. 词语搭配 -->
+        <div class="exercise-section">
+            <h3>1. 词语搭配 Matching</h3>
             
-            <div class="outline-container">
-                <h3 class="outline-header">📝 演讲大纲 (Presentation Outline)</h3>
-                
-                <ul class="outline-list">
-                    <li class="outline-item">
-                        <span class="outline-icon">📍</span>
-                        <span class="outline-text">第一部分 引入 (Intro)：描述图片 (Describe the picture)</span>
-                    </li>
-                    <li class="outline-item">
-                        <span class="outline-icon">📍</span>
-                        <span class="outline-text">第二部分 展开 (Body)：利弊分析 (Pros & Cons analysis)</span>
-                    </li>
-                    <li class="outline-item">
-                        <span class="outline-icon">📍</span>
-                        <span class="outline-text">第三部分 总结 (Conclusion)：个人期待 (Personal expectation)</span>
-                    </li>
-                </ul>
+            <div style="display: flex; gap: 40px; flex-wrap: wrap;">
+                <!-- Group 1 -->
+                <div class="matching-group">
+                    <div class="matching-col">
+                        <div>1. 缓解</div>
+                        <div>2. 降低</div>
+                        <div>3. 优化</div>
+                        <div>4. 节约</div>
+                        <div>5. 适应</div>
+                    </div>
+                    <div class="matching-col" style="margin-left: 50px;">
+                        <div>A. 线路</div>
+                        <div>B. 时间</div>
+                        <div>C. 拥堵</div>
+                        <div>D. 新环境</div>
+                        <div>E. 费用</div>
+                    </div>
+                </div>
+                <!-- Group 2 -->
+                <div class="matching-group">
+                    <div class="matching-col">
+                        <div>1. 报名</div>
+                        <div>2. 乘坐</div>
+                        <div>3. 代替</div>
+                        <div>4. 满足</div>
+                        <div>5. 改变</div>
+                    </div>
+                    <div class="matching-col" style="margin-left: 50px;">
+                        <div>A. 需求</div>
+                        <div>B. 参加体验</div>
+                        <div>C. 城市生活</div>
+                        <div>D. 出租车</div>
+                        <div>E. 司机</div>
+                    </div>
+                </div>
+                <!-- Group 3 -->
+                <div class="matching-group">
+                    <div class="matching-col">
+                        <div>1. 神奇的</div>
+                        <div>2. 首次</div>
+                        <div>3. 大幅度</div>
+                        <div>4. 道路</div>
+                        <div>5. 全球</div>
+                    </div>
+                    <div class="matching-col" style="margin-left: 50px;">
+                        <div>A. 测试</div>
+                        <div>B. 现象</div>
+                        <div>C. 发明</div>
+                        <div>D. 开放</div>
+                        <div>E. 增加</div>
+                    </div>
+                </div>
+                <!-- Group 4 -->
+                <div class="matching-group">
+                    <div class="matching-col">
+                        <div>1. 播放</div>
+                        <div>2. 留言</div>
+                        <div>3. 分享</div>
+                        <div>4. 欢迎</div>
+                        <div>5. 订阅</div>
+                    </div>
+                    <div class="matching-col" style="margin-left: 50px;">
+                        <div>A. 评论</div>
+                        <div>B. 频道</div>
+                        <div>C. 乘客</div>
+                        <div>D. 播客</div>
+                        <div>E. 看法</div>
+                    </div>
+                </div>
+                <!-- Group 5 -->
+                <div class="matching-group">
+                    <div class="matching-col">
+                        <div>1. 转动</div>
+                        <div>2. 感到</div>
+                        <div>3. 发现</div>
+                        <div>4. 达到</div>
+                        <div>5. 接送</div>
+                    </div>
+                    <div class="matching-col" style="margin-left: 50px;">
+                        <div>A. 紧张</div>
+                        <div>B. 方向盘</div>
+                        <div>C. 父亲</div>
+                        <div>D. 1000人</div>
+                        <div>E. 盲区</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2. 选词填空 -->
+        <div class="exercise-section">
+            <h3>2. 选词填空 Fill in the blanks</h3>
+            
+            <div class="fill-blank-box">
+                <div class="word-bank">需求 &nbsp;|&nbsp; 节省 &nbsp;|&nbsp; 体验 &nbsp;|&nbsp; 软件</div>
+                <div class="fill-paragraph">
+                    现代人的生活非常方便。如果周末不想做饭，我们只需要在手机上打开外卖<span class="blank-line"></span>，它就能根据我们的个人<span class="blank-line"></span>推荐附近的美食。这不仅能帮我们<span class="blank-line"></span>做饭的时间，还给我们带来了一种非常轻松的生活<span class="blank-line"></span>。
+                </div>
             </div>
 
+            <div class="fill-blank-box">
+                <div class="word-bank">首次 &nbsp;|&nbsp; 乘客 &nbsp;|&nbsp; 紧张 &nbsp;|&nbsp; 平稳</div>
+                <div class="fill-paragraph">
+                    去年我去了上海，那是我的<span class="blank-line"></span>独自旅行。刚上飞机时，作为一名没有经验的<span class="blank-line"></span>，我感到非常<span class="blank-line"></span>。但起飞后飞机飞得非常<span class="blank-line"></span>，我很快就放松下来了。
+                </div>
+            </div>
+
+            <div class="fill-blank-box">
+                <div class="word-bank">城市 &nbsp;|&nbsp; 环境 &nbsp;|&nbsp; 缓解 &nbsp;|&nbsp; 大幅度</div>
+                <div class="fill-paragraph">
+                    为了保护我们居住的<span class="blank-line"></span>，政府鼓励大家多坐公交车。这不仅能改善<span class="blank-line"></span>的空气质量，还能<span class="blank-line"></span>上下班高峰期的交通压力。通过这些努力，空气污染问题已经<span class="blank-line"></span>减少了。
+                </div>
+            </div>
+
+            <div class="fill-blank-box">
+                <div class="word-bank">适应 &nbsp;|&nbsp; 代替 &nbsp;|&nbsp; 改变 &nbsp;|&nbsp; 神奇</div>
+                <div class="fill-paragraph">
+                    现在的网课<span class="blank-line"></span>了我们的学习方式。只要有一台电脑，学生在家也能上课。虽然电脑不能完全<span class="blank-line"></span>老师的作用，但这种<span class="blank-line"></span>的科技确实让学习变得更灵活了。只要我们努力<span class="blank-line"></span>，就能学得更好。
+                </div>
+            </div>
+
+            <div class="fill-blank-box">
+                <div class="word-bank">报名 &nbsp;|&nbsp; 分享 &nbsp;|&nbsp; 评论 &nbsp;|&nbsp; 欢迎</div>
+                <div class="fill-paragraph">
+                    学校下周要举办一个微电影比赛，我第一时间就<span class="blank-line"></span>参加了。我打算把拍好的视频放在网上和朋友们<span class="blank-line"></span>。<span class="blank-line"></span>大家来看我的作品，并在视频下面留言发表<span class="blank-line"></span>。
+                </div>
+            </div>
+        </div>
+
+        <!-- 二、句型练习 -->
+        <h2 class="step-title">二、句型练习 Sentence Pattern Practice</h2>
+        <div class="exercise-section">
+            <p style="font-size: 1.1em; color: #555; margin-bottom: 25px;"><strong>Part A:</strong> You don't need to invent ideas! Just use the provided "sentence patterns" to logically combine the "Ideas" into one complete Chinese sentence based on the Context.</p>
+            
+            <div class="pattern-task">
+                <h4>1. 除了……，还有……</h4>
+                <ul>
+                    <li><strong>Context:</strong> Discussing the benefits of autonomous vehicles.</li>
+                    <li><strong>Ideas to include:</strong> relieve traffic congestion / reduce travel costs</li>
+                </ul>
+                <input type="text" class="sentence-input" placeholder="Your Sentence: ___________________________">
+            </div>
+
+            <div class="pattern-task">
+                <h4>2. 不但能……，也能/而且能……</h4>
+                <ul>
+                    <li><strong>Context:</strong> Explaining the advantages of using ride-hailing apps (打车软件) to optimize routes.</li>
+                    <li><strong>Ideas to include:</strong> save passengers' time / be more eco-friendly</li>
+                </ul>
+                <input type="text" class="sentence-input" placeholder="Your Sentence: ___________________________">
+            </div>
+
+            <div class="pattern-task">
+                <h4>3. 首先，……。其次，……。</h4>
+                <ul>
+                    <li><strong>Context:</strong> Discussing whether students should be allowed to use tablets (平板电脑) in class.</li>
+                    <li><strong>Ideas to include:</strong> improve our learning experience / meet the needs of modern education</li>
+                </ul>
+                <input type="text" class="sentence-input" placeholder="学校应该允许学生使用平板电脑。 ___________________________">
+            </div>
+
+            <div class="pattern-task">
+                <h4>4. 总的来说，……</h4>
+                <ul>
+                    <li><strong>Context:</strong> Summarizing the positive impacts of taking the subway.</li>
+                    <li><strong>Ideas to include:</strong> save transport fees / reduce traffic jam in the city</li>
+                </ul>
+                <input type="text" class="sentence-input" placeholder="Your Sentence: ___________________________">
+            </div>
+
+            <div class="pattern-task">
+                <h4>5. 这样一来，……</h4>
+                <ul>
+                    <li><strong>Context:</strong> Explaining the benefit of smart robots helping to take care of the elderly.</li>
+                    <li><strong>Ideas to include:</strong> meet the daily needs of the elderly / relieve the pressure on young people</li>
+                </ul>
+                <input type="text" class="sentence-input" placeholder="有了机器人的帮助，___________________________">
+            </div>
+
+            <p style="font-size: 1.1em; color: #555; margin-top: 40px; margin-bottom: 25px; border-top: 1px dashed #ccc; padding-top: 20px;"><strong>Part B:</strong> Create your own sentences using the given connectors and topics.</p>
+            
+            <div class="pattern-task" style="background: #FFF3E0; border-left-color: #FF9800;">
+                <h4 style="color: #E65100;">6. 虽然……，但是……</h4>
+                <ul><li><strong>Topic:</strong> 社交媒体 (Social Media)</li></ul>
+                <input type="text" class="sentence-input" placeholder="Your Sentence: ___________________________">
+            </div>
+
+            <div class="pattern-task" style="background: #FFF3E0; border-left-color: #FF9800;">
+                <h4 style="color: #E65100;">7. 虽然……，但是……</h4>
+                <ul><li><strong>Topic:</strong> 网购 (Online Shopping)</li></ul>
+                <input type="text" class="sentence-input" placeholder="Your Sentence: ___________________________">
+            </div>
+
+            <div class="pattern-task" style="background: #FFF3E0; border-left-color: #FF9800;">
+                <h4 style="color: #E65100;">8. 只要……，就……</h4>
+                <ul><li><strong>Topic:</strong> 上网课 (Online Learning)</li></ul>
+                <input type="text" class="sentence-input" placeholder="Your Sentence: ___________________________">
+            </div>
+
+            <div class="pattern-task" style="background: #FFF3E0; border-left-color: #FF9800;">
+                <h4 style="color: #E65100;">9. 一方面……，另一方面……</h4>
+                <ul><li><strong>Topic:</strong> 自选一项你喜欢的科技产品 (Any technology product you like)</li></ul>
+                <input type="text" class="sentence-input" placeholder="Your Sentence: ___________________________">
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ========================================================================= -->
+    <!--                            TAB 3: 口语演练区                              -->
+    <!-- ========================================================================= -->
+    <div id="tab3" class="tab-content">
+        <h2 class="step-title">口语练习：Topic Presentation</h2>
+        
+        <div class="presentation-split">
+            <!-- 左侧图片：已锁定为 PIC.png -->
+            <div class="presentation-img">
+                <img src="PIC.png" alt="深圳无人驾驶汽车" style="width:100%; border-radius:8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+            </div>
+
+            <!-- 右侧大纲 -->
+            <div class="presentation-scaffold">
+                
+                <div class="outline-container">
+                    <h3 class="outline-header">📝 演讲大纲 (Presentation Outline)</h3>
+                    
+                    <ul class="outline-list">
+                        <li class="outline-item">
+                            <span class="outline-icon">📍</span>
+                            <span class="outline-text">第一部分 引入 (Intro)：描述图片 (Describe the picture)</span>
+                        </li>
+                        <li class="outline-item">
+                            <span class="outline-icon">📍</span>
+                            <span class="outline-text">第二部分 展开 (Body)：利弊分析 (Pros & Cons analysis)</span>
+                        </li>
+                        <li class="outline-item">
+                            <span class="outline-icon">📍</span>
+                            <span class="outline-text">第三部分 总结 (Conclusion)：个人期待 (Personal expectation)</span>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
         </div>
     </div>
 
 </div>
 
 <script>
+    // Tab 切换逻辑
+    function switchTab(tabId, btnElement) {
+        // 移除所有按钮的 active 状态
+        document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+        // 移除所有内容的 active 状态
+        document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+        
+        // 激活当前点击的按钮和对应的面板
+        btnElement.classList.add('active');
+        document.getElementById(tabId).classList.add('active');
+    }
+
     // 词汇气泡显示逻辑
     function togglePop(element) {
         document.querySelectorAll('.blue-word, .green-pattern, .red-pattern').forEach(el => {
