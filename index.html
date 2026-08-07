@@ -98,11 +98,14 @@
     .presentation-img img { width: 100%; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
     .presentation-scaffold { flex: 5; }
 
-    /* 大纲样式 */
-    .tree-container { background: #F9FAFB; border: 2px solid #1976D2; border-radius: 12px; padding: 25px; margin-bottom: 20px;}
-    .tree-node { border-left: 4px solid #1976D2; padding-left: 20px; margin-bottom: 30px; position: relative;}
-    .tree-node::before { content: ''; position: absolute; left: -12px; top: 0; width: 18px; height: 18px; background: #fff; border: 4px solid #1976D2; border-radius: 50%; box-sizing: border-box;}
-    .tree-title { color: #1565C0; font-weight: bold; font-size: 1.15em; line-height: 1.5;}
+    /* 清爽线性大纲样式 (替代树状图) */
+    .outline-container { background: #F9FAFB; border: 2px solid #1976D2; border-radius: 12px; padding: 25px; margin-bottom: 20px;}
+    .outline-header { color: #1976D2; border-bottom: 1px dashed #ccc; padding-bottom: 10px; margin-top: 0; margin-bottom: 20px; font-size: 1.2em; font-weight: bold; }
+    .outline-list { list-style: none; padding: 0; margin: 0; }
+    .outline-item { margin-bottom: 25px; display: flex; align-items: flex-start; }
+    .outline-item:last-child { margin-bottom: 0; }
+    .outline-icon { color: #1976D2; margin-right: 12px; font-size: 1.3em; line-height: 1.1; }
+    .outline-text { color: #1565C0; font-weight: bold; font-size: 1.15em; line-height: 1.4; }
 
 </style>
 </head>
@@ -229,28 +232,31 @@
     <h2 class="step-title">口语练习：Topic Presentation</h2>
     
     <div class="presentation-split">
-        <!-- 左侧图片 -->
+        <!-- 左侧图片：已锁定为 PIC.png -->
         <div class="presentation-img">
-            <img src="PIC.jpg" alt="深圳无人驾驶汽车" style="width:100%; border-radius:8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+            <img src="PIC.png" alt="深圳无人驾驶汽车" style="width:100%; border-radius:8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
         </div>
 
         <!-- 右侧大纲 -->
         <div class="presentation-scaffold">
             
-            <div class="tree-container">
-                <h3 style="color:#1976D2; border-bottom:1px dashed #ccc; padding-bottom:10px; margin-top:0;">📝 演讲大纲 (Presentation Outline)</h3>
+            <div class="outline-container">
+                <h3 class="outline-header">📝 演讲大纲 (Presentation Outline)</h3>
                 
-                <div class="tree-node">
-                    <div class="tree-title">第一部分 引入 (Intro)：描述图片 (Describe the picture)</div>
-                </div>
-
-                <div class="tree-node">
-                    <div class="tree-title">第二部分 展开 (Body)：利弊分析 (Pros & Cons analysis)</div>
-                </div>
-
-                <div class="tree-node" style="border-left: none; margin-bottom: 0;">
-                    <div class="tree-title" style="transform: translateX(-19px);">第三部分 总结 (Conclusion)：个人期待 (Personal expectation)</div>
-                </div>
+                <ul class="outline-list">
+                    <li class="outline-item">
+                        <span class="outline-icon">📍</span>
+                        <span class="outline-text">第一部分 引入 (Intro)：描述图片 (Describe the picture)</span>
+                    </li>
+                    <li class="outline-item">
+                        <span class="outline-icon">📍</span>
+                        <span class="outline-text">第二部分 展开 (Body)：利弊分析 (Pros & Cons analysis)</span>
+                    </li>
+                    <li class="outline-item">
+                        <span class="outline-icon">📍</span>
+                        <span class="outline-text">第三部分 总结 (Conclusion)：个人期待 (Personal expectation)</span>
+                    </li>
+                </ul>
             </div>
 
         </div>
