@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>文本一 - 无人驾驶汽车</title>
+<title>文本一 - 无驾驶汽车</title>
 <style>
     /* ================= 全局基础样式 ================= */
     body {
@@ -36,9 +36,10 @@
         margin-bottom: 30px;
         width: 100%;
         max-width: 1200px;
+        flex-wrap: wrap; /* 防止屏幕较小折行 */
     }
     .tab-btn {
-        padding: 12px 30px;
+        padding: 12px 25px;
         font-size: 1.1em;
         font-weight: bold;
         border: none;
@@ -113,7 +114,7 @@
     .pattern-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; }
     .pattern-item { background: #fff; padding: 15px; border-radius: 8px; text-align: center; border: 1px solid #FFE0B2; font-weight: bold; color: #C62828; font-size: 1.1em;}
 
-    /* ================= Tab 2: 练习区样式 ================= */
+    /* ================= Tab 2 & 3: 练习区通用样式 ================= */
     .exercise-section { background: #fff; padding: 25px; border-radius: 12px; border: 1px solid #E0E0E0; margin-bottom: 30px; box-shadow: 0 2px 8px rgba(0,0,0,0.03);}
     .exercise-section h3 { color: #2E7D32; margin-top: 0; border-bottom: 2px solid #C8E6C9; padding-bottom: 10px; margin-bottom: 20px;}
     
@@ -127,7 +128,7 @@
     .fill-paragraph { font-family: 'KaiTi', serif; font-size: 1.2em; line-height: 2; padding: 15px; background: #FAFAFA; border-left: 4px solid #1976D2; border-radius: 4px;}
     .blank-line { display: inline-block; width: 60px; border-bottom: 1px solid #333; margin: 0 5px; }
     
-    /* 句型练习 */
+    /* 句型 & 阅读理解输入框 */
     .pattern-task { background: #F1F8E9; padding: 20px; border-radius: 8px; margin-bottom: 20px; border-left: 4px solid #4CAF50;}
     .pattern-task h4 { margin-top: 0; color: #1976D2; font-size: 1.1em;}
     .pattern-task ul { padding-left: 20px; color: #555; margin-top: 5px; margin-bottom: 15px;}
@@ -135,7 +136,11 @@
     .sentence-input { width: 100%; padding: 12px; border: 1px solid #BCAAA4; border-radius: 6px; font-family: 'KaiTi', serif; font-size: 1.1em; box-sizing: border-box; outline: none; transition: 0.3s;}
     .sentence-input:focus { border-color: #FF9800; box-shadow: 0 0 5px rgba(255,152,0,0.3);}
 
-    /* ================= Tab 3: 口语演练区 ================= */
+    /* 阅读理解复选框排版 */
+    .checkbox-group { font-size: 1.1em; margin-bottom: 10px; color: #333; }
+    .checkbox-group label { margin-right: 20px; cursor: pointer; }
+
+    /* ================= Tab 4: 口语演练区 ================= */
     .presentation-split { display: flex; gap: 30px; margin-top: 20px;}
     .presentation-img { flex: 5; }
     .presentation-img img { width: 100%; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
@@ -153,11 +158,12 @@
 </head>
 <body>
 
-<!-- 顶部 Tabs 导航 -->
+<!-- 顶部 Tabs 导航 (更新为 4 Tabs) -->
 <div class="tabs-nav">
     <button class="tab-btn active" onclick="switchTab('tab1', this)">📖 Tab 1: 文本</button>
     <button class="tab-btn" onclick="switchTab('tab2', this)">✍️ Tab 2: 词语/句型练习</button>
-    <button class="tab-btn" onclick="switchTab('tab3', this)">🗣️ Tab 3: 口语练习</button>
+    <button class="tab-btn" onclick="switchTab('tab3', this)">📝 Tab 3: 阅读理解</button>
+    <button class="tab-btn" onclick="switchTab('tab4', this)">🗣️ Tab 4: 口语练习</button>
 </div>
 
 <div class="app-container">
@@ -493,9 +499,116 @@
 
 
     <!-- ========================================================================= -->
-    <!--                            TAB 3: 口语演练区                              -->
+    <!--                            TAB 3: 阅读理解区                              -->
     <!-- ========================================================================= -->
     <div id="tab3" class="tab-content">
+        <h2 class="step-title">三、阅读理解 Reading Comprehension</h2>
+        
+        <!-- 题型一：词汇匹配 -->
+        <div class="exercise-section">
+            <h3>一、找出与下列解释意思相符的词语 (Vocabulary Matching)</h3>
+            <p style="color:#666; margin-bottom: 20px;">从文本一中找出与下列解释意思相符的词语填入括号中。</p>
+            
+            <ol style="line-height: 2.8; font-size: 1.15em; color: #333; padding-left: 20px;">
+                <li>第一次。 ( <input type="text" class="sentence-input" style="width: 150px; padding: 5px; text-align: center; display: inline-block;"> )</li>
+                <li>熟悉并习惯新的情况或环境。 ( <input type="text" class="sentence-input" style="width: 150px; padding: 5px; text-align: center; display: inline-block;"> )</li>
+                <li>也就是取代，用一事物换另一事物。 ( <input type="text" class="sentence-input" style="width: 150px; padding: 5px; text-align: center; display: inline-block;"> )</li>
+                <li>减轻或消除（比如压力、拥堵等现象）。 ( <input type="text" class="sentence-input" style="width: 150px; padding: 5px; text-align: center; display: inline-block;"> )</li>
+                <li>尽力不用或少用（时间、金钱等），不浪费。 ( <input type="text" class="sentence-input" style="width: 150px; padding: 5px; text-align: center; display: inline-block;"> )</li>
+            </ol>
+        </div>
+
+        <!-- 题型二：判断正误 -->
+        <div class="exercise-section">
+            <h3>二、判断正误并写出理由 (True/False & Justification)</h3>
+            <p style="color:#666; margin-bottom: 20px;">判断下面句子的正误（打 ✔）。无论正确还是错误，都请从文章中找出一个完整的句子来证明你的理由。（这是 0523 的经典考法，训练精准提取原文）</p>
+            
+            <div class="pattern-task" style="background: #FAFAFA; border-left-color: #1976D2;">
+                <p style="font-size: 1.1em; color: #333;"><strong>1. 参加这次体验的人数大约是一千人，和上个月一样多。</strong></p>
+                <div class="checkbox-group">
+                    <label><input type="checkbox"> 正确</label>
+                    <label><input type="checkbox"> 错误</label>
+                </div>
+                <input type="text" class="sentence-input" placeholder="理由：_______________________________________________________">
+            </div>
+
+            <div class="pattern-task" style="background: #FAFAFA; border-left-color: #1976D2;">
+                <p style="font-size: 1.1em; color: #333;"><strong>2. 作者刚开始坐在无人驾驶汽车里时，觉得非常放松。</strong></p>
+                <div class="checkbox-group">
+                    <label><input type="checkbox"> 正确</label>
+                    <label><input type="checkbox"> 错误</label>
+                </div>
+                <input type="text" class="sentence-input" placeholder="理由：_______________________________________________________">
+            </div>
+
+            <div class="pattern-task" style="background: #FAFAFA; border-left-color: #1976D2;">
+                <p style="font-size: 1.1em; color: #333;"><strong>3. 体验过后，作者觉得将来可以用无人驾驶汽车来帮忙照顾父亲。</strong></p>
+                <div class="checkbox-group">
+                    <label><input type="checkbox"> 正确</label>
+                    <label><input type="checkbox"> 错误</label>
+                </div>
+                <input type="text" class="sentence-input" placeholder="理由：_______________________________________________________">
+            </div>
+
+            <div class="pattern-task" style="background: #FAFAFA; border-left-color: #1976D2;">
+                <p style="font-size: 1.1em; color: #333;"><strong>4. 乘坐无人驾驶出租车需要花费的钱比乘坐公共汽车还要多。</strong></p>
+                <div class="checkbox-group">
+                    <label><input type="checkbox"> 正确</label>
+                    <label><input type="checkbox"> 错误</label>
+                </div>
+                <input type="text" class="sentence-input" placeholder="理由：_______________________________________________________">
+            </div>
+
+            <div class="pattern-task" style="background: #FAFAFA; border-left-color: #1976D2;">
+                <p style="font-size: 1.1em; color: #333;"><strong>5. 更多人一起乘坐无人驾驶出租车，对保护环境有好处。</strong></p>
+                <div class="checkbox-group">
+                    <label><input type="checkbox"> 正确</label>
+                    <label><input type="checkbox"> 错误</label>
+                </div>
+                <input type="text" class="sentence-input" placeholder="理由：_______________________________________________________">
+            </div>
+        </div>
+
+        <!-- 题型三：简答题 -->
+        <div class="exercise-section">
+            <h3>三、简答题 (Short Answer Questions)</h3>
+            <p style="color:#666; margin-bottom: 20px;">根据博客内容，简要回答下列问题。答案必须基于文章内容。</p>
+            
+            <div class="pattern-task" style="background: #FAFAFA; border-left-color: #2E7D32;">
+                <p style="font-size: 1.1em; color: #333;"><strong>1. 作者写这篇博客的目的是什么？</strong></p>
+                <input type="text" class="sentence-input" placeholder="__________________________________________________________">
+            </div>
+
+            <div class="pattern-task" style="background: #FAFAFA; border-left-color: #2E7D32;">
+                <p style="font-size: 1.1em; color: #333;"><strong>2. 当作者看到方向盘自己转动时，他心里是怎么想的？</strong></p>
+                <input type="text" class="sentence-input" placeholder="__________________________________________________________">
+            </div>
+
+            <div class="pattern-task" style="background: #FAFAFA; border-left-color: #2E7D32;">
+                <p style="font-size: 1.1em; color: #333;"><strong>3. 作者后来觉得可以“信任”无人驾驶汽车的两个原因是什么？</strong></p>
+                <input type="text" class="sentence-input" placeholder="原因 1：__________________________________________________" style="margin-bottom: 10px;">
+                <input type="text" class="sentence-input" placeholder="原因 2：__________________________________________________">
+            </div>
+
+            <div class="pattern-task" style="background: #FAFAFA; border-left-color: #2E7D32;">
+                <p style="font-size: 1.1em; color: #333;"><strong>4. 无人驾驶出租车是通过什么方式来帮助乘客节约时间的？</strong></p>
+                <input type="text" class="sentence-input" placeholder="__________________________________________________________">
+            </div>
+
+            <div class="pattern-task" style="background: #FAFAFA; border-left-color: #2E7D32;">
+                <p style="font-size: 1.1em; color: #333;"><strong>5. 结合文章最后一段，作者总结了无人驾驶汽车的哪三个主要优点？</strong></p>
+                <input type="text" class="sentence-input" placeholder="① _______________________________________________________" style="margin-bottom: 10px;">
+                <input type="text" class="sentence-input" placeholder="② _______________________________________________________" style="margin-bottom: 10px;">
+                <input type="text" class="sentence-input" placeholder="③ _______________________________________________________">
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ========================================================================= -->
+    <!--                            TAB 4: 口语演练区                              -->
+    <!-- ========================================================================= -->
+    <div id="tab4" class="tab-content">
         <h2 class="step-title">口语练习：Topic Presentation</h2>
         
         <div class="presentation-split">
